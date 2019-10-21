@@ -21,3 +21,8 @@
   border-color: #dadada;
 }
 
+.pressed-link {
+  color: black;
+  border-bottom: 1px black !important;
+}
+
