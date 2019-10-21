@@ -26,3 +26,39 @@
   border-bottom: 1px black !important;
 }
 
+.ttitle {
+    overflow: hidden;
+    text-align: center;
+    font-size: 30px;
+}
+.ttitle span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.ttitle:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to right, transparent 0%, black 100%);
+    position: relative;
+}
+.ttitle:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to left, transparent 0%, black 100%);
+    position: relative;
+}
+.ttitle:before {
+    margin-left: -100%;
+    left: -14px;
+}
+.ttitle:after {
+    margin-right: -100%;
+    right: -14px;
+}
+
