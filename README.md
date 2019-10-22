@@ -1,3 +1,3 @@
-# Readland
+[Add edition](https://tivikrat.github.io/Readland/Front/addBookModal.html)
 
-**Readland** it`s book oriented clone of pinterest, but with worst interface and without komments. But we have Yaroslav as srum master so everything is ok.
+[View edition information](https://tivikrat.github.io/Readland/Front/Bookoverview.html)
