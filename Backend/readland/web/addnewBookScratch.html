@@ -16,10 +16,11 @@
 <body style="background-image: url({% static "img/шія.jpg" %});">
     <div class="d-block" style="padding-left: 15%;padding-right: 15%;filter: blur(0px);margin-top: 10%;margin-bottom: 10%;">
         <div class="d-block radiused" style="/*border-radius: 15px;*/max-width: 900px;margin: auto;">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input style="display: none;" type="file" id="book-preview" name="book-preview" accept="image/*">
-                <input style="display: none;" type="file" id="book" name="book" accept="application/pdf, application/epub+zip">
+
+                <input style="display: none;" type="file" id="id_photo" name="photo" accept="image/*">
+                <input style="display: none;" type="file" id="id_book" name="book" accept="application/pdf, application/epub+zip">
                 <div class="form-row" style="border-top-right-radius: 25px;border-top-left-radius: 25px;background-color: rgba(8,8,8,0.87);">
                     <div class="col rounded-circle"><button class="btn d-flex ml-auto" type="button" style="background-color: rgba(0,123,255,0);"><i class="material-icons" style="color: rgb(216,216,217);">close</i></button>
                         <h1 class="text-center" style="color: rgb(216,216,217);">Загрузка книги</h1>
@@ -27,7 +28,7 @@
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
                     <div class="col" style="margin: auto;">
-                        <div class="d-block" style="width: 150px;height: 150px;background-image: url({% static "img/шія.jpg" %});background-size: cover;border-radius: 15px;border-color: white;border-style: solid;margin: auto;margin-bottom: 20px;"><button class="btn d-flex mx-auto" type="button" onclick="$('#book-preview').click()" style="background-color: rgba(0,123,255,0);padding-top: 30px;"><i class="material-icons" style="color: rgb(255,255,255);">add_circle_outline</i></button>
+                        <div class="d-block" style="width: 150px;height: 150px;background-image: url({% static "img/шія.jpg" %});background-size: cover;border-radius: 15px;border-color: white;border-style: solid;margin: auto;margin-bottom: 20px;"><button class="btn d-flex mx-auto" type="button" onclick="$('#id_photo').click()" style="background-color: rgba(0,123,255,0);padding-top: 30px;"><i class="material-icons" style="color: rgb(255,255,255);">add_circle_outline</i></button>
                             <h5 class="text-center shadow-lg d-flex flex-shrink-1"
                                 style="color: rgb(253,254,255);filter: blur(0px);">Добавить изображение&nbsp;</h5>
                         </div>
@@ -37,34 +38,34 @@
                     <div class="col" style="min-width: 100px;">
                         <h3 class="text-left d-lg-flex" style="color: rgb(216,216,217);padding-left: 40%;">Название</h3>
                     </div>
-                    <div class="col"><input class="form-control" type="text" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" type="text" id="id_name" name="name" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
                     <div class="col">
                         <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Тэг</h3>
                     </div>
-                    <div class="col"><input class="form-control" type="text" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" id="id_tag" name="tag" type="text" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
                     <div class="col">
                         <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Дата издания</h3>
                     </div>
-                    <div class="col"><input class="form-control" type="date" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" id="id_date" name="date" type="date" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
                     <div class="col">
                         <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Автор</h3>
                     </div>
-                    <div class="col"><input class="form-control" type="text" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" id="id_author" name="author" type="text" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
                     <div class="col">
                         <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Описание</h3>
                     </div>
-                    <div class="col"><textarea class="form-control" style="min-width: 250px;max-width: 285px;"></textarea></div>
+                    <div class="col"><textarea class="form-control" id="id_description" name="description" style="min-width: 250px;max-width: 285px;"></textarea></div>
                 </div>
                 <div class="form-row">
-                    <div class="col" style="background-color: rgba(8,8,8,0.87);"><button onclick="$('#book').click()" class="btn btn-primary border rounded d-block" type="button" style="margin: auto;margin-top: 20px;padding-right: 10px;padding-left: 10px;padding-top: 5px;padding-bottom: 5px;background-color: rgb(0,0,0);">Прикрепить файл</button></div>
+                    <div class="col" style="background-color: rgba(8,8,8,0.87);"><button onclick="$('#id_book').click()" class="btn btn-primary border rounded d-block" type="button" style="margin: auto;margin-top: 20px;padding-right: 10px;padding-left: 10px;padding-top: 5px;padding-bottom: 5px;background-color: rgb(0,0,0);">Прикрепить файл</button></div>
                 </div>
                 <div class="form-row" style="border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;">
                     <div class="col" style="border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;background-color: rgba(8,8,8,0.87);"><button class="btn btn-primary border rounded d-block" type="submit" style="margin: auto;margin-top: 20px;margin-bottom: 20px;padding-left: 46px;padding-right: 46px;font-size: 24px;padding-top: 0px;padding-bottom: 0px;background-color: rgb(0,0,0);">Добавить</button></div>

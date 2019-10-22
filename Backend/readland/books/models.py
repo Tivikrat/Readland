@@ -9,7 +9,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews')
-    file = models.FileField(upload_to='books')
+    book = models.FileField(upload_to='books')
 
     class Meta:
         unique_together = ['name', 'author']
