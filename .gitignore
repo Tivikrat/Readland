@@ -1,0 +1,4 @@
+Backend/readland/.idea/
+Backend/readland/venv/
+Backend/readland/**/migrations/
+Backend/readland/**/__pycache__/
