@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from books.models import Book
 from pages.forms import AddBookForm
 from readland import settings
+from PIL import Image
 
 
 # Create your views here.
@@ -22,6 +23,17 @@ def add_book(request):
             return HttpResponse("Form is not valid")
 
     return render(request, 'addnewBookScratch.html', {})
+
+
+def get_image(request, image_path):
+    try:
+        with open('uploaded/book_previews/' + image_path, "rb") as f:
+            return HttpResponse(f.read(), content_type="image/jpeg")
+    except IOError:
+        red = Image.new('RGB', (1, 1), (255, 0, 0))
+        response = HttpResponse(content_type="image/jpeg")
+        red.save(response, "JPEG")
+        return response
 
 
 def download_book(request, book_id):

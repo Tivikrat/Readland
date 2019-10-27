@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from pages import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', include('pages.urls')),
+    path('uploaded/book_previews/<str:image_path>', views.get_image),
 ]
