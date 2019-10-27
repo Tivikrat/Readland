@@ -1,0 +1,24 @@
+.radiused {
+  border-color: white;
+  border-style: solid;
+  border: width 5px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.btn.btn-primary.border.rounded.d-block {
+  border: solid;
+  border-width: 3.5px !important;
+}
+
+.btn.btn-primary.border.rounded.d-block:hover {
+  border-color: #dadada !important;
+}
+
+.btn.btn-primary.border.rounded.d-block :focus {
+  border-color: #dadada !important;
+  background-color: #dadada !important;
+}
+

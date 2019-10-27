@@ -1,6 +1,7 @@
 import mimetypes
 import os
 
+
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from books.models import Book
@@ -37,3 +38,40 @@ def download_book(request, book_id):
 
             return response
     raise Http404
+
+
+def read_book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+
+    # book_path = os.path.join(settings.MEDIA_ROOT, str(book.photo))
+    #
+    # with open(book.photo.path, 'rb') as bf:
+    #     mime_type = mimetypes.guess_type(bf.name)
+
+    br = ""
+    for i in range(book.rating):
+        br += str(i)
+    # book_path = os.path.join(settings.MEDIA_ROOT, book.book.name)
+    # book.photo = book_path
+    # fields = {
+    #     "name",
+    #     "tag",
+    #     "date",
+    #     "author",
+    #     "description",
+    #     "photo",
+    #     "book",
+    #     "rating",
+    # }
+    tag = book.tag.split(",")
+    return render(request, 'bookoverview.html', {"name": book.name,
+                                                 "tag": tag,
+                                                 "date": book.date,
+                                                 "author": book.author,
+                                                 "description": book.description,
+                                                 "photo": book.photo.url,
+                                                 "book": book.book,
+                                                 "rating_list": br,
+                                                 "rating": book.rating
+                                                 },
+                  content_type="text/html")
