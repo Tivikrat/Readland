@@ -38,7 +38,8 @@
 <body style="font-family: 'Source Sans Pro', sans-serif;">
 <nav id="wrap" class="navbar navbar-light navbar-expand-md navigation-clean"
      style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
-    <div class="container"><a class="navbar-brand" href="#"><img src="{% static "img/LogoLong.png" %}"></a>
+    <div class="container"><a class="navbar-brand" href="#">
+        <img src="{% static "img/LogoLong.png" %}"></a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div
@@ -77,10 +78,10 @@
                 {% for i in rating_list|make_list %}
                     <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
                 {% endfor %}
-{#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-{#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-{#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-{#                <i class="fa fa-star" style="color: #908aa3;font-size: 30PX;"></i>#}
+                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
+                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
+                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
+                {#                <i class="fa fa-star" style="color: #908aa3;font-size: 30PX;"></i>#}
                 <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ rating }}</span>
 
             </div>
@@ -124,11 +125,12 @@
         </div>
     </div>
 </div>
-<div class="footer-basic" id="footer" style="padding-bottom: 0px;" onloadstart="positionateBottom(this)">
+<div class="footer-basic" id="footer"  onloadstart="positionateBottom(this)">
     <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
         <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">© Readland 2019</p>
     </footer>
 </div>
+
 <script src="{% static "js/jquery.min.js" %}"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/script.js" %}"></script>
