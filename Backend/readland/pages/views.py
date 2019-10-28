@@ -25,17 +25,6 @@ def add_book(request):
     return render(request, 'addnewBookScratch.html', {})
 
 
-def get_image(request, image_path):
-    try:
-        with open('uploaded/book_previews/' + image_path, "rb") as f:
-            return HttpResponse(f.read(), content_type="image/jpeg")
-    except IOError:
-        red = Image.new('RGB', (1, 1), (255, 0, 0))
-        response = HttpResponse(content_type="image/jpeg")
-        red.save(response, "JPEG")
-        return response
-
-
 def download_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
 
@@ -53,6 +42,10 @@ def download_book(request, book_id):
 
 
 def read_book(request, book_id):
+    return render(request, 'readpdf.html', {'book_url': '../' + str(book_id) + '/download'})
+
+
+def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
 
     # book_path = os.path.join(settings.MEDIA_ROOT, str(book.photo))
