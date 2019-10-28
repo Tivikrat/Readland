@@ -10,7 +10,6 @@ class Book(models.Model):
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews', null=True)
     book = models.FileField(upload_to='books')
-    rating = models.IntegerField(default=0)
 
     class Meta:
         unique_together = ['name', 'author']

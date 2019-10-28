@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Bookoverview</title>
+    <title>Readland — {{ name }}</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
     <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
@@ -42,30 +42,30 @@
         <img src="{% static "img/LogoLong.png" %}"></a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
-        <div
-                class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item d-block" role="presentation">
-                    <form class="form-inline mr-auto" target="_self">
-                        <div class="form-group d-flex justify-content-end"
-                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label
-                                for="search-field"></label><input class="form-control search-field" type="search"
-                                                                  id="search-field" name="search"
-                                                                  style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
-                                                                  placeholder="Search">
-                            <i
-                                    class="fa fa-search"
-                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
-                        </div>
-                    </form>
-                </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#"
-                                                            style="padding-right: 0px;padding-left: 0px;"><img
-                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img
-                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>
-            </ul>
-        </div>
+{#        <div#}
+{#                class="collapse navbar-collapse" id="navcol-1">#}
+{#            <ul class="nav navbar-nav ml-auto">#}
+{#                <li class="nav-item d-block" role="presentation">#}
+{#                    <form class="form-inline mr-auto" target="_self">#}
+{#                        <div class="form-group d-flex justify-content-end"#}
+{#                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label#}
+{#                                for="search-field"></label><input class="form-control search-field" type="search"#}
+{#                                                                  id="search-field" name="search"#}
+{#                                                                  style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"#}
+{#                                                                  placeholder="Search">#}
+{#                            <i#}
+{#                                    class="fa fa-search"#}
+{#                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </li>#}
+{#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+{#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+{#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+{#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+{#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+{#            </ul>#}
+{#        </div>#}
     </div>
 </nav>
 <div class="container">
@@ -74,45 +74,31 @@
                                    style="width: 100%;height: auto;margin: auto;"></div>
         <div class="col-lg-8">
             <h2 style="font-family: 'Source Sans Pro', sans-serif;">{{ name }}</h2>
-            <div id="starRaiting">
-                {% for i in rating_list|make_list %}
-                    <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                {% endfor %}
+{#            <div id="starRaiting">#}
+{#                {% for i in rating_list|make_list %}#}
+{#                    <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
+{#                {% endfor %}#}
                 {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
                 {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
                 {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
                 {#                <i class="fa fa-star" style="color: #908aa3;font-size: 30PX;"></i>#}
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ rating }}</span>
-
-            </div>
+{#                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ rating }}</span>#}
+{##}
+{#            </div>#}
             <h4>Автор: {{ author }}&nbsp;</h4>
             <h4>Теги:&nbsp;
                 {% for i in tag %}
                     <a href="#" style="margin-right: 5px;">{{ i }}</a>
                 {% endfor %}
             </h4>
-            <h4>Опубліковано:&nbsp;<a href="#" style="margin-right: 5px;">{{ author }}</a></h4>
+{#            <h4>Опубліковано:&nbsp;<a href="#" style="margin-right: 5px;">{{ author }}</a></h4>#}
             <h5>Опис:</h5>
             <p>{{ description }}<br></p>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center ttitle"><span>
-                    Файли
-                </span></h1>
-        </div>
-    </div>
-    <div class="row" id="ChooseFormat">
-        <div class="col text-center">
-            <h4>Доступні формати:&nbsp;<a href="#" style="padding-left: 5px;padding-right: 5px;">pdf</a>
-                <a
-                        href="#" style="padding-right: 5px;padding-left: 5px;">epub</a></h4>
-        </div>
-    </div>
     <div class="row" id="ReadOrDownload">
         <div class="col-lg-3 offset-lg-3">
-            <button class="btn btn-primary d-block" type="button"
+            <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'read'"
                     style="margin: auto;border: 3px solid black;margin-top: 15px;width: 185px;margin-bottom: 15px;background-color: #fefefe;color: #363636;">
                 Читати онлайн
             </button>

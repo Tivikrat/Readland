@@ -3,7 +3,7 @@ import os
 
 
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from books.models import Book
 from pages.forms import AddBookForm
 from readland import settings
@@ -17,10 +17,9 @@ def add_book(request):
         if form.is_valid():
             book = form.save(commit=False)
             book.save()
-            return HttpResponse('Book has been saved. Book ID = ' + str(book.id))
+            return redirect("../books/" + str(book.id))
         else:
-            print(form.errors)
-            return HttpResponse("Form is not valid")
+            return HttpResponse("Fields was empty: " + str(form.errors))
 
     return render(request, 'addnewBookScratch.html', {})
 
@@ -35,39 +34,18 @@ def download_book(request, book_id):
             mime_type = mimetypes.guess_type(bf.name)
 
             response = HttpResponse(bf.read(), content_type=mime_type[0])
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(book_path)
+            response['Content-Disposition'] = 'attachment; filename="download.pdf"'
 
             return response
     raise Http404
 
 
 def read_book(request, book_id):
-    return render(request, 'readpdf.html', {'book_url': '../' + str(book_id) + '/download'})
+    return redirect("https://filerender/pdf/index.php?book_url=127.0.0.1:8000/books/" + str(book_id) + "/download")
 
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-
-    # book_path = os.path.join(settings.MEDIA_ROOT, str(book.photo))
-    #
-    # with open(book.photo.path, 'rb') as bf:
-    #     mime_type = mimetypes.guess_type(bf.name)
-
-    br = ""
-    for i in range(book.rating):
-        br += str(i)
-    # book_path = os.path.join(settings.MEDIA_ROOT, book.book.name)
-    # book.photo = book_path
-    # fields = {
-    #     "name",
-    #     "tag",
-    #     "date",
-    #     "author",
-    #     "description",
-    #     "photo",
-    #     "book",
-    #     "rating",
-    # }
     tag = book.tag.split(",")
     return render(request, 'bookoverview.html', {"name": book.name,
                                                  "tag": tag,
@@ -76,7 +54,5 @@ def view_book_info(request, book_id):
                                                  "description": book.description,
                                                  "photo": book.photo.url,
                                                  "book": book.book,
-                                                 "rating_list": br,
-                                                 "rating": book.rating
                                                  },
                   content_type="text/html")
