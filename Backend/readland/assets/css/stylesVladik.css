@@ -1,0 +1,111 @@
+.radiused {
+  border-color: white;
+  border-style: solid;
+  border: width 5px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.btn.btn-primary.border.rounded.d-block {
+  border: solid;
+  border-width: 3.5px !important;
+}
+
+.btn.btn-primary.border.rounded.d-block:hover {
+  border-color: #dadada;
+}
+
+.btn.btn-primary.border.rounded.d-block :focus {
+  border-color: #dadada;
+}
+
+.pressed-link {
+  color: black;
+  border-bottom: 1px black !important;
+}
+
+.ttitle {
+    overflow: hidden;
+    text-align: center;
+    font-size: 30px;
+}
+.ttitle span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.ttitle:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to right, transparent 0%, black 100%);
+    position: relative;
+}
+.ttitle:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to left, transparent 0%, black 100%);
+    position: relative;
+}
+.ttitle:before {
+    margin-left: -100%;
+    left: -14px;
+}
+.ttitle:after {
+    margin-right: -100%;
+    right: -14px;
+}
+img{
+  background-image: url(../img/шія.jpg);
+  object-fit: cover;
+  background-size: cover;
+  width: 140px;
+  height: 200px;
+  border-radius: 15px;
+  border-color: white;
+  border-style: solid;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.attach{
+  color: #fff; 
+  margin: 30px 0 0 370px;
+}
+
+.msg-pop{
+  background-color: rgba(0, 0, 0, 0.7);
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	bottom: 30px;
+	left: 30px;
+	width: 250px;
+	padding: 10px;
+	color: #fff;
+	font-size: 13px;
+	line-height: 13px;
+	-webkit-box-shadow: 0px 0px 10px #999;
+	-moz-box-shadow: 0px 0px 10px #999;
+	box-shadow: 0px 0px 10px #999;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+/*
+body{
+  margin-bottom: 60px;
+}
+
+.footer-basic{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+*/

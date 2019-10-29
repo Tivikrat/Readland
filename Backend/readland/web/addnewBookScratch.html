@@ -1,81 +1,118 @@
 {% load static %}
 <!DOCTYPE html>
-<html style="font-family: 'Verdana Regular' !important;">
+<html style="font-family: 'Verdana Regular' !important;" class = "no-js">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>AddNewBook</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Cookie" %}">
+    <link rel="stylesheet" href="{% static "https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome5-overrides.min.css" %}">
     <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Clean.css" %}">
     <link rel="stylesheet" href="{% static "css/Form-Select---Full-Date---Month-Day-Year.css" %}">
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Navigation-with-Search.css" %}"> 
+    <link rel="stylesheet" href="{% static "css/Pretty-Footer.css" %}">
+    <link rel="stylesheet" href="{% static "css/stylesVladik.css" %}">
+    <link rel="stylesheet" href="{% static "css/component.css" %}"> <!-- дизайн кнопки -->
+    <script src = "{% static "js/checkFiles.js" %}"> </script>
+    <script src = "{% static "js/imageDisplay.js" %}"> </script>
+    <script src="{% static "js/custom-input.js" %}"></script>
+    <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 </head>
 
-<body style="background-image: url({% static "img/шія.jpg" %});">
-    <div class="d-block" style="padding-left: 15%;padding-right: 15%;filter: blur(0px);margin-top: 10%;margin-bottom: 10%;">
+<body style="background-image: url({% static "img/шія.jpg" %});background-size: cover;background-repeat: repeat-x;font-family: 'Source Sans Pro', sans-serif;">
+    <div class="d-block" style="padding-left: 15%;padding-right: 15%;filter: blur(0px);margin-top: 1%;margin-bottom: 10%;">
         <div class="d-block radiused" style="/*border-radius: 15px;*/max-width: 900px;margin: auto;">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                <input style="display: none;" type="file" id="id_photo" name="photo" accept="image/*">
-                <input style="display: none;" type="file" id="id_book" name="book" accept="application/pdf, application/epub+zip">
+            <form class = "formAdd" onsubmit="return checkAll()">
                 <div class="form-row" style="border-top-right-radius: 25px;border-top-left-radius: 25px;background-color: rgba(8,8,8,0.87);">
                     <div class="col rounded-circle"><button class="btn d-flex ml-auto" type="button" style="background-color: rgba(0,123,255,0);"><i class="material-icons" style="color: rgb(216,216,217);">close</i></button>
                         <h1 class="text-center" style="color: rgb(216,216,217);">Загрузка книги</h1>
                     </div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col" style="margin: auto;">
-                        <div class="d-block" style="width: 150px;height: 150px;background-image: url({% static "img/шія.jpg" %});background-size: cover;border-radius: 15px;border-color: white;border-style: solid;margin: auto;margin-bottom: 20px;"><button class="btn d-flex mx-auto" type="button" onclick="$('#id_photo').click()" style="background-color: rgba(0,123,255,0);padding-top: 30px;"><i class="material-icons" style="color: rgb(255,255,255);">add_circle_outline</i></button>
+                    <div class="col">
+                        <div class="d-block">
+                            <div class = "fonImage">
+                                <img id = "output" style = "margin: 10px 0 0 379px;">
+                            </div>
+                            <input type="file" id = "choice" accept = ".png, .jpg" hidden = "true"  onchange="return checkImage()">
+                            <button class="btn d-flex mx-auto" type="button" style="background-color: rgba(0,123,255,0);"><i class="material-icons" style="color: rgb(255,255,255);">add_circle_outline</i></button>
                             <h5 class="text-center shadow-lg d-flex flex-shrink-1"
-                                style="color: rgb(253,254,255);filter: blur(0px);">Добавить изображение&nbsp;</h5>
+                                style="color: rgb(253,254,255);filter: blur(0px);">&nbsp;</h5>
                         </div>
                     </div>
                 </div>
+                
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col" style="min-width: 100px;">
-                        <h3 class="text-left d-lg-flex" style="color: rgb(216,216,217);padding-left: 40%;">Название</h3>
+                    <div class="col-lg-4 col-xl-3 offset-lg-2 offset-xl-3" style="min-width: 100px;">
+                        <h3 class="text-left d-lg-flex" style="color: rgb(216,216,217);">Название</h3>
                     </div>
-                    <div class="col"><input class="form-control" type="text" id="id_name" name="name" style="min-width: 250px;max-width: 285px;"></div>
+                    
+                    <div class="col"><input class="form-control" type="text" id = "name" style="width: 285px" required></div>
+
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col">
-                        <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Тэг</h3>
+                    <div class="col-lg-4 col-xl-3 offset-lg-2 offset-xl-3">
+                        <h3 class="text-left" style="color: rgb(216,216,217);">Тэг</h3>
                     </div>
-                    <div class="col"><input class="form-control" id="id_tag" name="tag" type="text" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" type="text" style="min-width: 250px;max-width: 285px;"></div> <!--Tags-->
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col">
-                        <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Дата издания</h3>
+                    <div class="col-lg-4 col-xl-3 offset-lg-2 offset-xl-3">
+                        <h3 class="text-left" style="color: rgb(216,216,217);">Дата издания</h3>
                     </div>
-                    <div class="col"><input class="form-control" id="id_date" name="date" type="date" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" type="text" onkeypress='validate(event)' maxlength="4" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col">
-                        <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Автор</h3>
+                    <div class="col-lg-4 col-xl-3 offset-lg-2 offset-xl-3">
+                        <h3 class="text-left" style="color: rgb(216,216,217);">Автор</h3>
                     </div>
-                    <div class="col"><input class="form-control" id="id_author" name="author" type="text" style="min-width: 250px;max-width: 285px;"></div>
+                    <div class="col"><input class="form-control" type="text" style="min-width: 250px;max-width: 285px;"></div>
                 </div>
                 <div class="form-row" style="background-color: rgba(8,8,8,0.87);">
-                    <div class="col">
-                        <h3 class="text-left" style="color: rgb(216,216,217);padding-left: 40%;">Описание</h3>
+                    <div class="col-lg-4 col-xl-3 offset-lg-2 offset-xl-3">
+                        <h3 class="text-left" style="color: rgb(216,216,217);">Описание</h3>
                     </div>
-                    <div class="col"><textarea class="form-control" id="id_description" name="description" style="min-width: 250px;max-width: 285px;"></textarea></div>
+                    <div class="col"><textarea class="form-control" style="min-width: 250px;max-width: 285px;"></textarea></div>
                 </div>
+                
                 <div class="form-row">
-                    <div class="col" style="background-color: rgba(8,8,8,0.87);"><button onclick="$('#id_book').click()" class="btn btn-primary border rounded d-block" type="button" style="margin: auto;margin-top: 20px;padding-right: 10px;padding-left: 10px;padding-top: 5px;padding-bottom: 5px;background-color: rgb(0,0,0);">Прикрепить файл</button></div>
+                     <div class="col" style="background-color: rgba(8,8,8,0.87); ">
+                            <input type="file" id = "hider" accept = ".pdf, .epub" class="inputfile inputfile-1" onchange="ValidateSingleInput(this)">
+                            <!--<button class="attach" type="button" id = "attachfile" style="padding-right: 10px;padding-left: 10px;padding-top: 5px;padding-bottom: 5px;background-color: rgb(0,0,0);">Прикрепить файл</button>-->
+                            <label for="hider"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Прикрепить файл&hellip;</span></label>
+                    </div>
                 </div>
                 <div class="form-row" style="border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;">
-                    <div class="col" style="border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;background-color: rgba(8,8,8,0.87);"><button class="btn btn-primary border rounded d-block" type="submit" style="margin: auto;margin-top: 20px;margin-bottom: 20px;padding-left: 46px;padding-right: 46px;font-size: 24px;padding-top: 0px;padding-bottom: 0px;background-color: rgb(0,0,0);">Добавить</button></div>
+                    <div class="col" style="border-bottom-left-radius: 25px;border-bottom-right-radius: 25px;background-color: rgba(8,8,8,0.87);">
+                        <input class="btn btn-primary border rounded d-block" type="submit" value = "Добавить" style="margin: auto;margin-top: 20px;margin-bottom: 20px;padding-left: 46px;padding-right: 46px;font-size: 24px;padding-top: 0px;padding-bottom: 0px;background-color: rgb(0,0,0);"></div>
                 </div>
             </form>
-        </div>
+        </div>    
     </div>
-    <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" %}"></script>
+    <script src="{% static "assets/js/jquery.min.js" %}"></script>
+    <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "assets/js/script.js" %}"></script>
+    <script src="{% static "https://code.jquery.com/jquery-2.2.4.js" %}"></script>
+    <script> 
+
+        /* программное открытие диалога выбора файлов по нажатию на кнопку button */
+
+        $("button[class = 'btn d-flex mx-auto']").on("click", function() {
+        $("input[id = 'choice']").trigger("click");
+        });
+
+        
+    </script>
 </body>
 
 </html>
