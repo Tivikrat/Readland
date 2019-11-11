@@ -11,6 +11,7 @@ class Book(models.Model):
     photo = models.ImageField(upload_to='book_previews', null=True)
     book = models.FileField(upload_to='books')
     rating = models.FloatField(default=float('NaN'))
+    views_count = models.IntegerField(default=0)
 
     class Meta:
         unique_together = ['name', 'author']
