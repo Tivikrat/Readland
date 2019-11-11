@@ -1,13 +1,13 @@
 import mimetypes
 import os
-
+import urllib.parse
 
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
+
 from books.models import Book
 from pages.forms import AddBookForm
 from readland import settings
-from PIL import Image
 
 
 # Create your views here.
@@ -34,7 +34,8 @@ def download_book(request, book_id):
             mime_type = mimetypes.guess_type(bf.name)
 
             response = HttpResponse(bf.read(), content_type=mime_type[0])
-            response['Content-Disposition'] = 'attachment; filename="download.pdf"'
+            response['Content-Disposition'] = \
+                "attachment; filename*=UTF-8''" + urllib.parse.quote(os.path.basename(book_path), safe='')
 
             return response
     raise Http404
@@ -56,3 +57,9 @@ def view_book_info(request, book_id):
                                                  "book": book.book,
                                                  },
                   content_type="text/html")
+
+
+def rate_book(request, book_id, book_rate):
+    if 1 <= book_rate <= 5:
+        Book.objects.filter(pk=book_id).update(rating=book_rate)
+    return redirect('/books/' + str(book_id))
