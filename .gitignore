@@ -2,5 +2,3 @@ Backend/readland/.idea/
 Backend/readland/venv/
 Backend/readland/**/migrations/
 Backend/readland/**/__pycache__/
-Backend/readland/uploaded/books/*
-Backend/readland/uploaded/book_previews/*
