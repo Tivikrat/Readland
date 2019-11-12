@@ -47,9 +47,15 @@ def read_book(request, book_id):
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    raiting = {
+        "number_raiting": book.rating,
+        "list_raiting": range(int(book.rating)),
+        "has_half_star": (book.rating % 1) >= 0.5
+    }
     book.views_count += 1
     book.save()
     tag = book.tag.split(" ")
+
     return render(request, 'bookoverview.html', {"name": book.name,
                                                  "tag": tag,
                                                  "date": book.date,
@@ -57,6 +63,8 @@ def view_book_info(request, book_id):
                                                  "description": book.description,
                                                  "photo": book.photo.url,
                                                  "book": book.book,
+                                                 "raiting": raiting,
+                                                 "views": book.views_count,
                                                  },
                   content_type="text/html")
 

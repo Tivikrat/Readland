@@ -42,30 +42,30 @@
         <img src="{% static "img/LogoLong.png" %}"></a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
-{#        <div#}
-{#                class="collapse navbar-collapse" id="navcol-1">#}
-{#            <ul class="nav navbar-nav ml-auto">#}
-{#                <li class="nav-item d-block" role="presentation">#}
-{#                    <form class="form-inline mr-auto" target="_self">#}
-{#                        <div class="form-group d-flex justify-content-end"#}
-{#                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label#}
-{#                                for="search-field"></label><input class="form-control search-field" type="search"#}
-{#                                                                  id="search-field" name="search"#}
-{#                                                                  style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"#}
-{#                                                                  placeholder="Search">#}
-{#                            <i#}
-{#                                    class="fa fa-search"#}
-{#                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>#}
-{#                        </div>#}
-{#                    </form>#}
-{#                </li>#}
-{#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
-{#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
-{#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
-{#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
-{#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
-{#            </ul>#}
-{#        </div>#}
+        {#        <div#}
+        {#                class="collapse navbar-collapse" id="navcol-1">#}
+        {#            <ul class="nav navbar-nav ml-auto">#}
+        {#                <li class="nav-item d-block" role="presentation">#}
+        {#                    <form class="form-inline mr-auto" target="_self">#}
+        {#                        <div class="form-group d-flex justify-content-end"#}
+        {#                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label#}
+        {#                                for="search-field"></label><input class="form-control search-field" type="search"#}
+        {#                                                                  id="search-field" name="search"#}
+        {#                                                                  style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"#}
+        {#                                                                  placeholder="Search">#}
+        {#                            <i#}
+        {#                                    class="fa fa-search"#}
+        {#                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>#}
+        {#                        </div>#}
+        {#                    </form>#}
+        {#                </li>#}
+        {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+        {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+        {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+        {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+        {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+        {#            </ul>#}
+        {#        </div>#}
     </div>
 </nav>
 <div class="container">
@@ -74,24 +74,25 @@
                                    style="width: 90%;height: auto;margin: auto;"></div>
         <div class="col-lg-8">
             <h2 style="font-family: 'Source Sans Pro', sans-serif;">{{ name }}</h2>
-{#            <div id="starRaiting">#}
-{#                {% for i in rating_list|make_list %}#}
-{#                    <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-{#                {% endfor %}#}
-                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-                {#                <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>#}
-                {#                <i class="fa fa-star" style="color: #908aa3;font-size: 30PX;"></i>#}
-{#                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ rating }}</span>#}
-{##}
-{#            </div>#}
+            <div id="starRaiting">
+                {% for i in raiting.list_raiting %}
+                    <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                {% endfor %}
+                {% if raiting.has_half_star %}
+                    <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i>
+                {% endif %}
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{raiting.number_raiting}}</span>
+                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{views}}</span>
+            </div>
             <h4>Автор: {{ author }}&nbsp;</h4>
             <h4>Теги:&nbsp;
+
                 {% for i in tag %}
                     <a href="#" style="margin-right: 5px;">{{ i }}</a>
                 {% endfor %}
             </h4>
-{#            <h4>Опубліковано:&nbsp;<a href="#" style="margin-right: 5px;">{{ author }}</a></h4>#}
+            {#            <h4>Опубліковано:&nbsp;<a href="#" style="margin-right: 5px;">{{ author }}</a></h4>#}
             <h5>Опис:</h5>
             <p>{{ description }}<br></p>
         </div>
@@ -111,9 +112,10 @@
         </div>
     </div>
 </div>
-<div class="footer-basic" id="footer"  onloadstart="positionateBottom(this)">
+<div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">
     <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
-        <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">© Readland 2019</p>
+        <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
+            Readland 2019</p>
     </footer>
 </div>
 
