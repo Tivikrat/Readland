@@ -52,3 +52,65 @@ body {
     right: -14px;
 }
 
+.d-block.d-xl-flex.mb-auto.align-items-xl-end.footer-basic {
+  padding-bottom: 0px;
+}
+
+.footer-basic {
+  padding: 40px 0;
+  background-color: #ffffff;
+  color: #4b4c4d;
+}
+
+.copyright {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.breadcrumb {
+  color: #151515 !important;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+span {
+  color: rgb(77,76,81);
+}
+
+.fa.fa-home {
+  color: rgb(77,76,81);
+}
+
+.btn.btn-primary.dropdown-toggle {
+  background-color: rgba(0,123,255,0);
+  color: rgb(41,41,41);
+}
+
+.row.search-result-row {
+}
+
+.row.search-result-row {
+  padding-top: 12px;
+}
+
+.btn.btn-primary.dropdown-toggle.d-block {
+  box-shadow: 0 0 0 .2rem rgba(2,2,2,0);
+  border-color: rgba(36,37,38,0);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  border-bottom: solid black 2px;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  border-bottom: solid !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  border-bottom: solid;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  border-bottom: solid !important;
+}
+
