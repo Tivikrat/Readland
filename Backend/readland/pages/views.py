@@ -27,7 +27,7 @@ def add_book(request):
 def download_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
 
-    book_path = os.path.join(settings.MEDIA_ROOT, book.book.name)
+    book_path = os.path.join(settings.MEDIA_ROOT, book.file.name)
 
     if os.path.exists(book_path):
         with open(book_path, 'rb') as bf:
@@ -56,7 +56,7 @@ def view_book_info(request, book_id):
                                                  "author": book.author,
                                                  "description": book.description,
                                                  "photo": book.photo.url,
-                                                 "book": book.book,
+                                                 "book": book.file,
                                                  },
                   content_type="text/html")
 

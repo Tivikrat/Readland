@@ -9,7 +9,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews', null=True)
-    book = models.FileField(upload_to='books')
+    file = models.FileField(upload_to='books')
     rating = models.FloatField(default=float('NaN'))
     views_count = models.IntegerField(default=0)
 
