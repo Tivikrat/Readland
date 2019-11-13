@@ -45,6 +45,10 @@ def read_book(request, book_id):
     return redirect("https://filerender/pdf/index.php?book_url=127.0.0.1:8000/books/" + str(book_id) + "/download")
 
 
+def view_search(request):
+    return render(request, 'advancedSearch.html')
+
+
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     raiting = {
