@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Readland &bull; {{ name }}</title>
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
     <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
@@ -81,9 +84,9 @@
                 {% if raiting.has_half_star %}
                     <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i>
                 {% endif %}
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{raiting.number_raiting}}</span>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ raiting.number_raiting }}</span>
                 <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{views}}</span>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ views }}</span>
             </div>
             <h4>Автор: {{ author }}&nbsp;</h4>
             <h4>Теги:&nbsp;
@@ -109,6 +112,24 @@
                     style="border: 3px solid black;width: 185px;margin: auto;margin-top: 15px;margin-bottom: 15px;color: rgb(54,54,54);background-color: #fefefe;">
                 Завантажити
             </button>
+        </div>
+        <div id="reviewStars-input">
+                <span class="raiting"> 5.0
+                <input id="star-4" type="radio" name="reviewStars"/>
+                <label title="5 из 5" for="star-4"></label>
+
+                <input id="star-3" type="radio" name="reviewStars"/>
+                <label title="4 из 5" for="star-3"></label>
+
+                <input id="star-2" type="radio" name="reviewStars"/>
+                <label title="3 из 5" for="star-2"></label>
+
+                <input id="star-1" type="radio" name="reviewStars"/>
+                <label title="2 из 5" for="star-1"></label>
+
+                <input id="star-0" type="radio" name="reviewStars"/>
+                <label title="1 из 5" for="star-0"></label>
+                </span>
         </div>
     </div>
 </div>

@@ -1,110 +1,111 @@
-body{
+body {
     background-color: white;
     font-family: Roboto, Geneva, Tahoma, sans-serif;
 }
 
-.container{
-    margin: 70px auto 0 auto; /* отцентровать форму по середине экрана */
-}
-
-.descriptionName, .descriptionAuthor, .descriptionTag{
+.descriptionName, .descriptionAuthor, .descriptionTag {
     font-size: 14px;
-    color: rgb(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
-input[id = "name"], input[id = "author"], input[id = "tag"]{
+input[id = "name"], input[id = "author"], input[id = "tag"] {
     width: 650px;
     height: 25px;
 }
 
 /*sprite with stars*/
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-  background: url('../img/spritesheetStar.png') no-repeat;
+    background: url('../img/spritesheetStar.png') no-repeat;
 }
 
 #reviewStars-input {
-  
-  /*fix floating problems*/
-  overflow: hidden;
-  *zoom: 1;
-  /*end of fix floating problems*/
-  
-  position: center;
-  float: left;
+
+    /*fix floating problems*/
+    overflow: hidden;
+    *zoom: 1;
+    /*end of fix floating problems*/
+
+    position: center;
+    float: left;
 }
 
 #reviewStars-input input {
-  opacity: 0;
-  /* смена ширины и высоты закрашенной звездочки в спрайте при нажатии на пустую звездочку */
-  width: 43px;
-  height: 0px;
-  
-  position: center;
-  margin: auto -25px auto -25px;
-  top: 0;
-  z-index: 0;
+    opacity: 0;
+    /* смена ширины и высоты закрашенной звездочки в спрайте при нажатии на пустую звездочку */
+    width: 43px;
+    height: 0px;
+
+    position: center;
+    margin: auto -25px auto -25px;
+    top: 0;
+    z-index: 0;
 }
 
 #reviewStars-input input:checked ~ label {
-  background-position: 0 -40px;
-  height: 40px;
-  width: 43px;
+    background-position: 0 -40px;
+    height: 40px;
+    width: 43px;
 }
 
 #reviewStars-input label {
-  height: 40px;
-  width: 43px;
-  float: right;
-  cursor: pointer;
-  margin-right: 0px;
-  
-  position: relative;
-  z-index: 1;
+    height: 40px;
+    width: 43px;
+    float: right;
+    cursor: pointer;
+    margin-right: 0px;
+
+    position: relative;
+    z-index: 1;
 }
 
 #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-  background-position: 0 -40px;
-  height: 40px;
-  width: 43px;
+    background-position: 0 -40px;
+    height: 40px;
+    width: 43px;
 }
 
 #reviewStars-input #star-0 {
-  left: 0px;
+    left: 0px;
 }
+
 #reviewStars-input #star-1 {
-  left: 50px;
+    left: 50px;
 }
+
 #reviewStars-input #star-2 {
-  left: 103px;
+    left: 103px;
 }
+
 #reviewStars-input #star-3 {
-  left: 156px;
+    left: 156px;
 }
+
 #reviewStars-input #star-4 {
-  left: 209px;
+    left: 209px;
 }
 
-.raiting{
-  font-size: 34px;
-  display: block;
-  overflow: hidden;
-  padding: 0 100px 23px 400px;
-  color: #dd4b39;
+.raiting {
+    font-size: 34px;
+    display: block;
+    overflow: hidden;
+    padding: 0 100px 23px 400px;
+    color: #dd4b39;
 }
 
-.submitSearch{
-  padding: 8px;
-  line-height: 100%;
-  height: 35px;
-  min-width: 135px;
-  margin: 5px 0 20px 790px;
-  font-size: 15px;
-  background-color: #3079ed;
-  border: 1px solid #3079ed;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
+.submitSearch {
+    padding: 8px;
+    line-height: 100%;
+    height: 35px;
+    min-width: 135px;
+    margin: 5px 0 20px 790px;
+    font-size: 15px;
+    background-color: #3079ed;
+    border: 1px solid #3079ed;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
 }
-.submitSearch:hover{
-  color: #fff;
+
+.submitSearch:hover {
+    color: #fff;
 }
