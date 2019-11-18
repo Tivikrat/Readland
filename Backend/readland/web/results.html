@@ -1,0 +1,15 @@
+{% load static %}
+<html lang="uk">
+<head>
+    <title>Results</title>
+    <link rel = "stylesheet" href = "{% static "css/style.css" %}" type = "text/css">
+</head>
+
+<body>
+    <div class = "container">
+        {% for result in results %}
+            <p>{{ result.name }} - {{ result.author }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
