@@ -18,77 +18,38 @@ input[id = "name"], input[id = "author"], input[id = "tag"] {
     background: url('../img/spritesheetStar.png') no-repeat;
 }
 
-#reviewStars-input {
-
-    /*fix floating problems*/
-    overflow: hidden;
-    *zoom: 1;
-    /*end of fix floating problems*/
-
-    position: center;
-    float: left;
-}
-
 #reviewStars-input input {
     opacity: 0;
-    /* смена ширины и высоты закрашенной звездочки в спрайте при нажатии на пустую звездочку */
-    width: 43px;
-    height: 0px;
-
     position: center;
-    margin: auto -25px auto -25px;
-    top: 0;
-    z-index: 0;
+    margin: auto 0px auto 0px;
 }
 
 #reviewStars-input input:checked ~ label {
     background-position: 0 -40px;
-    height: 40px;
-    width: 43px;
 }
 
 #reviewStars-input label {
     height: 40px;
-    width: 43px;
-    float: right;
+    width: 40px;
     cursor: pointer;
-    margin-right: 0px;
-
-    position: relative;
-    z-index: 1;
 }
 
-#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+#reviewStars-input input {
+    display: none;
+}
+
+#reviewStars-input label:hover {
     background-position: 0 -40px;
-    height: 40px;
-    width: 43px;
 }
 
-#reviewStars-input #star-0 {
-    left: 0px;
-}
-
-#reviewStars-input #star-1 {
-    left: 50px;
-}
-
-#reviewStars-input #star-2 {
-    left: 103px;
-}
-
-#reviewStars-input #star-3 {
-    left: 156px;
-}
-
-#reviewStars-input #star-4 {
-    left: 209px;
+#reviewStars-input {
+    width: 100%;
+    text-align: center;
 }
 
 .raiting {
     font-size: 34px;
     display: block;
-    overflow: hidden;
-    padding: 0 100px 23px 400px;
     color: #dd4b39;
 }
 
