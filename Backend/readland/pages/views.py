@@ -105,6 +105,9 @@ def view_search(request):
     else:
         return render(request, 'advancedSearch.html')
 
+def view_search_basic(request):
+    return render(request, 'SearchResult.html')
+
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
