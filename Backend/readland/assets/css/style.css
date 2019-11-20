@@ -9,12 +9,12 @@ body {
 }
 
 /*sprite with stars*/
-#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-    background: url('../img/spritesheetStar.png') no-repeat;
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover ~ label {
+    background: url('../img/spritesheetStar.png') no-repeat 0 -40px;
 }
 
 #reviewStars-input input:checked ~ label {
-    background-position: 0 -40px;
+    background-position: 0 0;
 }
 
 #reviewStars-input label {
