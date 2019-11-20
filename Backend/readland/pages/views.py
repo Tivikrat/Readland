@@ -1,3 +1,4 @@
+import math
 import mimetypes
 import os
 import urllib.parse
@@ -107,10 +108,15 @@ def view_search(request):
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    if(book.rating == 0.0):
+        bookraiting = "Оцінок ще не має"
+    else:
+        bookraiting = book.rating
     raiting = {
-        "number_raiting": book.rating,
+        "number_raiting": bookraiting,
         "list_raiting": range(int(book.rating)),
-        "has_half_star": (book.rating % 1) >= 0.5
+        "has_half_star": (book.rating % 1) >= 0.2,
+        "empty_stars": range(5-math.ceil(book.rating))
     }
     book.views_count += 1
     book.save()

@@ -84,6 +84,9 @@
                 {% if raiting.has_half_star %}
                     <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i>
                 {% endif %}
+                {% for i in raiting.empty_stars %}
+                    <i class="fa fa-star-o" style="color: #49494a;font-size: 30px;"></i>
+                {% endfor %}
                 <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ raiting.number_raiting }}</span>
                 <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
                 <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ views }}</span>
@@ -115,21 +118,23 @@
         </div>
         <div id="reviewStars-input">
                 <span class="raiting">
-                <input id="star-4" type="radio" name="reviewStars"/>
-                <label title="5 из 5" for="star-4" onclick="window.location.href = 'rate/5'"></label>
-
-                <input id="star-3" type="radio" name="reviewStars"/>
-                <label title="4 из 5" for="star-3" onclick="window.location.href = 'rate/4'"></label>
-
-                <input id="star-2" type="radio" name="reviewStars"/>
-                <label title="3 из 5" for="star-2" onclick="window.location.href = 'rate/3'"></label>
+                <input id="star-0" type="radio" name="reviewStars"/>
+                <label title="1 из 5" for="star-0" onclick="window.location.href = 'rate/1'"></label>
 
                 <input id="star-1" type="radio" name="reviewStars"/>
                 <label title="2 из 5" for="star-1" onclick="window.location.href = 'rate/2'"></label>
 
-                <input id="star-0" type="radio" name="reviewStars"/>
-                <label title="1 из 5" for="star-0" onclick="window.location.href = 'rate/1'"></label>
+                <input id="star-2" type="radio" name="reviewStars"/>
+                <label title="3 из 5" for="star-2" onclick="window.location.href = 'rate/3'"></label>
+
+                <input id="star-3" type="radio" name="reviewStars"/>
+                <label title="4 из 5" for="star-3" onclick="window.location.href = 'rate/4'"></label>
+
+                <input id="star-4" type="radio" name="reviewStars"/>
+                <label title="5 из 5" for="star-4" onclick="window.location.href = 'rate/5'"></label>
+                    
                 </span>
+
         </div>
     </div>
 </div>
