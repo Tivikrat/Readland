@@ -1,162 +1,192 @@
 {% load static %}
 <!DOCTYPE html>
-<html style="height: 100%;font-family: 'Source Sans Pro', sans-serif;">
+<html style="font-family: 'Source Sans Pro', sans-serif;">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>AddNewBook</title>
-    <link rel="stylesheet" href="{% static "" %}assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
-{#    <link rel="stylesheet" href="{% static "/fonts/fontawesome-all.min.css" %}">#}
-{#    <link rel="stylesheet" href="{% static "/fonts/font-awesome.min.css" %}">#}
-    <link rel="stylesheet" href="{% static "/fonts/ionicons.min.css" %}">
-{#    <link rel="stylesheet" href="{% static "/fonts/material-icons.min.css" %}">#}
-{#    <link rel="stylesheet" href="{% static "/fonts/fontawesome5-overrides.min.css" %}">#}
-{#    <link rel="stylesheet" href="{% static "/css/Footer-Basic.css" %}">#}
-{#    <link rel="stylesheet" href="{% static "/css/Footer-Clean.css" %}">#}
-{#    <link rel="stylesheet" href="{% static "/css/Form-Select---Full-Date---Month-Day-Year.css" %}">#}
-    <link rel="stylesheet" href="{% static "/css/Pretty-Footer.css" %}">
-    <link rel="stylesheet" href="{% static "/css/Navigation-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "/css/Navigation-with-Search.css" %}">
-    <link rel="stylesheet" href= "{% static "/css/styles.css" %}">
+    <title>ReadLand&bull;Пошук</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
-{#    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">#}
-    <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "css/Form-Select---Full-Date---Month-Day-Year.css" %}">
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
-    <link rel="stylesheet" href="{% static "css/Footer-Basic.css" %}">
-    <link rel="stylesheet" href="{% static "css/Footer-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "css/Navigation-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
-    <link rel="stylesheet" href="{% static "fonts/fontawesome-all.min.css" %}">
-    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css" %}">
-    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
-    <link rel="stylesheet" href="{% static "fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
 </head>
 
-<body style="display: flex;flex-direction: column;height: 100%;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap" style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
-        <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/LogoLong.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item d-block" role="presentation">
-                        <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group d-flex justify-content-end" style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input class="form-control search-field" type="search" id="search-field" name="search" style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;" placeholder="Search"><i class="fa fa-search" style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i></div>
-                        </form>
-                    </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-right: 0px;padding-left: 0px;"><img src="assets/img/cart.png" style="padding-left: 5px;padding-right: 5px;"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
-                </ul>
+<body>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+    <div class="container"><a class="navbar-brand" href="#"><img src="{% static "img/LogoLong.png" %}"></a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-block" role="presentation">
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group d-flex justify-content-end"
+                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input
+                                class="form-control search-field" type="search" id="search-field" name="search"
+                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                placeholder="Search"><i class="fa fa-search"
+                                                        style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="#"
+                                                            style="padding-right: 0px;padding-left: 0px;"><img
+                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img
+                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>
+            </ul>
         </div>
+    </div>
+</nav>
+<div class="container" style="flex: 1 0 auto;">
+    <div class="row">
+        <div class="col">
+            <ol class="breadcrumb" style="background-color: rgba(255,255,255,0);">
+                <li class="breadcrumb-item"><a href="index.html"><span><i class="fa fa-home"
+                                                                          style="font-size: 23px;"></i></span></a></li>
+                <li class="breadcrumb-item"><a href="#"><span>Результаты поиска по запросу "Брэдбери"</span></a></li>
+            </ol>
         </div>
-    </nav>
-    <div class="container" style="flex: 1 0 auto;">
-        <div class="row">
-            <div class="col">
-                <ol class="breadcrumb" style="background-color: rgba(255,255,255,0);">
-                    <li class="breadcrumb-item"><a href="index.html"><span><i class="fa fa-home" style="font-size: 23px;"></i></span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span>Результаты поиска по запросу "Брэдбери"</span></a></li>
-                </ol>
-            </div>
-            
+
+    </div>
+    <div class="row" style="border-bottom: solid;">
+        <div class="col-lg-4">
+            <h1 style="font-size: 32px;">Результаты поиска</h1>
         </div>
-        <div class="row" style="border-bottom: solid;">
-            <div class="col-lg-4">
-                <h1 style="font-size: 32px;">Результаты поиска</h1>
-            </div>
-            <div class="col-md-7 col-lg-3 col-xl-3 offset-lg-2">
-                <div class="d-block" style="margin: auto;">
-                    <h6 class="d-block" style="margin: auto;">Сортировать по:</h6>
-                    <div class="dropdown" style="margin-bottom: 5px;"><button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false" type="button" style="border-bottom: solid !important;font-size: 20px;">Название&nbsp;</button>
-                        <div class="dropdown-menu border rounded-0 border-dark"
-                            role="menu" style="font-size: 20px;"><a class="dropdown-item" role="presentation" href="#">Оценка</a><a class="dropdown-item" role="presentation" href="#">Колличество просмотров</a></div>
-                    </div>
+        <div class="col-md-7 col-lg-3 col-xl-3 offset-lg-2">
+            <div class="d-block" style="margin: auto;">
+                <h6 class="d-block" style="margin: auto;">Сортировать по:</h6>
+                <div class="dropdown" style="margin-bottom: 5px;">
+                    <button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false"
+                            type="button" style="border-bottom: solid !important;font-size: 20px;">Название&nbsp;
+                    </button>
+                    <div class="dropdown-menu border rounded-0 border-dark" role="menu" style="font-size: 20px;"><a
+                            class="dropdown-item" role="presentation" href="#">Оценка</a><a class="dropdown-item"
+                                                                                            role="presentation"
+                                                                                            href="#">Колличество
+                        просмотров</a></div>
                 </div>
             </div>
-            <div class="col-lg-3 col-xl-3">
-                <div>
-                    <h6 class="d-block" style="margin: auto;">Фильтровать по тегам:</h6>
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false" type="button" style="border-bottom: solid !important;margin-bottom: 5px;font-size: 20px;">Художественная</button>
-                        <div class="dropdown-menu border rounded-0 border-dark"
-                            role="menu" style="font-size: 20px;"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                    </div>
+        </div>
+        <div class="col-lg-3 col-xl-3">
+            <div>
+                <h6 class="d-block" style="margin: auto;">Фильтровать по тегам:</h6>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false"
+                            type="button" style="border-bottom: solid !important;margin-bottom: 5px;font-size: 20px;">
+                        Художественная
+                    </button>
+                    <div class="dropdown-menu border rounded-0 border-dark" role="menu" style="font-size: 20px;"><a
+                            class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item"
+                                                                                                role="presentation"
+                                                                                                href="#">Second Item</a><a
+                            class="dropdown-item" role="presentation" href="#">Third Item</a></div>
                 </div>
-            </div>
-        </div>
-        <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-            <div class="col-lg-3 col-xl-2"><img class="d-block" src="assets/img/bookVIew.png" style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;"></div>
-            <div class="col-lg-3 col-xl-3">
-                <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i
-                        class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span></div>
-                <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span></div>
-            </div>
-            <div class="col-lg-6 col-xl-7">
-                <h5>Описание:</h5>
-                <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже несколько лет пестрели сообщениями о смерти
-                    очередной претендентки на роль герцогини оттон Грэйд</p>
-            </div>
-        </div>
-        <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-            <div class="col-lg-3 col-xl-2"><img class="d-block" src="assets/img/bookVIew.png" style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;"></div>
-            <div class="col-lg-3 col-xl-3">
-                <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i
-                        class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span></div>
-                <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span></div>
-            </div>
-            <div class="col-lg-6 col-xl-7">
-                <h5>Описание:</h5>
-                <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже несколько лет пестрели сообщениями о смерти
-                    очередной претендентки на роль герцогини оттон Грэйд</p>
-            </div>
-        </div>
-        <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-            <div class="col-lg-3 col-xl-2"><img class="d-block" src="assets/img/bookVIew.png" style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;"></div>
-            <div class="col-lg-3 col-xl-3">
-                <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i
-                        class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span></div>
-                <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span></div>
-            </div>
-            <div class="col-lg-6 col-xl-7">
-                <h5>Описание:</h5>
-                <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже несколько лет пестрели сообщениями о смерти
-                    очередной претендентки на роль герцогини оттон Грэйд</p>
-            </div>
-        </div>
-        <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-            <div class="col-lg-3 col-xl-2"><img class="d-block" src="assets/img/bookVIew.png" style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;"></div>
-            <div class="col-lg-3 col-xl-3">
-                <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i
-                        class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span></div>
-                <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span></div>
-            </div>
-            <div class="col-lg-6 col-xl-7">
-                <h5>Описание:</h5>
-                <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже несколько лет пестрели сообщениями о смерти
-                    очередной претендентки на роль герцогини оттон Грэйд</p>
             </div>
         </div>
     </div>
-    <div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="flex: 0 0 auto;">
-        <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
-            <p class="copyright">© 2019</p>
-        </footer>
+    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
+        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
+                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
+        </div>
+        <div class="col-lg-3 col-xl-3">
+            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
+            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
+                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
+                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
+            </div>
+            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
+                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-7">
+            <h5>Описание:</h5>
+            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
+                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
+                несколько лет пестрели сообщениями о смерти
+                очередной претендентки на роль герцогини оттон Грэйд</p>
+        </div>
     </div>
-   <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-    <script src="{% static "js/script.js" %}"></script>
+    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
+        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
+                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
+        </div>
+        <div class="col-lg-3 col-xl-3">
+            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
+            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
+                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
+                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
+            </div>
+            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
+                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-7">
+            <h5>Описание:</h5>
+            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
+                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
+                несколько лет пестрели сообщениями о смерти
+                очередной претендентки на роль герцогини оттон Грэйд</p>
+        </div>
+    </div>
+    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
+        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
+                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
+        </div>
+        <div class="col-lg-3 col-xl-3">
+            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
+            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
+                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
+                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
+                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
+            </div>
+            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
+                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-xl-7">
+            <h5>Описание:</h5>
+            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
+                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
+                несколько лет пестрели сообщениями о смерти
+                очередной претендентки на роль герцогини оттон Грэйд</p>
+        </div>
+    </div>
+</div>
+<div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="flex: 0 0 auto;">
+    <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
+        <p class="copyright">© 2019</p>
+    </footer>
+</div>
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
 </body>
 
 </html>
