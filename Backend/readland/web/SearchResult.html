@@ -62,7 +62,7 @@
             <ol class="breadcrumb" style="background-color: rgba(255,255,255,0);">
                 <li class="breadcrumb-item"><a href="index.html"><span><i class="fa fa-home"
                                                                           style="font-size: 23px;"></i></span></a></li>
-                <li class="breadcrumb-item"><a href="#"><span>Результаты поиска по запросу "Брэдбери"</span></a></li>
+                <li class="breadcrumb-item"><a href="#"><span>Результаты поиска по запросу "{{ query }}"</span></a></li>
             </ol>
         </div>
 
@@ -103,81 +103,31 @@
             </div>
         </div>
     </div>
-    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
-                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
-        </div>
-        <div class="col-lg-3 col-xl-3">
-            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
-                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
-                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
+
+    {% for result in results %}
+        <div class="row search-result-row" style="border-bottom: solid 2px #333;">
+            <div class="col-lg-3 col-xl-2"><img class="d-block" src="/uploaded/{{ result.photo }}"
+                                                style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
             </div>
-            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
-                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
+            <div class="col-lg-3 col-xl-3">
+                <h5 style="padding-top: 12px;"><a href="/books/{{ result.id }}">{{ result.name }}</a></h5>
+                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
+                        class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
+                                                                                          style="color: #fcee10;font-size: 30px;"></i><i
+                        class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                    <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
+                            style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ result.rating }}</span>
+                </div>
+                <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
+                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ result.views_count }}</span>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-xl-7">
-            <h5>Описание:</h5>
-            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
-                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
-                несколько лет пестрели сообщениями о смерти
-                очередной претендентки на роль герцогини оттон Грэйд</p>
-        </div>
-    </div>
-    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
-                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
-        </div>
-        <div class="col-lg-3 col-xl-3">
-            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
-                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
-                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
-            </div>
-            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
-                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
+            <div class="col-lg-6 col-xl-7">
+                <h5>Описание:</h5>
+                <p>{{ result.description }}</p>
             </div>
         </div>
-        <div class="col-lg-6 col-xl-7">
-            <h5>Описание:</h5>
-            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
-                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
-                несколько лет пестрели сообщениями о смерти
-                очередной претендентки на роль герцогини оттон Грэйд</p>
-        </div>
-    </div>
-    <div class="row search-result-row" style="border-bottom: solid 2px #333;">
-        <div class="col-lg-3 col-xl-2"><img class="d-block" src="{% static "img/bookVIew.png" %}"
-                                            style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
-        </div>
-        <div class="col-lg-3 col-xl-3">
-            <h5 style="padding-top: 12px;">451 градус по фаренгейту</h5>
-            <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
-                                                                                      style="color: #fcee10;font-size: 30px;"></i><i
-                    class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
-                        style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">4,7</span>
-            </div>
-            <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
-                    style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">335</span>
-            </div>
-        </div>
-        <div class="col-lg-6 col-xl-7">
-            <h5>Описание:</h5>
-            <p>Могущественный черный маг, повелитель духов ветра, талантливый военный, невероятно богатый человек и
-                двенадцать раз практически вдовец. О герцоге Грэйде рассказывали пугающие истории, а газеты уже
-                несколько лет пестрели сообщениями о смерти
-                очередной претендентки на роль герцогини оттон Грэйд</p>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 <div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="flex: 0 0 auto;">
     <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">

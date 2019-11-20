@@ -100,10 +100,13 @@ def view_search(request):
             }
 
         results = Book.objects.filter(**filter_args)
+        prequery = [element for element in [name, author, tag, description] if element != '']
+        query = ", ".join(prequery)
 
-        return render(request, 'results.html', {'results': results})
+        return render(request, 'SearchResult.html', {'results': results, 'query': query})
     else:
         return render(request, 'advancedSearch.html')
+
 
 def view_search_basic(request):
     return render(request, 'SearchResult.html')
@@ -111,7 +114,7 @@ def view_search_basic(request):
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    if(book.rating == 0.0):
+    if (book.rating == 0.0):
         bookraiting = "Оцінок ще не має"
     else:
         bookraiting = book.rating
@@ -119,7 +122,7 @@ def view_book_info(request, book_id):
         "number_raiting": bookraiting,
         "list_raiting": range(int(book.rating)),
         "has_half_star": (book.rating % 1) >= 0.2,
-        "empty_stars": range(5-math.ceil(book.rating))
+        "empty_stars": range(5 - math.ceil(book.rating))
     }
     book.views_count += 1
     book.save()

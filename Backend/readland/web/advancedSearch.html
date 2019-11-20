@@ -2,57 +2,44 @@
 <html lang="uk">
 <head>
     <title>Advanced Search</title>
-    <link rel = "stylesheet" href = "{% static "css/style.css" %}" type = "text/css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
 </head>
 
 <body>
-    <h1 class = "headText" style = "padding-left: 40px; font-weight: lighter; color:#dd4b39">Расширенный поиск</h1>
-    <div style="border-bottom: 1px solid #ebebeb;"></div>
-    <div class = "container">
-        <form>
-            <div class = "firstField">
-                <br>
-                <br>
-                <br>
-                <p class = "first-text" style = "padding-left: 35px;">Название:</p>
-                <input type = "text" id = "name" style = "margin: -39px 270px;">
-                <p class = "descriptionName" style="margin: -33px 0px 0px 933px;">Введите название книги: Старик и море</p>
-            </div>
-           
-            <div class = "secondField">
-                <p class = "second-text" style = "padding-left: 35px;">Автор:</p>
-                <input type = "text" id = "author" style = "margin: -39px 270px;">
-                <p class = "descriptionAuthor" style="margin: -33px 0px 0px 933px;">Введите автора книги: Эрнест Хемингуэй</p>
-            </div>
-            <div class = "thirdField">
-                <p class = "third-text" style = "padding-left: 35px;">Тег:</p>
-                <input type = "text" id = "tag" style = "margin: -39px 270px;">
-                <p class = "descriptionTag" style="margin: -33px 0px 0px 933px;">Введите ключевые слова: зимний иней</p>
-            </div>
-
-            <div class = "thirdField">
-                    <p class = "third-text" style = "padding-left: 35px;">Описание:</p>
-                    <textarea style = "margin: -39px 270px; min-width: 650px; max-width: 650px; min-height: 105px; max-height: 105px;"> </textarea>
-                    <p class = "descriptionTag" style="margin: -65px 0px 0px 933px;">
-                    Введите описание книги: Сантьяго живёт в маленьком 
-                    <br>
-                    рыбачьем посёлке на Кубе и рыбачит совсем один....
-                    <br>
-                    Раньше с ним рыбачил мальчик Манолин, который очень 
-                    <br>
-                    помогал старику, но родители мальчика решили,что
-                    <br>
-                    Сантьяго - невезучий, и велели сыну ходить в море на 
-                    <br>
-                    другой лодке.
-                    </p>
-            </div>
-
+<h1 class="headText" style="padding-left: 40px; font-weight: lighter; color:#dd4b39">Расширенный поиск</h1>
+<div style="border-bottom: 1px solid #ebebeb;"></div>
+<div class="container">
+    <form action="{% url 'search' %}">
+        <div class="firstField">
             <br>
             <br>
-            
-            <div id="reviewStars-input">
-                <span class = "raiting"> 5.0
+            <br>
+            <label for="id_name">Название:</label>
+            <input id="id_name" type="text" name="name" style="margin: -39px 270px;">
+            <p class="descriptionName" style="margin: -33px 0px 0px 933px;">Введите название книги: Старик и море</p>
+        </div>
+
+        <div class="secondField">
+            <label for="id_author">Автор:</label>
+            <input id="id_author" type="text" name="author" style="margin: -39px 270px;">
+            <p class="descriptionAuthor" style="margin: -33px 0px 0px 933px;">Введите автора книги: Эрнест Хемингуэй</p>
+        </div>
+        <div class="thirdField">
+            <label for="id_tag">Тег:</label>
+            <input id="id_tag" type="text" name="tag" style="margin: -39px 270px;">
+            <p class="descriptionTag" style="margin: -33px 0px 0px 933px;">Введите ключевые слова: зимний иней</p>
+        </div>
+
+        <div class="thirdField">
+            <label for="id_description">Описание:</label>
+            <textarea id="id_description" name="description" style="margin: -39px 270px; min-width: 100px; max-width: 650px; min-height: 105px; max-height: 105px;"></textarea>
+        </div>
+
+        <br>
+        <br>
+
+        <div id="reviewStars-input">
+                <span class="raiting"> 5.0
 
                 <input id="star-4" type="radio" name="reviewStars"/>
                 <label title="5 из 5" for="star-4"></label>
@@ -70,16 +57,15 @@
                 <label title="1 из 5" for="star-0"></label>
 
                 </span>
-            </div>
+        </div>
 
-            <div class = "search">
-                <input class = "submitSearch" type = "submit" value="Найти">
-            </div>
+        <div class="search">
+            <input class="submitSearch" type="submit" value="Найти">
+        </div>
 
-        </form>
-    </div>
+    </form>
+</div>
 
 
-    
 </body>
 </html>
