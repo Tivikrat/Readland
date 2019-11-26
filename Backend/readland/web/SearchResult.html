@@ -34,8 +34,6 @@
     <title>ReadLand&bull;Пошук</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
@@ -68,16 +66,17 @@
                              style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input
                                 class="form-control search-field" type="search" id="search-field" name="search"
                                 style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
-                                placeholder="Search"><i class="fa fa-search"
-                                                        style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                                placeholder="Search" onclick="window.location.href = '/books/search/'"><i
+                                class="fa fa-search"
+                                style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
                         </div>
                     </form>
                 </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#"
-                                                            style="padding-right: 0px;padding-left: 0px;"><img
-                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img
-                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
             </ul>
         </div>
     </div>
@@ -141,7 +140,7 @@
                         class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
                                                                                           style="color: #fcee10;font-size: 30px;"></i><i
                         class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i><span
+                    <i class="fa fa-star-o{#  -half-o #}" style="color: #fcee10;font-size: 30px;"></i><span
                             style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ result.rating }}</span>
                 </div>
                 <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
@@ -157,7 +156,7 @@
 </div>
 <div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="flex: 0 0 auto;">
     <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
-        <p class="copyright">© 2019</p>
+        <p class="copyright">© Readland 2019</p>
     </footer>
 </div>
 <script src="{% static "js/jquery.min.js" %}"></script>
