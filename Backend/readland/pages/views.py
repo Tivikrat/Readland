@@ -119,10 +119,36 @@ def view_search(request):
         else:
             results = Book.objects.filter(**filter_args)
 
+        result_list = list(results)
+        book_list = []
+        for book in result_list:
+            if book.rating == 0.0:
+                bookraiting = "Оцінок ще не має"
+            else:
+                bookraiting = book.rating
+            raiting = {
+                "number": book.rating,
+                "number_raiting": bookraiting,
+                "list_raiting": range(int(book.rating)),
+                "has_half_star": (book.rating % 1) >= 0.2,
+                "empty_stars": range(5 - math.ceil(book.rating))
+            }
+            book_dict = {"name": book.name,
+                         "author": book.author,
+                         "date": book.date,
+                         "description": book.description,
+                         "photo": book.photo,
+                         "tag": book.tag,
+                         "views_count": book.views_count,
+                         "raiting": raiting,
+                         "id": book.id
+                         }
+            book_list.append(book_dict)
+
         # prequery = [element for element in [name, author, tag, description] if element is not None or '']
         # query = ", ".join(prequery)
 
-        return render(request, 'SearchResult.html', {'results': results})
+        return render(request, 'SearchResult.html', {'results': book_list})
     else:
         return render(request, 'advancedSearch.html')
 
@@ -200,10 +226,27 @@ def view_search_basic(request):
         else:
             results = Book.objects.filter(**filter_args)
 
+        result_list = list(results)
+        book_list = []
+        for book in result_list:
+            book_dict = dict(book)
+            if book.rating == 0.0:
+                bookraiting = "Оцінок ще не має"
+            else:
+                bookraiting = book.rating
+            raiting = {
+                "number_raiting": bookraiting,
+                "list_raiting": range(int(book.rating)),
+                "has_half_star": (book.rating % 1) >= 0.2,
+                "empty_stars": range(5 - math.ceil(book.rating))
+            }
+            book_dict["raiting"] = raiting
+            book_list.append(book_dict)
+
         # prequery = [element for element in [name, author, tag, description] if element is not None or '']
         # query = ", ".join(prequery)
 
-        return render(request, 'SearchResult.html', {'results': results})
+        return render(request, 'SearchResult.html', {'results': book_list})
     else:
         return render(request, 'SearchResult.html', {'results': []})
 
