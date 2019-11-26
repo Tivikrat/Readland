@@ -3,7 +3,7 @@ body{
     font-family: Roboto, Geneva, Tahoma, sans-serif;
 }
 
-.container{
+#container{
     margin: 70px auto 0 auto; /* отцентровать форму по середине экрана */
 }
 
@@ -31,6 +31,7 @@ input[id = "name"], input[id = "author"], input[id = "tag"]{
   
   position: center;
   float: left;
+  text-align: center;
 }
 
 #reviewStars-input input {
@@ -118,5 +119,9 @@ form input {
   min-height: 30px;
   border: 3px solid #3079ed;
   border-radius: 10px;
+  text-align: center;
+}
+
+h1 {
   text-align: center;
 }

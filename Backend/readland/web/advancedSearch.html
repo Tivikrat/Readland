@@ -1,14 +1,62 @@
 {% load static %}
 <html lang="uk">
 <head>
-    <title>Advanced Search</title>
+    <meta charset="utf-8">
+    <title>Readland &bull; {{ name }}</title>
+
     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
 </head>
 
 <body>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+    <div class="container"><a class="navbar-brand" href="#"><img src="{% static "img/LogoLong.png" %}"></a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-block" role="presentation">
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group d-flex justify-content-end"
+                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input
+                                class="form-control search-field" type="search" id="search-field" name="search"
+                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                placeholder="Search" onclick="window.location.href = '/books/search/'"><i
+                                class="fa fa-search"
+                                style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                        </div>
+                    </form>
+                </li>
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+            </ul>
+        </div>
+    </div>
+</nav>
 <h1 class="headText" style="padding-left: 40px; font-weight: lighter; color:#dd4b39">Расширенный поиск</h1>
 <div style="border-bottom: 1px solid #ebebeb;"></div>
-<div class="container">
+<div id="container">
     <form action="{% url 'search' %}">
         <div class="firstField">
             <label for="id_name" class="first-text">Название:</label>
@@ -75,6 +123,15 @@
 
     </form>
 </div>
+<div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="flex: 0 0 auto;">
+    <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
+        <p class="copyright">© Readland 2019</p>
+    </footer>
+</div>
+
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
 
 
 </body>
