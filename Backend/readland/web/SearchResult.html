@@ -87,7 +87,7 @@
             <ol class="breadcrumb" style="background-color: rgba(255,255,255,0);">
                 <li class="breadcrumb-item"><a href="index.html"><span><i class="fa fa-home"
                                                                           style="font-size: 23px;"></i></span></a></li>
-                <li class="breadcrumb-item"><a href="#"><span>Результаты поиска по запросу "{{ query }}"</span></a></li>
+                <li class="breadcrumb-item"><a href="#"><span>Результаты поиска</span></a></li>
             </ol>
         </div>
 
@@ -100,13 +100,15 @@
             <div class="d-block" style="margin: auto;">
                 <h6 class="d-block" style="margin: auto;">Сортировать по:</h6>
                 <div class="dropdown" style="margin-bottom: 5px;">
-                    <button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false"
+                    <button id="name_sort" class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown"
+                            aria-expanded="false"
                             type="button" style="border-bottom: solid !important;font-size: 20px;">Название&nbsp;
                     </button>
                     <div class="dropdown-menu border rounded-0 border-dark" role="menu" style="font-size: 20px;"><a
-                            class="dropdown-item" role="presentation" href="#">Оценка</a><a class="dropdown-item"
-                                                                                            role="presentation"
-                                                                                            href="#">Колличество
+                            class="dropdown-item" role="presentation" href="#" id="rating_sort">Оценка</a><a
+                            class="dropdown-item"
+                            role="presentation"
+                            href="#">Колличество
                         просмотров</a></div>
                 </div>
             </div>
@@ -135,13 +137,20 @@
                                                 style="max-width: 180px;margin: auto;min-width: 127px;padding-right: 9px;">
             </div>
             <div class="col-lg-3 col-xl-3">
-                <h5 style="padding-top: 12px;"><a href="/books/{{ result.id }}">{{ result.name }}</a></h5>
-                <div id="starRaiting"><i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i
-                        class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i><i class="fa fa-star"
-                                                                                          style="color: #fcee10;font-size: 30px;"></i><i
-                        class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                    <i class="fa fa-star-o{#  -half-o #}" style="color: #fcee10;font-size: 30px;"></i><span
-                            style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ result.rating }}</span>
+                <h5 style="padding-top: 12px;"><a href="/books/{{ result.id }}">{{ result.name }}</a>
+                </h5>
+                <div id="starRaiting">
+                    {% for i in result.raiting.list_raiting %}
+                        <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
+                    {% endfor %}
+                    {% if result.raiting.has_half_star %}
+                        <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i>
+                    {% endif %}
+                    {% for i in result.raiting.empty_stars %}
+                        <i class="fa fa-star-o" style="color: #49494a;font-size: 30px;"></i>
+                    {% endfor %}
+                    <span
+                            style="font-size: 25px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ result.raiting.number_raiting }}</span>
                 </div>
                 <div><i class="far fa-eye" style="font-size: 30px;color: #777777;"></i><span
                         style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ result.views_count }}</span>
@@ -162,6 +171,22 @@
 <script src="{% static "js/jquery.min.js" %}"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/script.js" %}"></script>
+<script type="application/javascript" async>
+    $(document).ready(function () {
+        $('#name_sort').click(function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            searchParams.set("sort_by", 'name');
+            searchParams.set("sort_type", 'desc');
+            window.location.search = searchParams.toString();
+        });
+        $('#rating_sort').click(function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            searchParams.set("sort_by", 'rating');
+            searchParams.set("sort_type", 'desc');
+            window.location.search = searchParams.toString();
+        });
+    });
+</script>
 </body>
 
 </html>

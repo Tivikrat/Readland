@@ -48,12 +48,15 @@ def read_book(request, book_id):
 
 def view_search(request):
     name = request.GET.get('name', None)
+    search = request.GET.get('search', None)
     author = request.GET.get('author', None)
     tag = request.GET.get('tag', None)
     description = request.GET.get('description', None)
     rating = request.GET.get('rating', None)
     rating_gte = request.GET.get('rating_gte', None)
     rating_lte = request.GET.get('rating_lte', None)
+    sort_by = request.GET.get('sort_by', 'name')
+    sort_type = request.GET.get('sort_type', 'asc')
 
     if rating is not None:
         try:
@@ -73,8 +76,9 @@ def view_search(request):
         except ValueError:
             rating_lte = None
 
-    if (name or author or tag or description or rating) is not None:
+    if ((name or search) or author or tag or description or rating) is not None:
         rating_range = (0.0, 10.0)
+        name = search
 
         if rating_gte is not None:
             rating_range = (rating_gte, 10.0)
@@ -99,17 +103,152 @@ def view_search(request):
                 'rating__range': rating_range
             }
 
-        results = Book.objects.filter(**filter_args)
-        prequery = [element for element in [name, author, tag, description] if element != '']
-        query = ", ".join(prequery)
+        SORT_CHOICES = [
+            'name',
+            'author',
+            'rating',
+            'tag',
+            'description'
+        ]
 
-        return render(request, 'SearchResult.html', {'results': results, 'query': query})
+        if sort_by in SORT_CHOICES:
+            prefix = '-'
+            if sort_type == 'asc':
+                prefix = ''
+            results = Book.objects.filter(**filter_args).order_by(prefix + sort_by)
+        else:
+            results = Book.objects.filter(**filter_args)
+
+        result_list = list(results)
+        book_list = []
+        for book in result_list:
+            if book.rating == 0.0:
+                bookraiting = "Оцінок ще не має"
+            else:
+                bookraiting = book.rating
+            raiting = {
+                "number": book.rating,
+                "number_raiting": bookraiting,
+                "list_raiting": range(int(book.rating)),
+                "has_half_star": (book.rating % 1) >= 0.2,
+                "empty_stars": range(5 - math.ceil(book.rating))
+            }
+            book_dict = {"name": book.name,
+                         "author": book.author,
+                         "date": book.date,
+                         "description": book.description,
+                         "photo": book.photo,
+                         "tag": book.tag,
+                         "views_count": book.views_count,
+                         "raiting": raiting,
+                         "id": book.id
+                         }
+            book_list.append(book_dict)
+
+        # prequery = [element for element in [name, author, tag, description] if element is not None or '']
+        # query = ", ".join(prequery)
+
+        return render(request, 'SearchResult.html', {'results': book_list})
     else:
         return render(request, 'advancedSearch.html')
 
 
 def view_search_basic(request):
-    return render(request, 'SearchResult.html')
+    name = request.GET.get('name', None)
+    search = request.GET.get('search', None)
+    author = request.GET.get('author', None)
+    tag = request.GET.get('tag', None)
+    description = request.GET.get('description', None)
+    rating = request.GET.get('rating', None)
+    rating_gte = request.GET.get('rating_gte', None)
+    rating_lte = request.GET.get('rating_lte', None)
+    sort_by = request.GET.get('sort_by', 'name')
+    sort_type = request.GET.get('sort_type', 'asc')
+
+    if rating is not None:
+        try:
+            rating = float(rating)
+        except ValueError:
+            rating = None
+
+    if rating_gte is not None:
+        try:
+            rating_gte = float(rating_gte)
+        except ValueError:
+            rating_gte = None
+
+    if rating_lte is not None:
+        try:
+            rating_lte = float(rating_lte)
+        except ValueError:
+            rating_lte = None
+
+    if ((name or search) or author or tag or description or rating) is not None:
+        rating_range = (0.0, 10.0)
+        name = search
+
+        if rating_gte is not None:
+            rating_range = (rating_gte, 10.0)
+        elif rating_lte is not None:
+            rating_range = (0.0, rating_lte)
+
+        if rating:
+            filter_args = {
+                'name__icontains': name if name is not None else '',
+                'author__contains': author if author is not None else '',
+                'tag__contains': tag if tag is not None else '',
+                'description__contains': description if description is not None else '',
+                'rating__range': rating_range,
+                'rating': rating
+            }
+        else:
+            filter_args = {
+                'name__icontains': name if name is not None else '',
+                'author__contains': author if author is not None else '',
+                'tag__contains': tag if tag is not None else '',
+                'description__contains': description if description is not None else '',
+                'rating__range': rating_range
+            }
+
+        SORT_CHOICES = [
+            'name',
+            'author',
+            'rating',
+            'tag',
+            'description'
+        ]
+
+        if sort_by in SORT_CHOICES:
+            prefix = '-'
+            if sort_type == 'asc':
+                prefix = ''
+            results = Book.objects.filter(**filter_args).order_by(prefix + sort_by)
+        else:
+            results = Book.objects.filter(**filter_args)
+
+        result_list = list(results)
+        book_list = []
+        for book in result_list:
+            book_dict = dict(book)
+            if book.rating == 0.0:
+                bookraiting = "Оцінок ще не має"
+            else:
+                bookraiting = book.rating
+            raiting = {
+                "number_raiting": bookraiting,
+                "list_raiting": range(int(book.rating)),
+                "has_half_star": (book.rating % 1) >= 0.2,
+                "empty_stars": range(5 - math.ceil(book.rating))
+            }
+            book_dict["raiting"] = raiting
+            book_list.append(book_dict)
+
+        # prequery = [element for element in [name, author, tag, description] if element is not None or '']
+        # query = ", ".join(prequery)
+
+        return render(request, 'SearchResult.html', {'results': book_list})
+    else:
+        return render(request, 'SearchResult.html', {'results': []})
 
 
 def view_book_info(request, book_id):
