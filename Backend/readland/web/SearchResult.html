@@ -101,11 +101,11 @@
             <div class="d-block" style="margin: auto;">
                 <h6 class="d-block" style="margin: auto;">Сортировать по:</h6>
                 <div class="dropdown" style="margin-bottom: 5px;">
-                    <button class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false"
+                    <button id="name_sort" class="btn btn-primary dropdown-toggle d-block" data-toggle="dropdown" aria-expanded="false"
                             type="button" style="border-bottom: solid !important;font-size: 20px;">Название&nbsp;
                     </button>
                     <div class="dropdown-menu border rounded-0 border-dark" role="menu" style="font-size: 20px;"><a
-                            class="dropdown-item" role="presentation" href="#">Оценка</a><a class="dropdown-item"
+                            class="dropdown-item" role="presentation" href="#" id="rating_sort">Оценка</a><a class="dropdown-item"
                                                                                             role="presentation"
                                                                                             href="#">Колличество
                         просмотров</a></div>
@@ -163,6 +163,22 @@
 <script src="{% static "js/jquery.min.js" %}"></script>
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/script.js" %}"></script>
+<script type="application/javascript" async>
+    $( document ).ready(function() {
+        $('#name_sort').click(function () {
+        let searchParams = new URLSearchParams(window.location.search);
+        searchParams.set("sort_by", 'name');
+        searchParams.set("sort_type", 'desc');
+        window.location.search = searchParams.toString();
+        });
+        $('#rating_sort').click(function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            searchParams.set("sort_by", 'rating');
+            searchParams.set("sort_type", 'desc');
+            window.location.search = searchParams.toString();
+        });
+    });
+</script>
 </body>
 
 </html>
