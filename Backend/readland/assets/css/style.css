@@ -97,7 +97,6 @@ input[id = "name"], input[id = "author"], input[id = "tag"]{
   line-height: 100%;
   height: 35px;
   min-width: 135px;
-  margin: 5px 0 20px 790px;
   font-size: 15px;
   background-color: #3079ed;
   border: 1px solid #3079ed;
@@ -107,4 +106,17 @@ input[id = "name"], input[id = "author"], input[id = "tag"]{
 }
 .submitSearch:hover{
   color: #fff;
+}
+
+form {
+  display: block;
+  text-align: center;
+}
+
+form input {
+  min-width: 300px;
+  min-height: 30px;
+  border: 3px solid #3079ed;
+  border-radius: 10px;
+  text-align: center;
 }
