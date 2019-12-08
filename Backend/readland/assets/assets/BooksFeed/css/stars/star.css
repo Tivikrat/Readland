@@ -1,0 +1,43 @@
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+    background: url('../images/stars/img/spritesheetStar.png') no-repeat;
+}
+#content #reviewStars-input {
+  
+    /*fix floating problems*/
+    overflow: hidden;
+    /*end of fix floating problems*/  
+    position: center;
+    float: left;
+}
+
+#content #reviewStars-input input {
+    opacity: 0; 
+    /* смена ширины и высоты закрашенной звездочки в спрайте при нажатии на пустую звездочку */
+    width: 100px;   
+    position: center;
+    margin: auto -20px auto -25px;
+}
+
+/* при нажатии запоминает звездочки */
+#content #reviewStars-input input:checked ~ label {
+    background-position: 0 -40px;
+    height: 40px;
+    width: 43px;
+}
+
+/* расположение */
+#content #reviewStars-input label {
+    height: 40px;
+    width: 43px;
+    float: right;
+    cursor: pointer;
+    margin-left: 0px;
+    position: relative;
+}
+
+/* при наведении меняет цвет захватывая предыдущие*/
+#content #reviewStars-input label:hover, #content #reviewStars-input label:hover ~ label {
+    background-position: 0 -40px;
+    height: 40px;
+    width: 43px;
+}

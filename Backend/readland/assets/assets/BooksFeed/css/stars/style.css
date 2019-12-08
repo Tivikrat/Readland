@@ -1,0 +1,726 @@
+body{
+    background-color: white;
+    font-family: Roboto, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    height: 100%;
+    line-height:125%;
+}
+
+#wrapper {
+   margin-top:40px;
+   border:0px solid #000;
+   width: 100%;
+   max-width:1600px;
+   margin: 0 auto;
+   height: auto !important;
+   
+}
+
+/* Расположение полей относительно экрана */
+#content #editName {
+   border: 0px solid #000;
+   width:50%;
+   margin-right:0px;  
+}
+#content #editAuthor{
+  border: 0px solid #000;
+  width:80%;
+  margin-right:0px; 
+}
+#content #editTag{
+  border: 0px solid #000;
+  width:80%;
+  margin-right:0px; 
+}
+#content #editDescription{
+  border: 0px solid #000;
+  width:80%;
+  margin-right:0px; 
+}
+
+/* Расположение текста относительно экрана */ 
+#content #descriptionFirst-Name {
+  position: relative;
+  float:left;
+  width:60%;
+  font-size: 14px;
+  color: rgb(0, 0, 0, 0.6);
+ }
+#content #descriptionFirst-Author{
+  position: relative;
+  margin-left:725px;
+  margin-top: -45px;
+  float:left;
+  width:60%;
+  font-size: 14px;
+  color: rgb(0, 0, 0, 0.6);
+}
+#content #descriptionFirst-Tag{
+  position: relative;
+  margin-left:725px;
+  margin-top: -46px;
+  float:left;
+  width:60%;
+  font-size: 14px;
+  color: rgb(0, 0, 0, 0.6);
+}
+#content #descriptionFirst-Desc{
+  position: relative;
+  margin-left:725px;
+  margin-top: -120px;
+  float:left;
+  width:60%;
+  font-size: 14px;
+  color: rgb(0, 0, 0, 0.6);
+}
+#middle:after {
+  content: '.';
+   display: block;
+   clear: both;
+   visibility: hidden;
+   height: 0;
+}
+
+#middle{
+    margin: 140px auto 0 auto; /* опустить */
+}
+
+#content #search{
+  margin:  70px auto auto 625px;
+}
+.submitSearch{
+  padding: 8px;
+  line-height: 100%;
+  height: 35px;
+  min-width: 135px;
+  font-size: 15px;
+  background-color: #3079ed;
+  border: 1px solid #3079ed;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submitSearch:hover{
+  color: #fff;
+  background-color: #094ebd;
+}
+/* Уменьшение */
+ /* 100 %  */
+ @media screen and (min-width:100px) and (max-width:1600px) {
+    /* размер блока где находятся главный контент и сайдбар*/
+    body #wrapper {
+   
+      margin-top:80px;
+      
+      width: 90%;
+      margin: 0 auto;
+    }
+     #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+      float:none;
+      margin-left: -50px;
+      width:90%;
+      width: 1300px;
+    }
+       
+      /* размер сайдбара*/
+       
+    #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+        float:none;
+        margin-left:575px;
+       margin-top: -46px;
+       width:100%;
+    }
+    
+    #content #descriptionFirst-Desc{
+      float:none;
+      margin-left:575px;
+      margin-top: -120px;
+      width:100%;
+      width: 900px;
+    }
+    #content #search{
+      margin:  70px auto auto 625px;
+    }
+ }
+  /*110 - 125 % приближение */
+  @media screen and (min-width:100px) and (max-width:1400px) {
+
+    body #wrapper {
+   
+      margin-top:40px;
+      
+      width: 90%;
+      margin: 0 auto;
+      }
+
+    #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription {
+      float:none;
+      margin-left: -50px;
+      width:90%;
+      width: 1300px;
+       }
+       
+      /* размер сайдбара*/
+       
+      #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+        float:none;
+        margin-left:575px;
+       margin-top: -46px;
+       width:100%;
+       }
+    
+       #wrapper #content #descriptionFirst-Desc{
+        float:none;
+        margin-left:575px;
+        margin-top: -120px;
+        width:100%;
+        width: 900px;
+       }
+  }
+
+/* 150% приближение */
+@media screen and (min-width:100px) and (max-width:1152px) {
+ 
+ 
+   
+  body #wrapper {
+   
+   margin-top:40px;
+   
+   width: 90%;
+   margin: 0 auto;
+   }
+   
+  /* размер главного контента*/
+   
+  #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription {
+    float: none;
+    margin-left: -50px;
+    width:90%;
+    width: 1000px;
+  }
+   
+  /* размер сайдбара*/
+   
+  #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+    float: none;
+    margin-left:425px;
+    margin-top: -46px;
+    width:100%;
+  }
+
+  #wrapper #content #descriptionFirst-Desc{
+    float: none;
+    margin-left:425px;
+    margin-top: -120px;
+    width:100%;
+    width: 820px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-65px;
+  }
+
+  #content #search{
+    float:none;
+    margin-left:475px;
+  }
+
+}
+  /* 175% приближение */
+@media screen and (min-width:100px) and (max-width:890px) {
+ 
+  #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription {
+    float:none;
+    margin-left: -50px;
+    width:90%;
+    width: 700px;
+  }
+       
+       
+  #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+    float:none;
+    margin-left:275px;
+    margin-top: -46px;
+    width:100%;
+  }
+    
+  #wrapper #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:275px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-110px;
+  }
+  #content #search{
+    float:none;
+    margin-left:520px;
+  }
+}
+
+/* 200% приближение */
+  @media screen and (min-width:100px) and (max-width:768px) {
+ 
+    #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription  {
+     float:none;
+     width:90%;
+     width: 1000px;
+     margin-right:0px;
+     }
+     
+    #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+     margin-left:-205px;
+     margin-top:-25px;
+     float:none;
+     width:100%;
+     width: 500px;
+     }
+
+    #wrapper #content #descriptionFirst-Desc{
+      margin-left:-205px;
+      margin-top:-13px;
+      float:none;
+      width:100%;
+      width: 1800px;
+    }
+    #wrapper #content #reviewStars-input{
+      float: left;
+      margin-left:-65px;
+    }
+    #content #search{
+      float:none;
+      margin-left:475px;
+    }
+}
+
+    /* 250% приближение */
+@media screen and (min-width:100px) and (max-width:720px) {
+    #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription  {
+      float:none;
+      width:100%;
+      width: 780px;
+      margin-right:0px;
+    }
+    #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+      margin-left:-205px;
+      margin-top:-25px;
+      float:none;
+      width:90%;
+      width: 450px;
+    }    
+    #wrapper #content #descriptionFirst-Desc{
+      margin-left:-205px;
+      margin-top:-13px;
+      float:none;
+      width:100%;
+      width: 1500px;
+    }
+    #wrapper #content #reviewStars-input{
+      float: left;
+      margin-left:-125px;
+    }
+    #content #search{
+      float:none;
+      margin-left:365px;
+    }
+}
+
+    /* 300 % приближение,  самое маленькое окно*/
+@media screen and (min-width:100px) and (max-width:600px) {
+  #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription  {
+        float:none;
+        width:100%;
+        width: 600px;
+        margin-right:0px;
+  }
+  #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag {
+    margin-left:-205px;
+    margin-top:-25px;
+    float:none;
+    width:90%;
+    width: 500px;
+  }
+  #wrapper #content #descriptionFirst-Desc{
+    margin-left:-205px;
+    margin-top:-13px;
+    float:none;
+    width:100%;
+    width: 1200px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-190px;
+  }
+  #content #search{
+    float:none;
+    margin-left:275px;
+  }
+}
+/* 400 % приближение */
+@media screen and (min-width:100px) and (max-width:400px) {
+ 
+  #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription  {
+      float:none;
+      width:100%;
+      width: 370px;
+      margin-right:0px;
+  }
+       
+  #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag,
+  #wrapper #content #descriptionFirst-Des {
+    margin-left:-205px;
+    margin-top:-25px;
+    float:none;
+    width:90%;
+    width: 450px;
+  }
+
+  #wrapper #content #descriptionFirst-Desc{
+    margin-left:-205px;
+    margin-top:-13px;
+    float:none;
+    width:100%;
+    width: 900px;
+  }
+
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-260px;
+  }
+  #content #search{
+    float:none;
+    margin-left:75px;
+  }
+}
+
+/* 500 % приближение */
+@media screen and (min-width:100px) and (max-width:350px){
+
+  #wrapper #content #editName, #wrapper #content #editAuthor, #wrapper #content #editTag, #wrapper #content #editDescription  {
+    float:none;
+    width:100%;
+    width: 250px;
+    margin-right:0px;
+  }
+     
+  #wrapper #content #descriptionFirst-Name, #wrapper #content #descriptionFirst-Author, #wrapper #content #descriptionFirst-Tag,
+  #wrapper #content #descriptionFirst-Des {
+    margin-left:-205px;
+    margin-top:-25px;
+    float:none;
+    width:90%;
+    width: 400px;
+  }
+
+  #wrapper #content #descriptionFirst-Desc{
+    margin-left:-205px;
+    margin-top:-13px;
+    float:none;
+    width:100%;
+    width:750px;
+  }
+
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-290px;
+  }
+  #content #search{
+    float:none;
+    margin-left:45px;
+  }
+}
+
+/* Увеличение */
+/* 90% */
+@media screen and (min-width:1600px) and (max-width:1900px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -80px;
+    width:90%;
+    width: 1300px;
+  }
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:545px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:545px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-30px;
+  }
+  #content #search{
+    margin:  70px auto auto 595px;
+  }
+}
+/* 80% */
+@media screen and (min-width:1900px) and (max-width:2000px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -140px;
+    width:90%;
+    width: 1300px;
+  }
+     
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:485px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:485px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-80px;
+  }
+  #content #search{
+    margin:  70px auto auto 535px;
+  }
+  
+}
+
+/* 75% */
+@media screen and (min-width:2000px) and (max-width:2200px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -200px;
+    width:90%;
+    width: 1300px;
+  }
+     
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:425px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:425px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-140px;
+  }
+  #content #search{
+    margin:  70px auto auto 475px;
+  }
+  
+}
+
+/* 67% */
+@media screen and (min-width:2200px) and (max-width:2400px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -320px;
+    width:90%;
+    width: 1300px;
+  }
+     
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:305px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:305px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-280px;
+  }
+  #content #search{
+    margin:  70px auto auto 355px;
+  }
+  
+}
+
+/* 50% */
+@media screen and (min-width:2400px) and (max-width:3100px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -700px;
+    width:90%;
+    width: 1300px;
+  }
+     
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:-75px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:-75px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-650px;
+  }
+  #content #search{
+    margin:  70px auto auto -25px;
+  }
+  
+}
+
+/* 33% */
+@media screen and (min-width:3100px) and (max-width:4700px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -1460px;
+    width:90%;
+    width: 1300px;
+  }
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+      float:none;
+      margin-left:-835px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:-835px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-1410px;
+  }
+  #content #search{
+    margin:  70px auto auto -785px;
+  }
+  
+}
+
+/* 25% */
+@media screen and (min-width:4700px) and (max-width:6200px) {
+  /* размер блока где находятся главный контент и сайдбар*/
+  body #wrapper {
+ 
+    margin-top:80px;
+    
+    width: 90%;
+    margin: 0 auto;
+  }
+   #content #editName, #wrapper #content #editAuthor,  #content #editTag, #content #editDescription {
+    float:none;
+    margin-left: -2215px;
+    width:90%;
+    width: 1300px;
+  }
+     
+  #content #descriptionFirst-Name, #content #descriptionFirst-Author,  #content #descriptionFirst-Tag {
+    float:none;
+    margin-left:-1585px;
+     margin-top: -46px;
+     width:100%;
+  }
+  
+  #content #descriptionFirst-Desc{
+    float:none;
+    margin-left:-1585px;
+    margin-top: -120px;
+    width:100%;
+    width: 900px;
+  }
+  #wrapper #content #reviewStars-input{
+    float: left;
+    margin-left:-2180px;
+  }
+  #content #search{
+    margin:  70px auto auto -1535px;
+  }
+  
+}
