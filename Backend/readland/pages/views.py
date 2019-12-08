@@ -3,12 +3,17 @@ import mimetypes
 import os
 import urllib.parse
 
+from django.db.models import Avg
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 
-from books.models import Book
+from books.models import Book, UserBook
 from pages.forms import AddBookForm
 from readland import settings
+
+
+def main_page(request):
+    return render(request, 'index.html', {'books': Book.objects.all()})
 
 
 # Create your views here.
@@ -253,18 +258,17 @@ def view_search_basic(request):
 
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    if (book.rating == 0.0):
-        bookraiting = "Оцінок ще не має"
-    else:
-        bookraiting = book.rating
-    raiting = {
-        "number_raiting": bookraiting,
-        "list_raiting": range(int(book.rating)),
-        "has_half_star": (book.rating % 1) >= 0.2,
-        "empty_stars": range(5 - math.ceil(book.rating))
-    }
-    book.views_count += 1
-    book.save()
+    rating = UserBook.objects.filter(book=book).aggregate(Avg('rating'))
+    print(rating)
+    # book.views_count += 1
+    # book.save()
+    if request.user.is_authenticated:
+        user_book = UserBook.objects.filter(user=request.user, book=book)
+        if user_book.exists():
+            user_book.update(is_viewed=True)
+        else:
+            user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
+        user_book.save()
     tag = book.tag.split(" ")
 
     return render(request, 'bookoverview.html', {"name": book.name,
@@ -274,13 +278,19 @@ def view_book_info(request, book_id):
                                                  "description": book.description,
                                                  "photo": book.photo.url,
                                                  "book": book.file,
-                                                 "raiting": raiting,
+                                                 "rating": rating['rating__avg'],
                                                  "views": book.views_count,
                                                  },
                   content_type="text/html")
 
 
 def rate_book(request, book_id, book_rate):
-    if 1 <= book_rate <= 5:
-        Book.objects.filter(pk=book_id).update(rating=book_rate)
+    book = Book.objects.filter(id=book_id)
+    if request.user.id is not None and book.exists() and 1 <= book_rate <= 5:
+        user_book = UserBook.objects.filter(user=request.user, book=book)
+        if user_book.exists():
+            user_book.update(rate=book_rate)
+        else:
+            user_book = UserBook.objects.create(user=request.user, book=book, rate=book_rate)
+        user_book.save()
     return redirect('/books/' + str(book_id))

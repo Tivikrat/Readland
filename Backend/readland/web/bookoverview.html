@@ -60,19 +60,8 @@
         <div class="col-lg-8">
             <h2 style="font-family: 'Source Sans Pro', sans-serif;">{{ name }}</h2>
 
-            <div id="starRaiting">
-                {% for i in raiting.list_raiting %}
-                    <i class="fa fa-star" style="color: #fcee10;font-size: 30px;"></i>
-                {% endfor %}
-                {% if raiting.has_half_star %}
-                    <i class="fa fa-star-half-o" style="color: #fcee10;font-size: 30px;"></i>
-                {% endif %}
-                {% for i in raiting.empty_stars %}
-                    <i class="fa fa-star-o" style="color: #49494a;font-size: 30px;"></i>
-                {% endfor %}
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;font-weight: bold;font-style: normal;padding-left: 10px;">{{ raiting.number_raiting }}</span>
-                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ views }}</span>
+            <div class="star-ratings-sprite">
+                <span style="width:{{ rating }}%" class="star-ratings-sprite-rating"></span>
             </div>
             <h4>Автор: {{ author }}&nbsp;</h4>
             <h4>Теги:&nbsp;

@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.core import validators
 from django.db import models
 
 
@@ -15,3 +17,11 @@ class Book(models.Model):
 
     class Meta:
         unique_together = ['name', 'author']
+
+
+class UserBook(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    rating = models.FloatField(blank=True, default=float('NaN'),
+                             validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)])
+    is_viewed = models.BooleanField(blank=True, default=False)
