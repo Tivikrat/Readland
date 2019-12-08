@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ReadLand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static "assets/BooksFeed/css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "assets/BooksFeed/css/icomoon.css" %}">
+    <link rel="stylesheet" href="{% static "assets/BooksFeed/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "assets/BooksFeed/css/style.css" %}">
+    <script src="{% static "assets/BooksFeed/js/modernizr-2.6.2.min.js" %}"></script>
+    <script src="{% static "js/respond.min.js" %}"></script>
+</head>
+<body>
+<header id="fh5co-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <h1 id="fh5co-logo"><a href="index.html">Новини</a></h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row fh5co-post-entry">
+        {% for book in books %}
+            <a href="/books/{{ book.id }}">
+            <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                <figure>
+                    <img src="/uploaded/{{ book.photo }}" alt="Image"
+                                               class="img-responsive">
+                </figure>
+                <span class="fh5co-meta">
+                    <img src="http://www.omii-europe.org/myphoto/f/36/369710_5-star-png.png" width="50%">
+				</span>
+                <h2 class="fh5co-article-title">{{ book.name }}</h2>
+                <span class="fh5co-meta fh5co-date">
+				<img src="https://www.shareicon.net/data/512x512/2015/08/25/90754_view_512x512.png" width="10%">
+				250
+				</span>
+            </article>
+            </a>
+        {% endfor %}
+        <div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+</div>
+<footer id="fh5co-footer">
+    <p><small>&copy; ReadLand 2019</small></p>
+</footer>
+<script src="{% static "assets/BooksFeed/js/jquery.min.js" %}"></script>
+<script src="{% static "assets/BooksFeed/js/jquery.easing.1.3.js" %}"></script>
+<script src="{% static "assets/BooksFeed/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/BooksFeed/js/jquery.waypoints.min.js" %}"></script>
+<script src="{% static "assets/BooksFeed/js/main.js" %}"></script>
+</body>
+</html>
+
