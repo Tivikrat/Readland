@@ -1,0 +1,11 @@
+{% load socialaccount %}
+{% providers_media_js %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Registration</title>
+</head>
+<body>
+    <a href="{% provider_login_url "google" %}" class="href">Google Connect</a>
+</body>
+</html>

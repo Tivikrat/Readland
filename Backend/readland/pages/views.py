@@ -3,6 +3,7 @@ import mimetypes
 import os
 import urllib.parse
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
@@ -17,6 +18,7 @@ def main_page(request):
 
 
 # Create your views here.
+@login_required
 def add_book(request):
     if request.method == 'POST':
         form = AddBookForm(data=request.POST, files=request.FILES)
@@ -30,6 +32,7 @@ def add_book(request):
     return render(request, 'addnewBookScratch.html', {})
 
 
+@login_required
 def download_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
 
@@ -47,6 +50,7 @@ def download_book(request, book_id):
     raise Http404
 
 
+@login_required
 def read_book(request, book_id):
     return redirect("https://filerender/pdf/index.php?book_url=127.0.0.1:8000/books/" + str(book_id) + "/download")
 
@@ -256,34 +260,56 @@ def view_search_basic(request):
         return render(request, 'SearchResult.html', {'results': []})
 
 
+# @login_required
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    rating = UserBook.objects.filter(book=book).aggregate(Avg('rating'))
-    print(rating)
+    # rating = UserBook.objects.filter(book=book).aggregate(Avg('rating'))
+    # print(rating)
+    # psycopg2.errors.UndefinedTable: ОШИБКА:  отношение "books_userbook" не существует
+    # LINE 1: ...("books_userbook"."rating") AS "rating__avg" FROM "books_use...
+
     # book.views_count += 1
     # book.save()
+    # if request.user.is_authenticated:
+    #     user_book = UserBook.objects.filter(user=request.user, book=book)
+    #     if user_book.exists():
+    #         user_book.update(is_viewed=True)
+    #     else:
+    #         user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
+    #     user_book.save()
+    # tag = book.tag.split(" ")
+
+    if book.rating == 0.0:
+        bookraiting = "Оцінок ще не має"
+    else:
+        bookraiting = book.rating
+    raiting = {
+        "number_raiting": bookraiting,
+        "list_raiting": range(int(book.rating)),
+        "has_half_star": (book.rating % 1) >= 0.2,
+        "empty_stars": range(5 - math.ceil(book.rating))
+    }
     if request.user.is_authenticated:
-        user_book = UserBook.objects.filter(user=request.user, book=book)
-        if user_book.exists():
-            user_book.update(is_viewed=True)
-        else:
-            user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
-        user_book.save()
-    tag = book.tag.split(" ")
+        anon = False
+    else:
+        anon = True
 
     return render(request, 'bookoverview.html', {"name": book.name,
-                                                 "tag": tag,
+                                                 "tag": book.tag,
                                                  "date": book.date,
                                                  "author": book.author,
                                                  "description": book.description,
                                                  "photo": book.photo.url,
                                                  "book": book.file,
-                                                 "rating": rating['rating__avg'],
+                                                 # "rating": rating['rating__avg'],
+                                                 "rating": raiting,
                                                  "views": book.views_count,
+                                                 "anon": anon
                                                  },
                   content_type="text/html")
 
 
+@login_required
 def rate_book(request, book_id, book_rate):
     book = Book.objects.filter(id=book_id)
     if request.user.id is not None and book.exists() and 1 <= book_rate <= 5:

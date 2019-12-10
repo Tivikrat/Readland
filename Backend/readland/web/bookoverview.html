@@ -49,6 +49,20 @@
                 {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
                 {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
                 {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+                <li role="presentation" class="nav-item">
+    <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
+</li>
+                {% if anon == True %}
+                <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button" href="/accounts/google/login" style="margin-top: 20px;background-color: #9b9bfd;">Log In</a></li>
+                {% else %}
+
+                <li role="presentation" class="nav-item">
+                    <form action="/accounts/logout/" method="post">
+                        <button class="btn btn-primary" type="submit" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</button>
+                    </form>
+{#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
