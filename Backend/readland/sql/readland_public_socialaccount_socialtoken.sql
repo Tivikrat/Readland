@@ -1,0 +1,1 @@
+INSERT INTO public.socialaccount_socialtoken (id, token, token_secret, expires_at, account_id, app_id) VALUES (1, 'ya29.Il-0B8aowTOWqGzdnILR3lfSWmg3AGP2D5P2vIvDziNKcGV_6hcUtJy12hZ_Ru4_FJgFwPhs3sV6tCZcTn0FgzzRcBsTOCFS796Yepd4Sdll8F4xoz3PEEEkoO1J-p60SA', '', '2019-12-10 01:51:57.370905', 1, 1);

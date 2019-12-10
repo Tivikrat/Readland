@@ -1,0 +1,1 @@
+INSERT INTO public.django_site (id, domain, name) VALUES (1, 'localhost:8000', 'localhost:8000');

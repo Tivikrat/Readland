@@ -1,0 +1,1 @@
+INSERT INTO public.socialaccount_socialapp (id, provider, name, client_id, secret, key) VALUES (1, 'google', 'Readland-web', '1072747104583-n6e22r2emhhcggfeuhvg1666setpf95h.apps.googleusercontent.com', 'cJnZbDGTfP3WRDa6FAvxZqhA', '');
