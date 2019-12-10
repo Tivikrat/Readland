@@ -19,7 +19,7 @@ def user_profile(request, user_id):
         local_user_profile = UserProfile.objects.create(user=user)
 
     allow_edit = False
-    if request.user is not None and hasattr(request.user, 'id') and\
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
             request.user.id > 0 and request.user.id == user.id or request.user.is_superuser:
         allow_edit = True
 

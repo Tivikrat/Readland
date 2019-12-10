@@ -13,4 +13,4 @@ class UserProfile(models.Model):
     photo = models.ImageField(upload_to='users', null=True)
 
     def __str__(self):
-        return self.last_name + ' ' + self.first_name + '(' + str(self.user_id) + ', ' + self.user.name + ')'
+        return self.last_name + ' ' + self.first_name + ' (ID: ' + str(self.user.id) + ', ' + self.user.username + ')'
