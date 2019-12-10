@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<style>
+</style>
+<html style="font-family: 'Source Sans Pro', sans-serif;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ReadLand &bull; {{ user.username }}</title>
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
+</head>
+
+<body>
+    <p>
+        Photo:
+        {% if user.photo %}
+            <p><img alt="no photo" src="{{ user.photo.url }}"></p>
+        {% else %}
+            no photo
+        {% endif %}
+    </p>
+    <p>User ID: {{ user.id }}</p>
+    <p>Username: {{ user.username }}</p>
+    <p>E-Mail: {{ user.email }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+    <p>Mobile phone: {{ user.mobile_phone }}</p>
+    <p>Balance: ${{ user.balance }}</p>
+    <p>About: {{ user.about }}</p>
+    <p>Can be edited: {% if allow_edit %}Yes{% else %}No{% endif %}</p>
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/script.js" %}"></script>
+</body>
+</html>

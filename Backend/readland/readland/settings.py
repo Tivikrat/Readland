@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'pages',
     'books',
     'login',
-    'google_login'
+    'google_login',
+    'user_profile'
 ]
 
 
@@ -97,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'readland',
         'USER': 'readland',
-        'PASSWORD': '12345',
+        'PASSWORD': '123321',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

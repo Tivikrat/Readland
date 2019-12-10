@@ -48,7 +48,7 @@ def add_book(request):
             book.save()
             return redirect("../books/" + str(book.id))
         else:
-            return HttpResponse("Fields was empty: " + str(form.errors))
+            return HttpResponse("Fields were empty: " + str(form.errors))
 
     return render(request, 'addnewBookScratch.html', {})
 

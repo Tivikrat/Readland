@@ -9,6 +9,7 @@ from readland import settings
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('books/', include('pages.urls')),
+                  path('user/', include('user_profile.urls')),
                   path('', main_page),
                   # path('accounts/', include('django.contrib.auth.urls')),
                   url(r'^accounts/', include('allauth.urls')),
