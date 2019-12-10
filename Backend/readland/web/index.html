@@ -3,155 +3,200 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <title>Readland</title>
-
-  <!-- Google Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="{% static "css/normalize.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome5-overrides.min.css" %}">
+    <title>Readland</title>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700'
+          rel='stylesheet' type='text/css'>
 </head>
-
 <body>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static "img/LogoLong.png" %}">
+        </a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-block" role="presentation">
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group d-flex justify-content-end"
+                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input
+                                class="form-control search-field" type="search" id="search-field" name="search"
+                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                placeholder="Search" onclick="window.location.href = '/books/search/'"><i
+                                class="fa fa-search"
+                                style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                        </div>
+                    </form>
+                </li>
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+                <li role="presentation" class="nav-item">
+                    <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
+                </li>
+                {% if anon == True %}
+                    <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button"
+                                                                href="/accounts/google/login"
+                                                                style="margin-top: 20px;background-color: #9b9bfd;">Log
+                        In</a></li>
+                {% else %}
 
-	<header id="BooksFeedHeader">
-		
-		<div class="container-Books">
+                    <li role="presentation" class="nav-item">
+                        <form action="/accounts/logout/" method="post">
+                            <button class="btn btn-primary" type="submit"
+                                    style="margin-top: 20px;background-color: #9b9bfd;">Log Out
+                            </button>
+                        </form>
+                        {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="grid">
+    {% for book_info in  books_info %}
+        <a href="/books/{{ book_info.book.id }}">
+            <div class="Book">
+                <img src="/uploaded/{{ book_info.book.photo }}" alt="Image" class="img-responsive">
+                <h2>
+                    {{ book_info.book.name }}
+                </h2>
+                <div class="star-ratings-sprite">
+                    <span style="width:{{ book_info.rating }}%" class="star-ratings-sprite-rating"></span>
+                </div>
+                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ book_info.views_count }}</span>
+            </div>
+        </a>
+    {% endfor %}
 
-			<div class="row">
+</div>
 
-				<!--
-				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-				<ul class="fh5co-social">
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-instagram"></i></a></li>
-				</ul>
-				-->
+<style>
+    #grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-gap: 0.5vw;
+    }
 
-				<div>
-					<center>
-					<h1><a style="font-size: 1.5em;" href="index.html">Новини</a></h1>
-					</center>
-				</div>
+    #grid > div {
+        font-size: 5vw;
+        padding: .5em;
+        /*background: gold;*/
+        text-align: center;
+    }
 
-			</div>
-		
-		</div>
+    h1 {
+        font-family: "Playfair Display", times,
+        color: #7c795d;
+        text-decoration: none;
+        font-weight: 300;
+    }
 
-	</header>
+    body {
+        font-family: "Playfair Display", times,
+        font-size: 18px;
+        font-weight: 300;
+    }
 
-	<div id="grid">
+    a {
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+    }
 
-	  {% for book in books %}
-	  <div class="Book">
+    a {
+        color: #000;
+    }
 
-	  	<div class="BookRating">
-	  	<a href="single.html">
-		<img src="https://ak9.picdn.net/shutterstock/videos/1019062039/thumb/11.jpg" width="50%">
-		</a>
-		</div>
+    /* Unvisited link  */
+    a:visited {
+        color: #000;
+    }
 
-		<a href="single.html"><img src="/uploaded/{{ book.photo }}" alt="Image" class="img-responsive"></a>
+    /* Visited link    */
+    a:hover {
+        color: #000;
+    }
 
-		<div id="BookTitle">
-		<a style="font-size: 54px;">{{ book.name }}</a>
-		</div>
+    /* Mouse over link */
+    a:active {
+        color: #000;
+    }
 
-			<div class="BookView">
-			<img src="https://www.shareicon.net/data/512x512/2015/08/25/90754_view_512x512.png" width="10%">
-				<div id="viewCount">
-				250
-				</div>
-			</div>
-	  </div>
-	  {% endfor %}
+    /* Selected link   */
 
-	</div>
+    a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
+    }
 
-  <style>
-	#grid { 
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-		grid-gap: 0.5vw;
-	  }
-	#grid > div {
-	  font-size: 5vw;
-	  padding: .5em;
-	  /*background: gold;*/
-	  text-align: center;
-	}
-	h1 {
-		font-family: "Playfair Display", times,
-		color: #7c795d;
-		text-decoration: none;
-		font-weight: 300;
-	}
+    p {
+        font-family: "Playfair Display", times,
+    }
 
-	body {
-		font-family: "Playfair Display", times,
-		font-size: 18px;
-		font-weight: 300;
-	}
+    footer {
+        color: grey;
+    }
 
-	a { 
-		  -webkit-transition: 0.5s;
-		  -o-transition: 0.5s;
-		  transition: 0.5s;
-	 }
-	 a {color:#000;}         /* Unvisited link  */
-		a:visited {color:#000;} /* Visited link    */
-		a:hover {color:#000;}   /* Mouse over link */
-		a:active {color:#000;}  /* Selected link   */
+    .BookView {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 16px;
+        font-family: "Roboto", arial, sans-serif;
+        color: #999999;
+        margin-bottom: 20px;
+        display: block;
+    }
 
-	a:hover, a:visited, a:link, a:active
-	{
-    text-decoration: none;
-	}
+    #BookTitle {
+        font-weight: 500;
+        line-height: 1.1;
+        text-align: center;
+        margin-top: -5px;
+        padding-bottom: 15px;
+    }
 
-	p{
-		font-family: "Playfair Display", times,
-	}
+    #viewCount {
+        margin-top: -5px;
+    }
 
-	footer {
-		color:grey;
-	}
-
-	.BookView{
-		text-transform: uppercase;letter-spacing: 2px;
-		font-size: 16px;
-	    font-family: "Roboto", arial, sans-serif;
-	    color: #999999;
-	    margin-bottom: 20px;
-	    display: block;
-	}
-
-	#BookTitle {
-	    font-weight: 500;
-   		line-height: 1.1;
-   		text-align: center;
-		margin-top: -5px;
-		padding-bottom: 15px;
-	}
-
-	#viewCount {
-		margin-top:-5px;
-	}
-}
+    }
 </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/script.js"></script>
 
-  <footer id="footer">
-  		<center>
-		<p><big>&copy; ReadLand 2019</big></p>
-		</center>
-  </footer>
+<footer id="footer">
+    <center>
+        <p><big>&copy; ReadLand 2019</big></p>
+    </center>
+</footer>
 </body>
 
 </html>

@@ -13,8 +13,23 @@ from pages.forms import AddBookForm
 from readland import settings
 
 
+def get_raiting(book):
+    rating = (UserBook.objects.filter(book=book).aggregate(Avg('rating')))['rating__avg']
+    if rating is None:
+        return 0
+    return rating
+
+
+def get_views_count(book):
+    return UserBook.objects.filter(book=book).count()
+
+
 def main_page(request):
-    return render(request, 'index.html', {'books': Book.objects.all()})
+    books = Book.objects.all()
+    books_info = []
+    for book in books:
+        books_info += [{'book': book, 'rating': int(get_raiting(book) * 20), 'views_count': get_views_count(book)}]
+    return render(request, 'index.html', {'books_info': books_info})
 
 
 # Create your views here.
@@ -263,11 +278,6 @@ def view_search_basic(request):
 # @login_required
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    # rating = UserBook.objects.filter(book=book).aggregate(Avg('rating'))
-    # print(rating)
-    # psycopg2.errors.UndefinedTable: ОШИБКА:  отношение "books_userbook" не существует
-    # LINE 1: ...("books_userbook"."rating") AS "rating__avg" FROM "books_use...
-
     # book.views_count += 1
     # book.save()
     # if request.user.is_authenticated:
@@ -277,7 +287,7 @@ def view_book_info(request, book_id):
     #     else:
     #         user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
     #     user_book.save()
-    # tag = book.tag.split(" ")
+    tag = book.tag.split(" ")
 
     if book.rating == 0.0:
         bookraiting = "Оцінок ще не має"
@@ -293,17 +303,20 @@ def view_book_info(request, book_id):
         anon = False
     else:
         anon = True
-
+    rating = get_raiting(book)
+    if rating is None:
+        rating = 0
+    views_count = get_views_count(book)
     return render(request, 'bookoverview.html', {"name": book.name,
-                                                 "tag": book.tag,
+                                                 "tag": tag,
                                                  "date": book.date,
                                                  "author": book.author,
                                                  "description": book.description,
                                                  "photo": book.photo.url,
                                                  "book": book.file,
                                                  # "rating": rating['rating__avg'],
-                                                 "rating": raiting,
-                                                 "views": book.views_count,
+                                                 "rating": int(rating * 20),
+                                                 "views": views_count,
                                                  "anon": anon
                                                  },
                   content_type="text/html")
@@ -311,12 +324,13 @@ def view_book_info(request, book_id):
 
 @login_required
 def rate_book(request, book_id, book_rate):
-    book = Book.objects.filter(id=book_id)
-    if request.user.id is not None and book.exists() and 1 <= book_rate <= 5:
+    book = Book.objects.filter(id=book_id).first()
+    if request.user.id is not None and 1 <= book_rate <= 5:
         user_book = UserBook.objects.filter(user=request.user, book=book)
         if user_book.exists():
-            user_book.update(rate=book_rate)
+            user_book.update(rating=book_rate)
+            user_book.first().save()
         else:
-            user_book = UserBook.objects.create(user=request.user, book=book, rate=book_rate)
-        user_book.save()
+            user_book = UserBook.objects.create(user=request.user, book=book, rating=book_rate)
+            user_book.save()
     return redirect('/books/' + str(book_id))

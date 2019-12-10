@@ -143,3 +143,10 @@ h1 {
     height: 21px;
     display: block;
 }
+
+.Book {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

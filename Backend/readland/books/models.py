@@ -12,7 +12,7 @@ class Book(models.Model):
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews', null=True)
     file = models.FileField(upload_to='books')
-    rating = models.FloatField(default=float('0.0'))
+    rating = models.FloatField(default=float('NaN'))
     views_count = models.IntegerField(default=0)
 
     class Meta:
