@@ -27,9 +27,15 @@ def get_views_count(book):
 def main_page(request):
     books = Book.objects.all()
     books_info = []
+    if request.user.is_authenticated:
+        anon = False
+    else:
+        anon = True
+
     for book in books:
         books_info += [{'book': book, 'rating': int(get_raiting(book) * 20), 'views_count': get_views_count(book)}]
-    return render(request, 'index.html', {'books_info': books_info})
+    return render(request, 'index.html', {'books_info': books_info,
+                                          "anon": anon})
 
 
 # Create your views here.
