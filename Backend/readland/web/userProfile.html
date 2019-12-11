@@ -1,53 +1,251 @@
 {% load static %}
 <!DOCTYPE html>
-<style>
-</style>
-<html style="font-family: 'Source Sans Pro', sans-serif;">
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ReadLand &bull; {{ user.username }}</title>
+  <meta charset="utf-8">
+   <title>Readland &bull; {{ name }}</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/design.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/fontawesome5-overrides.min.css" %}">
+
+   <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-    <p>
-        Photo:
-        {% if user.photo %}
-            <p><img alt="no photo" src="{{ user.photo.url }}"></p>
-        {% else %}
-            no photo
-        {% endif %}
-    </p>
-    <p>User ID: {{ user.id }}</p>
-    <p>Username: {{ user.username }}</p>
-    <p>E-Mail: {{ user.email }}</p>
-    <p>First name: {{ user.first_name }}</p>
-    <p>Last name: {{ user.last_name }}</p>
-    <p>Mobile phone: {{ user.mobile_phone }}</p>
-    <p>Balance: ${{ user.balance }}</p>
-    <p>About: {{ user.about }}</p>
-    <p>Can be edited: {% if allow_edit %}Yes{% else %}No{% endif %}</p>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static "img/LogoLong.png" %}">
+        </a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-block" role="presentation">
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group d-flex justify-content-end"
+                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><input
+                                class="form-control search-field" type="search" id="search-field" name="search"
+                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                placeholder="Search" onclick="window.location.href = '/books/search/'"><i
+                                class="fa fa-search"
+                                style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                        </div>
+                    </form>
+                </li>
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+                <li role="presentation" class="nav-item">
+                    <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
+                </li>
+                {% if anon == True %}
+                    <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button"
+                                                                href="/accounts/google/login"
+                                                                style="margin-top: 20px;background-color: #9b9bfd;">Log
+                        In</a></li>
+                {% else %}
 
-    <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-    <script src="{% static "js/script.js" %}"></script>
+                    <li role="presentation" class="nav-item">
+                        <form action="/accounts/logout/" method="post">
+                            <button class="btn btn-primary" type="submit"
+                                    style="margin-top: 20px;background-color: #9b9bfd;">Log Out
+                            </button>
+                        </form>
+                        {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="main">
+  <h1>Профиль</h1>
+  <hr class="style-six">
+
+  <div class="profile">
+     <div id="AccountMoney">
+  <h4>Счет аккаунта: 20$</h4>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div id="ProfilePic">
+  <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/RO/en/99/EP2402-CUSA05624_00-AV00000000000098//image?_version=00_09_000&platform=chihiro&w=720&h=720&bg_color=000000&opacity=100">
+  </div>
+
+  <div class="basicInfo">
+  <h1 class="info">MaxX</h1>
+  <h2>Макс Федоренко</h2>
+  <h3><div class="info">email:</div><a href="mailto:maaaks@gmail.com">maaaks@gmail.com<a/></h3>
+  <h3><div class="info">Телефон:</div><a href="tel:+3809723049">+3809723049<a/></h3>
+  <h3><div class="info">О себе</div> </h3>
+  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+  </div>
+</div>
+  <h1>Мои Книги</h1>
+  <hr class="style-six">
+  <style>
+    .profile { 
+  background: white !important;
+  padding: 20px;
+  border-radius: 5px;
+  border:solid lightgrey 0.5px;
+ }
+ 
+ hr.style-six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+  body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto", arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #222;
+  background: #E9EBEE;
+}
+
+.basicInfo {
+    padding-left: 315px;
+}
+
+#grid { 
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+ grid-gap: 5vw;
+  }
+#grid > div {
+  font-size: 5vw;
+  padding: .5em;
+  text-align: center;
+}
+
+.myBook { 
+    width: 200px;
+    height: 120px;
+    margin-bottom: 100px;
+    padding: 20px;
+     }
+
+/* resize images */
+.myBook img {
+
+    width: 100%;
+    height: 250px;
+
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+#ProfilePic img{
+  position: absolute;
+  padding-top: 5px;
+  display: inline-block;
+  width: 285px;
+  height: 285px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.info { 
+  color:#90949C;
+ }
+
+.main {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#AccountMoney
+{
+  margin-top: 5px;
+  position: relative;
+  float: right; /* Обтекание по правому краю */
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+  }
+
+@media screen and (min-width: 0px) {
+  section.main {
+  font-size: 30px;
+    padding:0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  section.main {
+  font-size: 15px;
+    padding:0;
+  }
+}
+
+
+</style>
+<div id="grid">
+  <div class="myBook">
+  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://img.yakaboo.ua/media/catalog/product/cache/1/image/398x565/234c7c011ba026e66d29567e1be1d1f7/m/y/my_grandmother_1.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://www.bookclub.ua/images/db/goods/k/52430_93934_k.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://www.bookclub.ua/images/db/goods/k/52433_93937_k.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://image.flaticon.com/icons/png/512/29/29809.png">
+  </div>
+</div>
+
+</section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+<div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">
+    <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
+        <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
+            Readland 2019</p>
+    </footer>
+</div>
 </body>
+
 </html>
