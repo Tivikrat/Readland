@@ -79,8 +79,8 @@
             </ul>
         </div>
     </div>
-</nav>
-<br />
+</nav><br />
+<br />.
 <div id="grid">
     {% for book_info in  books_info %}
         <a href="/books/{{ book_info.book.id }}">
@@ -92,8 +92,8 @@
                 <div class="star-ratings-sprite">
                     <span style="width:{{ book_info.rating }}%" class="star-ratings-sprite-rating"></span>
                 </div>
-                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ book_info.views_count }}</span>
+                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ book_info.views_count }}</span></i>
+
             </div>
         </a>
     {% endfor %}
@@ -135,6 +135,9 @@
 
     a {
         color: #000;
+        display: flex;
+        align-items: end;
+        margin: 25px;
     }
 
     /* Unvisited link  */
