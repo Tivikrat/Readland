@@ -286,13 +286,13 @@ def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     # book.views_count += 1
     # book.save()
-    # if request.user.is_authenticated:
-    #     user_book = UserBook.objects.filter(user=request.user, book=book)
-    #     if user_book.exists():
-    #         user_book.update(is_viewed=True)
-    #     else:
-    #         user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
-    #     user_book.save()
+    if request.user.is_authenticated:
+        user_book = UserBook.objects.filter(user=request.user, book=book)
+        if user_book.exists():
+            user_book.update(is_viewed=True)
+        else:
+            user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
+            user_book.save()
     tag = book.tag.split(" ")
 
     if book.rating == 0.0:
@@ -321,7 +321,7 @@ def view_book_info(request, book_id):
                                                  "photo": book.photo.url,
                                                  "book": book.file,
                                                  # "rating": rating['rating__avg'],
-                                                 "rating": int(rating * 20),
+                                                 "rating": int(rating * 20) if rating != float('NaN') else 0,
                                                  "views": views_count,
                                                  "anon": anon
                                                  },

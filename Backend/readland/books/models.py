@@ -12,7 +12,7 @@ class Book(models.Model):
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews', null=True)
     file = models.FileField(upload_to='books')
-    rating = models.FloatField(default=float('NaN'))
+    rating = models.FloatField(default=0.0)
     views_count = models.IntegerField(default=0)
 
     class Meta:
@@ -22,6 +22,6 @@ class Book(models.Model):
 class UserBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    rating = models.FloatField(blank=True, default=float('NaN'),
+    rating = models.FloatField(blank=True, default=0.0,
                              validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)])
     is_viewed = models.BooleanField(blank=True, default=False)
