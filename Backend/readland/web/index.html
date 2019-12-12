@@ -92,8 +92,8 @@
                 <div class="star-ratings-sprite">
                     <span style="width:{{ book_info.rating }}%" class="star-ratings-sprite-rating"></span>
                 </div>
-                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"></i>
-                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ book_info.views_count }}</span>
+                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-top: 5px"></i>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;">{{ book_info.views_count }}</span>
             </div>
         </a>
     {% endfor %}
@@ -103,7 +103,7 @@
 <style>
     #grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-gap: 0.5vw;
     }
 
