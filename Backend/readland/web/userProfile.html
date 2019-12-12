@@ -89,22 +89,27 @@
 
   <div class="profile">
      <div id="AccountMoney">
-  <h4>Счет аккаунта: 20$</h4>
+  <h4>Счет аккаунта: ${{ user.balance }}</h4>
   </div>
   <br>
   <br>
   <br>
   <div id="ProfilePic">
-  <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/RO/en/99/EP2402-CUSA05624_00-AV00000000000098//image?_version=00_09_000&platform=chihiro&w=720&h=720&bg_color=000000&opacity=100">
+   Photo:
+        {% if user.photo %}
+            <p><img alt="no photo" src="{{ user.photo.url }}"></p>
+        {% else %}
+            no photo
+        {% endif %}
   </div>
 
   <div class="basicInfo">
-  <h1 class="info">MaxX</h1>
-  <h2>Макс Федоренко</h2>
-  <h3><div class="info">email:</div><a href="mailto:maaaks@gmail.com">maaaks@gmail.com<a/></h3>
-  <h3><div class="info">Телефон:</div><a href="tel:+3809723049">+3809723049<a/></h3>
+  <h1 class="info">Lev</h1>
+  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+  <h3><div class="info">Эл. почта:</div><a href="mailto:maaaks@gmail.com">{{ user.email }}<a/></h3>
+  <h3><div class="info">Телефон:</div><a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></h3>
   <h3><div class="info">О себе</div> </h3>
-  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+  <h3>{{ user.about }}</h3>
   </div>
 </div>
   <h1>Мои Книги</h1>
