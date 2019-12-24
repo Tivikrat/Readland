@@ -83,6 +83,8 @@
         </div>
     </div>
 </nav>
+<br />
+<br />
 <section class="main">
   <h1>Профиль</h1>
   <hr class="style-six">
@@ -104,7 +106,7 @@
   </div>
 
   <div class="basicInfo">
-  <h1 class="info">Lev</h1>
+  <h1 class="info">{{ user.username }}</h1>
   <h2>{{ user.first_name }} {{ user.last_name }}</h2>
   <h3><div class="info">Эл. почта:</div><a href="mailto:maaaks@gmail.com">{{ user.email }}<a/></h3>
   <h3><div class="info">Телефон:</div><a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></h3>
@@ -112,6 +114,8 @@
   <h3>{{ user.about }}</h3>
   </div>
 </div>
+<br />
+<br />
   <h1>Мои Книги</h1>
   <hr class="style-six">
   <style>
@@ -223,6 +227,7 @@
 
 
 </style>
+
 <div id="grid">
   <div class="myBook">
   <img src="https://games-reviews.net/_pu/11/s74617345.jpg">
@@ -243,6 +248,9 @@
 
 </section>
 
+<br />
+<br />
+<br />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="js/script.js"></script>
 <div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">

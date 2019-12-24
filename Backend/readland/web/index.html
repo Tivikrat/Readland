@@ -31,7 +31,7 @@
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
-     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+     style="background-color: #25263a;margin-top: -35px;padding-bottom: 5px;flex: 0 0 auto;padding-right: 500px;">
     <div class="container">
         <a class="navbar-brand" href="/">
             <img src="{% static "img/LogoLong.png" %}">
@@ -86,13 +86,16 @@
         <a href="/books/{{ book_info.book.id }}">
             <div class="Book">
                 <img src="/uploaded/{{ book_info.book.photo }}" alt="Image" class="img-responsive">
+                <center>
                 <h2>
                     {{ book_info.book.name }}
                 </h2>
                 <div class="star-ratings-sprite">
                     <span style="width:{{ book_info.rating }}%" class="star-ratings-sprite-rating"></span>
                 </div>
-                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-left: 30px;"><span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;padding-left: 7px;">{{ book_info.views_count }}</span></i>
+                <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-top: 5px"></i>
+                </center>
+                <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;">{{ book_info.views_count }}</span>
 
             </div>
         </a>
@@ -101,6 +104,12 @@
 </div>
 
 <style>
+
+    .img-responsive { 
+        object-fit: cover;
+        width: 250px;
+        height: 350px;
+     }
     #grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -195,9 +204,11 @@
 </style>
 
 <div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">
-    <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
+    <footer class="text-center" style="height: 75px !important;padding-top: 10px;background-color: rgb(37,38,58);">
         <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
             Readland 2019</p>
+            <br />
+        
     </footer>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
