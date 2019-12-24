@@ -31,15 +31,29 @@
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
-     style="background-color: #25263a;margin-top: -35px;padding-bottom: 5px;flex: 0 0 auto;padding-right: 500px;">
+     style="background-color: #25263a;margin-top: -35px;padding-bottom: 5px;flex: 0 0 auto;">
     <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/" >
             <img src="{% static "img/LogoLong.png" %}">
         </a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav ml-auto">
+                <li role="presentation" class="nav-item">
+                    <div style="color:white;padding-top: 15px;font-size: 28px;">
+                     <a style="color:white;" href="/"><b>Главная</b></a>
+                    </div>
+                </li>
+                <li role="presentation" class="nav-item">
+                   
+                     <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
+                </li>
+               <li role="presentation" class="nav-item">
+                    <div style="color:white;padding-top: 15px;font-size: 28px;padding-right: 55px;">
+                     <b>Моя библиотека</b>
+                    </div>
+                </li>
                 <li class="nav-item d-block" role="presentation">
                     <form class="form-inline mr-auto" target="_self">
                         <div class="form-group d-flex justify-content-end"
@@ -205,7 +219,7 @@
         <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
             Readland 2019</p>
             <br />
-        
+
     </footer>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
