@@ -95,12 +95,12 @@ WSGI_APPLICATION = 'readland.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'readland',
-        'USER': 'readland',
-        'PASSWORD': '123321',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER' : 'user_name',
+        'PASSWORD' : 'password',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432',
     }
 }
 
