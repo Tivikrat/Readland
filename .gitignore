@@ -3,3 +3,10 @@ Backend/readland/venv/
 Backend/readland/**/migrations/
 Backend/readland/**/__pycache__/
 Backend/readland/readland/settings.py
+Backend/.idea/misc.xml
+Backend/.idea/inspectionProfiles/profiles_settings.xml
+Backend/.idea/Backend.iml
+Backend/.idea/dataSources.xml
+Backend/.idea/modules.xml
+Backend/.idea/vcs.xml
+Backend/.idea/workspace.xml~

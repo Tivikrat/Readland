@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'user_profile'
 ]
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -95,12 +93,13 @@ WSGI_APPLICATION = 'readland.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'readland',
-        'USER' : 'user_name',
-        'PASSWORD' : 'password',
-        'HOST' : '127.0.0.1',
-        'PORT' : '5432',
+        'USER': 'readland',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        #jdbc:postgresql://localhost:5432/readland
     }
 }
 

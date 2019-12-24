@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css"%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome-all.min.css"%}">
+    <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css"%}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css"%}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css"%}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css"%}">
@@ -29,7 +29,7 @@
 
 <body style="display: flex;flex-direction: column;height: 100%;">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap" style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
-        <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/LogoLong.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="#"><img src="{% static "/BootstrapStudioAssets/img/LogoLong.png"%}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#" style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
                 <ul class="nav navbar-nav ml-auto">
@@ -42,14 +42,14 @@
                         </form>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-right: 0px;padding-left: 0px;"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img src="{% static "/BootstrapStudioAssets/img/LogoLong.png"%}" style="padding-right: 5px;padding-left: 5px;"></a></li>
                 </ul>
         </div>
         </div>
     </nav>
     <div class="container" style="width: 100%;">
         <div class="row">
-            <div class="col-xl-9"><img class="img-fluid" src="assets/img/Ресурс%201.png" style="height: 100%;width: 100%;"></div>
+            <div class="col-xl-9"><img class="img-fluid" src="{% static "/BootstrapStudioAssets/img/Ресурс 1.png"%}" style="height: 100%;width: 100%;"></div>
             <div class="col-xl-3">
                 <div>
                     <div class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center" style="width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;"><i class="fa fa-plus align-items-center align-content-center align-self-center" style="font-size: 25px;color: rgb(255,255,255);"></i></div><input class="border rounded-0 border-dark d-block" type="text" placeholder="Ник " style="margin: auto;margin-top: 15px;width: 200px;">
