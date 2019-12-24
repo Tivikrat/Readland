@@ -31,7 +31,7 @@
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
-     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+     style="background-color: #25263a;margin-top: -35px;padding-bottom: 5px;flex: 0 0 auto;padding-right: 500px;">
     <div class="container">
         <a class="navbar-brand" href="/">
             <img src="{% static "img/LogoLong.png" %}">
@@ -86,6 +86,7 @@
         <a href="/books/{{ book_info.book.id }}">
             <div class="Book">
                 <img src="/uploaded/{{ book_info.book.photo }}" alt="Image" class="img-responsive">
+                <center>
                 <h2>
                     {{ book_info.book.name }}
                 </h2>
@@ -93,7 +94,9 @@
                     <span style="width:{{ book_info.rating }}%" class="star-ratings-sprite-rating"></span>
                 </div>
                 <i class="far fa-eye" style="font-size: 30px;color: #777777;padding-top: 5px"></i>
+                </center>
                 <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;">{{ book_info.views_count }}</span>
+
             </div>
         </a>
     {% endfor %}
@@ -101,6 +104,12 @@
 </div>
 
 <style>
+
+    .img-responsive { 
+        object-fit: cover;
+        width: 250px;
+        height: 350px;
+     }
     #grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
