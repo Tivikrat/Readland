@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'books',
     'login',
     'google_login',
-    'user_profile'
+    'user_profile',
+    'billing'
 ]
 
 MIDDLEWARE = [
@@ -147,6 +148,10 @@ STATICFILES_DIRS = [
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1072747104583-n6e22r2emhhcggfeuhvg1666setpf95h.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'cJnZbDGTfP3WRDa6FAvxZqhA'
 # DATA SCOPE
+
+# LiqPay Sandbox
+LIQPAY_SANDBOX_PUBLIC_KEY = 'sandbox_i70970484424'
+LIQPAY_SANDBOX_PRIVATE_KEY = 'sandbox_5P7hhQbtVARlzlQiGgwGau2kboL2Uuqe25fqZuQF'
 
 #
 # Uploaded files

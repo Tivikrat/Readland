@@ -1,12 +1,17 @@
+import base64
+import hashlib
 import math
 import mimetypes
 import os
+import string
 import urllib.parse
+import random
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
+from liqpay.liqpay3 import LiqPay
 
 from books.models import Book, UserBook
 from pages.forms import AddBookForm
@@ -287,15 +292,25 @@ def view_manage(request, book_id):
 # @login_required
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+
     # book.views_count += 1
     # book.save()
+    user_book = None
+    bought = False
     if request.user.is_authenticated:
-        user_book = UserBook.objects.filter(user=request.user, book=book)
-        if user_book.exists():
-            user_book.update(is_viewed=True)
-        else:
+        try:
+            user_book = UserBook.objects.get(user=request.user, book=book)
+
+            if not user_book.is_viewed:
+                user_book.is_viewed = True
+                user_book.save()
+
+            if user_book.is_bought:
+                bought = True
+        except UserBook.DoesNotExist:
             user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
             user_book.save()
+
     tag = book.tag.split(" ")
 
     if book.rating == 0.0:
@@ -308,10 +323,31 @@ def view_book_info(request, book_id):
         "has_half_star": (book.rating % 1) >= 0.2,
         "empty_stars": range(5 - math.ceil(book.rating))
     }
+    signature = None
+    data = None
     if request.user.is_authenticated:
         anon = False
+
+        if user_book is not None and not user_book.is_bought:
+            liqpay = LiqPay(settings.LIQPAY_SANDBOX_PUBLIC_KEY, settings.LIQPAY_SANDBOX_PRIVATE_KEY)
+            price = 120
+            params = {
+                "version": 3,
+                "action": "pay",
+                "amount": str(price),
+                "currency": "UAH",
+                "description": book.name,
+                "order_id": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)) + "___" + str(request.user.id) + "___" + str(book.id),
+                "type": "buy",
+                'server_url': str(request.build_absolute_uri("/") + 'billing/pay-callback/'),
+                'result_url': str(request.build_absolute_uri("/") + 'billing/pay-callback/'),
+                "language": "uk"
+            }
+            data = liqpay.cnb_data(params)
+            signature = liqpay.cnb_signature(params)
     else:
         anon = True
+
     rating = get_raiting(book)
     if rating is None:
         rating = 0
@@ -326,7 +362,12 @@ def view_book_info(request, book_id):
                                                  # "rating": rating['rating__avg'],
                                                  "rating": int(rating * 20) if rating != float('NaN') else 0,
                                                  "views": views_count,
-                                                 "anon": anon
+                                                 "anon": anon,
+                                                 "bought": bought,
+                                                 "payment_form": {
+                                                     'signature': signature,
+                                                     'data': data
+                                                 }
                                                  },
                   content_type="text/html")
 
