@@ -281,6 +281,9 @@ def view_search_basic(request):
         return render(request, 'SearchResult.html', {'results': []})
 
 
+def view_manage(request, book_id):
+    return render(request, 'change_book_info.html')
+
 # @login_required
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)

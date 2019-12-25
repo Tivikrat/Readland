@@ -6,6 +6,9 @@ from user_profile.forms import UserProfileForm, UserForm
 from user_profile.models import UserProfile
 
 
+def edit(request, user_id):
+    return render(request, 'register.html')
+
 # Create your views here.
 def user_profile(request, user_id):
     if user_id is None or user_id <= 0:
