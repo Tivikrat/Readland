@@ -13,6 +13,7 @@ from readland.views import  register,book_lists,chbi
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('books/', include('pages.urls')),
+                  path('billing/', include('billing.urls')),
                   path('user/', include('user_profile.urls')),
                   path('', main_page),
 

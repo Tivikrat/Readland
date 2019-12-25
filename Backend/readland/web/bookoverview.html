@@ -100,18 +100,38 @@
         </div>
     </div>
     <div class="row" id="ReadOrDownload">
-        <div class="col-lg-3 offset-lg-3">
-            <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'read'"
-                    style="margin: auto;border: 3px solid black;margin-top: 15px;width: 185px;margin-bottom: 15px;background-color: #fefefe;color: #363636;">
-                Читати онлайн
-            </button>
-        </div>
-        <div class="col-lg-3 offset-lg-0">
-            <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'download'"
-                    style="border: 3px solid black;width: 185px;margin: auto;margin-top: 15px;margin-bottom: 15px;color: rgb(54,54,54);background-color: #fefefe;">
-                Завантажити
-            </button>
-        </div>
+        {% if not anon and bought %}
+            <div class="col-lg-3 offset-lg-3">
+                <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'read'"
+                        style="margin: auto;border: 3px solid black;margin-top: 15px;width: 185px;margin-bottom: 15px;background-color: #fefefe;color: #363636;">
+                    Читати онлайн
+                </button>
+            </div>
+            <div class="col-lg-3 offset-lg-0">
+                <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'download'"
+                        style="border: 3px solid black;width: 185px;margin: auto;margin-top: 15px;margin-bottom: 15px;color: rgb(54,54,54);background-color: #fefefe;">
+                    Завантажити
+                </button>
+            </div>
+        {% elif not anon and not bought %}
+            <div class="col-lg-3 offset-lg-3">
+                <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
+                    <input type="hidden" name="data" value="{{ payment_form.data }}" />
+                    <input type="hidden" name="signature" value="{{ payment_form.signature }}" />
+                    <button style="margin-top: 8px; border: none !important; display:inline-block !important;text-align: center !important;padding: 7px 20px !important;
+                        color: #fff !important; font-size:16px !important; font-weight: 600 !important; font-family:OpenSans, sans-serif; cursor: pointer !important; border-radius: 2px !important;
+                        background: rgb(122,183,43) !important;" onmouseover="this.style.opacity='0.5';" onmouseout="this.style.opacity='1';">
+                        <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text"
+                            style="margin-right: 7px !important; vertical-align: middle !important;"/>
+                        <span style="vertical-align:middle; !important">Купити за 120 UAH</span>
+                    </button>
+                </form>
+            </div>
+        {% else %}
+            <div class="col-lg-3 offset-lg-3">
+                Будь ласка увійдіть в ваш аккаунт.
+            </div>
+        {% endif %}
         <div id="reviewStars-input">
             Оцінити видання:
             <span class="raiting"> 5.0
