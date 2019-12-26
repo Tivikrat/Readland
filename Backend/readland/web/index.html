@@ -79,7 +79,7 @@
       {% for book_info in  books_info %}
 
       <article class="card">
-        <a href="#">
+        <a href="/books/{{ book_info.book.id }}/">
           <figure class="thumbnail">
           <center>
           <img src="/uploaded/{{ book_info.book.photo }}" alt="meow">

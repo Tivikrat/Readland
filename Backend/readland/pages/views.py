@@ -1,5 +1,3 @@
-import base64
-import hashlib
 import math
 import mimetypes
 import os
@@ -8,13 +6,14 @@ import urllib.parse
 import random
 
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from liqpay.liqpay3 import LiqPay
 
 from books.models import Book, UserBook
-from pages.forms import AddBookForm
+from pages.forms import AddBookForm, UpdateBookForm
 from readland import settings
 
 
@@ -50,6 +49,7 @@ def add_book(request):
         form = AddBookForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             book = form.save(commit=False)
+            book.created_by = request.user
             book.save()
             return redirect("../books/" + str(book.id))
         else:
@@ -79,6 +79,59 @@ def download_book(request, book_id):
 @login_required
 def read_book(request, book_id):
     return redirect("https://filerender/pdf/index.php?book_url=127.0.0.1:8000/books/" + str(book_id) + "/download")
+
+
+@login_required
+def update_book(request, book_id):
+    user = request.user
+    book = get_object_or_404(Book, id=book_id)
+
+    allow_edit = False
+    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and\
+            book.created_by == user or user.is_superuser:
+        allow_edit = True
+
+    if request.method == 'POST' and allow_edit:
+        add_book_form = UpdateBookForm(data=request.POST, files=request.FILES, instance=book)
+
+        if add_book_form.is_valid():
+            book_form = add_book_form.save(commit=False)
+            book_form.save()
+        else:
+            return HttpResponse("Error! Empty fields: " + str(add_book_form.errors))
+
+        return redirect("/")
+    else:
+        raise PermissionDenied()
+
+
+@login_required
+def delete_book(request, book_id):
+    user = request.user
+    book = get_object_or_404(Book, id=book_id)
+
+    allow_edit = False
+    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and\
+            book.created_by == user or user.is_superuser:
+        allow_edit = True
+
+    if allow_edit:
+        book.delete()
+
+        return redirect("/")
+    else:
+        raise PermissionDenied()
+
+
+def book_suggestions(request):
+    book_name = request.GET.get('name', None)
+
+    if book_name is not None:
+        books = Book.objects.filter(name__icontains=book_name).values()
+    else:
+        books = Book.objects.all().values()
+
+    return JsonResponse(list(books), safe=False)
 
 
 def view_search(request):
@@ -322,12 +375,13 @@ def view_book_info(request, book_id):
     }
     signature = None
     data = None
+    price = None
     if request.user.is_authenticated:
         anon = False
 
         if user_book is not None and not user_book.is_bought:
             liqpay = LiqPay(settings.LIQPAY_SANDBOX_PUBLIC_KEY, settings.LIQPAY_SANDBOX_PRIVATE_KEY)
-            price = 120
+            price = book.price
             params = {
                 "version": 3,
                 "action": "pay",
@@ -363,7 +417,8 @@ def view_book_info(request, book_id):
                                                  "bought": bought,
                                                  "payment_form": {
                                                      'signature': signature,
-                                                     'data': data
+                                                     'data': data,
+                                                     'price': price
                                                  }
                                                  },
                   content_type="text/html")

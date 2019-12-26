@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.core import validators
 from django.db import models
@@ -12,8 +13,10 @@ class Book(models.Model):
     description = models.TextField()
     photo = models.ImageField(upload_to='book_previews', null=True)
     file = models.FileField(upload_to='books')
-    rating = models.FloatField(null=True)
+    rating = models.FloatField(default=0, null=False)
     views_count = models.IntegerField(default=0)
+    price = models.IntegerField(default=100)
+    created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ['name', 'author']
