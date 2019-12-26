@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from user_profile.models import UserProfile
+from user_profile.models import UserProfile, UserList
 
 
 class UserProfileForm(forms.ModelForm):
@@ -13,6 +13,12 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ['balance', 'user']
+
+
+class UserListForm(forms.ModelForm):
+    class Meta:
+        model = UserList
+        exclude = ['user']
 
 
 class UserForm(forms.ModelForm):

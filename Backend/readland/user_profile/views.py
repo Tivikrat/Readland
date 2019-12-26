@@ -1,9 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from user_profile.forms import UserProfileForm, UserForm
-from user_profile.models import UserProfile
+
+from books.models import Book
+from user_profile.forms import UserProfileForm, UserForm, UserListForm
+from user_profile.models import UserProfile, UserList, UserListBook
 
 
 # Create your views here.
@@ -56,3 +59,124 @@ def user_profile(request, user_id):
         return redirect("/user/" + str(user.id) + '/')
     else:
         raise PermissionDenied()
+
+
+@login_required
+def user_list_create(request, user_id):
+    if user_id is None or user_id <= 0:
+        raise Http404
+
+    user = get_object_or_404(get_user_model(), id=user_id)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
+            request.user.id > 0 and request.user.id == user.id or request.user.is_superuser:
+        allow_edit = True
+
+    if request.method == 'POST' and allow_edit:
+        list_form = UserListForm(data=request.POST, files=request.FILES)
+
+        if list_form.is_valid():
+            user_list = list_form.save(commit=False)
+            user_list.user = user
+            user_list.save()
+        else:
+            return HttpResponse("Error! Empty fields: " + str(list_form.errors))
+
+        return redirect("/user/" + str(user.id) + '/')
+    else:
+        raise PermissionDenied()
+
+
+@login_required
+def user_list_update(request, user_id, list_id):
+    if user_id is None or user_id <= 0:
+        raise Http404
+
+    user = get_object_or_404(get_user_model(), id=user_id)
+    u_list_obj = get_object_or_404(UserList, id=list_id)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
+            request.user.id > 0 and request.user.id == user.id and u_list_obj.user == user or request.user.is_superuser:
+        allow_edit = True
+
+    if request.method == 'POST' and allow_edit:
+        list_form = UserListForm(data=request.POST, files=request.FILES, instance=u_list_obj)
+
+        if list_form.is_valid():
+            user_list = list_form.save(commit=False)
+            user_list.user = user
+            user_list.save()
+        else:
+            return HttpResponse("Error! Empty fields: " + str(list_form.errors))
+
+        return redirect("/user/" + str(user.id) + '/')
+    else:
+        raise PermissionDenied()
+
+
+@login_required
+def user_list_add_book(request, user_id, list_id, book_id):
+    if user_id is None or user_id <= 0:
+        raise Http404
+
+    user = get_object_or_404(get_user_model(), id=user_id)
+    u_list_obj = get_object_or_404(UserList, id=list_id)
+    book_obj = get_object_or_404(Book, id=book_id)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
+            request.user.id > 0 and request.user.id == user.id and u_list_obj.user == user or request.user.is_superuser:
+        allow_edit = True
+
+    if allow_edit:
+        user_list_book = UserListBook(list=u_list_obj, book=book_obj)
+        user_list_book.save()
+    else:
+        raise PermissionDenied()
+
+    return redirect("/user/" + str(user.id) + '/')
+
+
+@login_required
+def user_list_remove_book(request, user_id, list_id, list_book_id):
+    if user_id is None or user_id <= 0:
+        raise Http404
+
+    user = get_object_or_404(get_user_model(), id=user_id)
+    u_list_obj = get_object_or_404(UserList, id=list_id)
+    u_list_book_obj = get_object_or_404(UserListBook, id=list_book_id)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
+            request.user.id > 0 and request.user.id == user.id and u_list_obj.user == user or request.user.is_superuser:
+        allow_edit = True
+
+    if allow_edit:
+        u_list_book_obj.delete()
+    else:
+        raise PermissionDenied()
+
+    return redirect("/user/" + str(user.id) + '/')
+
+
+@login_required
+def user_list_remove(request, user_id, list_id):
+    if user_id is None or user_id <= 0:
+        raise Http404
+
+    user = get_object_or_404(get_user_model(), id=user_id)
+    u_list_obj = get_object_or_404(UserList, id=list_id)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user, 'id') and request.user.id is not None and\
+            request.user.id > 0 and request.user.id == user.id and u_list_obj.user == user or request.user.is_superuser:
+        allow_edit = True
+
+    if allow_edit:
+        u_list_obj.delete()
+    else:
+        raise PermissionDenied()
+
+    return redirect("/user/" + str(user.id) + '/')

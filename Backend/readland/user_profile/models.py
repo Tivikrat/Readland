@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from books.models import Book
 
 
 # Create your models here.
@@ -14,3 +15,19 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.last_name + ' ' + self.first_name + ' (ID: ' + str(self.user.id) + ', ' + self.user.username + ')'
+
+
+class UserList(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, default='Список користувача', null=False)
+
+    def __str__(self):
+        return self.name
+
+
+class UserListBook(models.Model):
+    list = models.ForeignKey(UserList, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.list.name + ' (' + str(self.list.user.id) + ') - ' + self.book.name
