@@ -106,12 +106,12 @@
   </div>
 
   <div class="basicInfo">
-  <h2 style="font-size:3em;">{{ user.username }}</h2>
-  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+  <h2 style="font-size:3em;">{{ auth_user.username }}</h2>
+  <h2>{{ auth_user.first_name }} {{ auth_user.last_name }}</h2>
   <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ auth_user.email }}<a/></div></h3>-->
-  <h3><div class="info">Телефон: <a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></div></h3>
+  <h3><div class="info">Телефон: <a href="tel:+3809723049">+{{ auth_user.mobile_phone }}<a/></div></h3>
   <h3><div class="info">О себе</div> </h3>
-  <h3>{{ user.about }}</h3>
+  <h3>{{ auth_user.about }}</h3>
   </div>
 </div>
 <br />
