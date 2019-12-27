@@ -97,7 +97,7 @@
   <br>
   <br>
   <div id="ProfilePic">
-     {% if user.photo %}
+     {% if auth_user.photo %}
        
             <p><img alt="no photo" src="{{ user.photo.url }}"></p>
         {% else %}
