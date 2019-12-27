@@ -39,7 +39,7 @@ def main_page(request):
     for book in books:
         books_info += [{'book': book, 'rating': int(get_raiting(book) * 20), 'views_count': get_views_count(book)}]
     return render(request, 'index.html', {'books_info': books_info,
-                                          "anon": anon})
+                                          "anon": anon, 'user_id': request.user.id})
 
 
 # Create your views here.
