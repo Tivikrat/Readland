@@ -1,5 +1,9 @@
 {% load static %}
 <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Readland</title>
+
   <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
 
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
@@ -18,8 +22,11 @@
 
 
 
+
+
 <main class="main-area">
-  <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+
+ <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
      style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -69,6 +76,7 @@
         </div>
     </div>
 </nav>
+
 <br />
 <br />
   <div class="centered">
@@ -79,7 +87,7 @@
       {% for book_info in  books_info %}
 
       <article class="card">
-        <a href="#">
+        <a href="/books/{{ book_info.book.id }}/">
           <figure class="thumbnail">
           <center>
           <img src="/uploaded/{{ book_info.book.photo }}" alt="meow">
