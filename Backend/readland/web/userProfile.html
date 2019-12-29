@@ -94,24 +94,26 @@
   <!--<h4>Счет аккаунта: ${{ user.balance }}</h4>-->
   </div>
   <br>
-  <br>
-  <br>
+ 
   <div id="ProfilePic">
      {% if user.photo %}
-       
+            
             <p><img alt="no photo" src="{{ user.photo.url }}"></p>
+          
         {% else %}
             
         {% endif %}
   </div>
 
   <div class="basicInfo">
-  <h2 style="font-size:3em;">{{ user.username }}</h2>
-  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+
+  <h2 style="font-size:54px;">{{ user.username }}</h2>
+  <h2 style="font-size:47px;">{{ user.first_name }} {{ user.last_name }}</h2>
   <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ auth_user.email }}<a/></div></h3>-->
   <h3><div class="info">Телефон: <a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></div></h3>
   <h3><div class="info">О себе</div> </h3>
-  <h3>{{ user.about }}</h3>
+  <h3 style="font-size:47px;">{{ user.about }}</h3>
+
   </div>
 </div>
 <br />
@@ -124,7 +126,7 @@
   padding: 20px;
   border-radius: 5px;
   border:solid lightgrey 0.5px;
-  height:550px;
+  height:auto;
  }
  
  hr.style-six {
@@ -184,8 +186,8 @@
   position: absolute;
   padding-top: 5px;
   display: inline-block;
-  width: 285px;
-  height: 285px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
 
   background-repeat: no-repeat;
@@ -193,6 +195,7 @@
   background-size: cover;
 }
 .info { 
+  font-size: 47px;
   color:#90949C;
  }
 
