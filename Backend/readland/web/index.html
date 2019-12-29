@@ -61,6 +61,8 @@
                                                                 href="/accounts/google/login"
                                                                 style="margin-top: 20px;background-color: #9b9bfd;">Log
                         In</a></li>
+
+                        
                 {% else %}
 
                     <li role="presentation" class="nav-item">
@@ -68,7 +70,14 @@
                             <button class="btn btn-primary" type="submit"
                                     style="margin-top: 20px;background-color: #9b9bfd;">Log Out
                             </button>
+                          
                         </form>
+                        <li style="padding-left:5px;">  <a href="/user/{{ user_id }}">
+                            <button class="btn btn-primary" type="submit"
+                                    style="margin-top: 20px;background-color: #9b9bfd;">Мой профиль
+                            </button>
+                            </a>
+                        </li>
                         {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
                     </li>
                 {% endif %}
