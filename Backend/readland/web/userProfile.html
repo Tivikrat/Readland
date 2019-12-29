@@ -277,7 +277,7 @@
 
 </style>
     <div class="row">
-        <!--{ for list in lists }-->
+        {% for list in lists %}
             <div class="col" style="background-color: #ededed;min-height: 400px;">
                 <div class="book-column" style="margin-top: 10px;"><i class="fa fa-edit d-flex float-right"
                                                                       style="font-size: 25px;"></i>
@@ -329,7 +329,7 @@
                     </div>
                 </div>
             </div>
-        <!--{ endfor }-->
+        {% endfor %}
     </div>
     {#<div id="grid">#}
     {#  <div class="myBook">#}
