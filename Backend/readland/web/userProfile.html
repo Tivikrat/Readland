@@ -111,139 +111,176 @@
             {% endif %}
         </div>
 
-        <div class="basicInfo">
-            <h2 style="font-size:3em;">{{ user.username }}</h2>
-            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-            <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ auth_user.email }}<a/></div></h3>-->
-            <h3>
-                <div class="info">Телефон: <a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></div>
-            </h3>
-            <h3>
-                <div class="info">О себе</div>
-            </h3>
-            <h3>{{ user.about }}</h3>
-        </div>
-    </div>
+   <div class="basicInfo">
+
+  <h2 style="font-size:54px;">{{ user.username }}</h2>
+  <h2 style="font-size:47px;">{{ user.first_name }} {{ user.last_name }}</h2>
+  <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ auth_user.email }}<a/></div></h3>-->
+  <h3><div class="info">Телефон: <a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></div></h3>
+  <h3><div class="info">О себе</div> </h3>
+  <h3 style="font-size:47px;">{{ user.about }}</h3>
+
+  </div>
+
+
+  <br />
+  <br />
+  <br />
+  <h1>Мои книги</h1>
+    <hr class="style-six">
+
+  <div id="grid">
+  <div class="myBook">
+  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i.livelib.ru/boocover/1002326231/140/551e/Dzh._K._Rouling__Garri_Potter_i_uznik_Azkabana.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i.livelib.ru/boocover/1002281151/140/60e6/Stiven_King__Zelenaya_milya.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+
+  <div class="myBook">
+  <img src="https://static.thenounproject.com/png/111365-200.png" style="width:141.666666666px !important;height:141.666666666px !important; margin-top: 70.833333333px">
+  </div>
+</div>
+
+    <br />
+    <br />
+    <br/>
+    <br/>
     <br/>
     <br/>
     
+    
     <h1>Мои списки</h1>
     <hr class="style-six">
-    <style>
-        .profile {
-            background: white !important;
-            padding: 20px;
-            border-radius: 5px;
-            border: solid lightgrey 0.5px;
-            height: 550px;
-        }
+  <style>
+    .profile { 
+  background: white !important;
+  padding: 20px;
+  border-radius: 5px;
+  border:solid lightgrey 0.5px;
+  width: auto !important;
+  height:auto;
+ }
+ 
+ hr.style-six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+  body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto", arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #222;
+  background: #E9EBEE;
+}
 
-        hr.style-six {
-            border: 0;
-            height: 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
+.basicInfo {
+    padding-left: 315px;
+}
 
-        body {
-            padding: 0px;
-            margin: 0px;
-            font-family: "Roboto", arial, sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            line-height: 1.8;
-            color: #222;
-            background: #E9EBEE;
-        }
+#grid { 
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+ grid-gap: 3vw;
+  }
+#grid > div {
+  font-size: 5vw;
+  padding: .5em;
+  text-align: center;
+}
 
-        .basicInfo {
-            padding-left: 315px;
-        }
+.myBook { 
+    width: 200px;
+    height: 120px;
+    margin-bottom: 125px;
+    padding: 25px;
+    margin-left: -15px;
+     }
 
-        #grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            grid-gap: 7vw;
-        }
+/* resize images */
+.myBook img {
 
-        #grid > div {
-            font-size: 5vw;
-            padding: .5em;
-            text-align: center;
-        }
+    width: 183.333333333px;
+    height: 283.333333333px;
+    object-fit: cover;
 
-        .myBook {
-            width: 200px;
-            height: 120px;
-            margin-bottom: 100px;
-            padding: 20px;
-        }
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
-        /* resize images */
-        .myBook img {
-
-            width: 183.333333333px;
-            height: 283.333333333px;
-            object-fit: cover;
-
-            display: inline-block;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-        }
+}
 
 
-        #ProfilePic img {
-            position: absolute;
-            padding-top: 5px;
-            display: inline-block;
-            width: 285px;
-            height: 285px;
-            border-radius: 50%;
+#ProfilePic img{
+  position: absolute;
+  padding-top: 5px;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
 
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-        }
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.info { 
+  font-size: 47px;
+  color:#90949C;
+ }
 
-        .info {
-            color: #90949C;
-        }
+.main {
+    padding-left: 200px;
+    padding-right: 200px;
+}
 
-        .main {
-            padding-left: 200px;
-            padding-right: 200px;
-        }
+#AccountMoney
+{
+  margin-top: 5px;
+  position: relative;
+  float: right; /* Обтекание по правому краю */
+}
 
-        #AccountMoney {
-            margin-top: 5px;
-            position: relative;
-            float: right; /* Обтекание по правому краю */
-        }
+@media screen and (max-width: 400px) {
+  .main {
+    flex-direction: column;
+  }
 
-        @media screen and (max-width: 400px) {
-            .main {
-                flex-direction: column;
-            }
+@media screen and (min-width: 0px) {
+  section.main {
+  font-size: 30px;
+    padding:0;
+  }
+}
 
-            @media screen and (min-width: 0px) {
-                section.main {
-                    font-size: 30px;
-                    padding: 0;
-                }
-            }
+@media screen and (max-width: 1000px) {
+  section.main {
+  font-size: 15px;
+    padding:0;
+  }
+}
 
-            @media screen and (max-width: 1000px) {
-                section.main {
-                    font-size: 15px;
-                    padding: 0;
-                }
-            }
-        }
 
-    </style>
+</style>
     <div class="row">
-        {% for list in lists %}
+        <!--{ for list in lists }-->
             <div class="col" style="background-color: #ededed;min-height: 400px;">
                 <div class="book-column" style="margin-top: 10px;"><i class="fa fa-edit d-flex float-right"
                                                                       style="font-size: 25px;"></i>
@@ -295,7 +332,7 @@
                     </div>
                 </div>
             </div>
-        {% endfor %}
+        <!--{ endfor }-->
     </div>
     {#<div id="grid">#}
     {#  <div class="myBook">#}
