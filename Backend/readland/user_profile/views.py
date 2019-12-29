@@ -41,8 +41,8 @@ def user_profile(request, user_id):
             'about': local_user_profile.about_user,
             'photo': local_user_profile.photo
         }
-
-        return render(request, 'userProfile.html', {'user': user_data, 'allow_edit': allow_edit})
+        lists = UserList.objects.filter(user=request.user)
+        return render(request, 'userProfile.html', {'user': user_data, 'allow_edit': allow_edit, 'lists': lists})
     elif request.method == 'POST' and allow_edit:
         up_form = UserProfileForm(data=request.POST, files=request.FILES, instance=local_user_profile)
         u_form = UserForm(data=request.POST, instance=user)
@@ -136,10 +136,10 @@ def user_list_add_book(request, user_id, list_id, book_id):
     if allow_edit:
         user_list_book = UserListBook(list=u_list_obj, book=book_obj)
         user_list_book.save()
+
+        return redirect("/user/" + str(user.id) + '/')
     else:
         raise PermissionDenied()
-
-    return redirect("/user/" + str(user.id) + '/')
 
 
 @login_required
