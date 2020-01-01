@@ -1,136 +1,106 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="RU">
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>chbi</title>
-    <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
-
+    <title>AddNewBook</title>
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
+    <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css"%}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css"%}">
 </head>
 
 <body>
-<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
-     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
-    <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/LogoLong.png"></a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                class="navbar-toggler-icon"></span></button>
-        <div
-                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#"
-                                                                  style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
-            <div class="d-md-block"
-                 style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div>
-            <a class="d-block" href="#" style="color: rgb(236,236,236);font-size: 25px;">Моя библиотека</a>
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item d-block" role="presentation">
-                    <form class="form-inline mr-auto" target="_self">
-                        <div class="form-group d-flex justify-content-end"
-                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label
-                                for="search-field"></label><input class="form-control search-field" type="search"
-                                                                  id="search-field" name="search"
-                                                                  style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
-                                                                  placeholder="Search">
-                            <i
-                                    class="fa fa-search"
-                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
-                        </div>
-                    </form>
-                </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#"
-                                                            style="padding-right: 0px;padding-left: 0px;"><img
-                        src="assets/img/cart.png" style="padding-left: 5px;padding-right: 5px;"></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img
-                        src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
-            </ul>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap" style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
+        <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/LogoLong.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#" style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
+                <div class="d-md-block" style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div><a class="d-block" href="#" style="color: rgb(236,236,236);font-size: 25px;">Моя библиотека</a>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item d-block" role="presentation">
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group d-flex justify-content-end" style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;"><label for="search-field"></label><input class="form-control search-field" type="search" id="search-field" name="search" style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;" placeholder="Search">
+                                <i
+                                    class="fa fa-search" style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                            </div>
+                        </form>
+                    </li>
+
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}" style="padding-left: 0px;"><img src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
+                </ul>
         </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <ol class="breadcrumb" style="background-color: rgba(233,236,239,0);">
-                <li class="breadcrumb-item"><a href="#"><span><i class="fa fa-home" style="font-size: 20px;"></i></span></a>
-                </li>
-                <li class="breadcrumb-item"><a href="#"><span>Главная</span></a></li>
-                <li class="breadcrumb-item"><a href="#"><span>Управление изданием</span></a></li>
-            </ol>
         </div>
-        <div class="col">
-            <div style="padding-top: 25px;"><i
-                    class="fa fa-trash-o float-right d-lg-flex align-items-end align-items-lg-end"
-                    style="font-size: 30px;padding-left: 15px;"></i>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle border rounded-0 border-dark float-right mb-auto"
-                            data-toggle="dropdown" aria-expanded="false" type="button" style="font-weight: bold;">Доступ
-                    </button>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First
-                        Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a
-                            class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ol class="breadcrumb" style="background-color: rgba(233,236,239,0);">
+                    <li class="breadcrumb-item"><a href="#"><span><i class="fa fa-home" style="font-size: 20px;"></i></span></a></li>
+                    <li class="breadcrumb-item"><a href="#"><span>Главная</span></a></li>
+                    <li class="breadcrumb-item"><a href="#"><span>Управление изданием</span></a></li>
+                </ol>
             </div>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 15px;">
-        <div class="col-xl-3">
-            <div><img class="d-block" src="assets/img/bookVIew.png"
-                      style="margin: auto;max-width: 210;max-height: 300;">
-                <button class="btn border rounded-0 border-dark d-block" type="button"
-                        style="margin: auto;margin-top: 20px;background-color: #ededed;font-weight: bold;">Загрузить
-                </button>
-            </div>
-        </div>
-        <div class="col-xl-7">
-            <div>
-                <h5>Название</h5><input class="border rounded-0 border-dark" type="text" style="width: 400px;">
-                <div style="margin-top: 15px;">
-                    <div class="d-inline-block" style="margin-right: 40px;">
-                        <h5>Тэг&nbsp;</h5><input class="border rounded-0 border-dark" type="text" style="width: 190px;">
+            <div class="col">
+                <div style="padding-top: 25px;"><i class="fa fa-trash-o float-right d-lg-flex align-items-end align-items-lg-end" style="font-size: 30px;padding-left: 15px;"></i>
+                    <div class="dropdown"><button class="btn dropdown-toggle border rounded-0 border-dark float-right mb-auto" data-toggle="dropdown" aria-expanded="false" type="button" style="font-weight: bold;">Доступ</button>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
                     </div>
-                    <div class="d-inline-block">
-                        <h5>Дата издания&nbsp;</h5><input class="border rounded-0 border-dark" type="date"
-                                                          style="width: 170px;"></div>
-                </div>
-                <div style="margin-top: 15px;">
-                    <h5>Описание&nbsp;</h5><textarea class="border rounded-0 border-dark"
-                                                     style="width: 100%;height: 100px;"></textarea></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div>
-                <div class="d-block d-xl-flex align-self-center justify-content-xl-center" style="margin: auto;">
-                    <button class="btn border rounded-0 border-dark" type="button"
-                            style="margin-right: 50px;background-color: #ededed;font-weight: bold;">Отменить
-                    </button>
-                    <button class="btn border rounded-0 border-dark" type="button"
-                            style="background-color: #ededed;font-style: normal;font-weight: bold;">Сохранить
-                    </button>
                 </div>
             </div>
         </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="col-xl-3">
+                <div><img class="d-block" src="assets/img/bookVIew.png" style="margin: auto;max-width: 210;max-height: 300;"><button class="btn border rounded-0 border-dark d-block" type="button" style="margin: auto;margin-top: 20px;background-color: #ededed;font-weight: bold;">Загрузить</button></div>
+            </div>
+            <div class="col-xl-7">
+                <div>
+                    <h5>Название</h5><input class="border rounded-0 border-dark" type="text" style="width: 400px;">
+                    <div style="margin-top: 15px;">
+                        <div class="d-inline-block" style="margin-right: 40px;">
+                            <h5>Тэг&nbsp;</h5><input class="border rounded-0 border-dark" type="text" style="width: 190px;"></div>
+                        <div class="d-inline-block" style="padding-right: 40px;">
+                            <h5>Дата издания&nbsp;</h5><input class="border rounded-0 border-dark" type="date" style="width: 170px;"></div>
+                        <div class="d-inline-block">
+                            <h5>Цена</h5>
+                            <div class="d-inline-flex">
+                                <input type="number" class="border rounded-0 border-dark" style="width: 100px;" />
+                                <h6 style="width: 50px;margin-bottom: 0px;padding-top: 3px;">&nbsp;UAH</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <h5>Описание&nbsp;</h5><textarea class="border rounded-0 border-dark" style="width: 100%;height: 100px;"></textarea></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <div class="d-block d-xl-flex align-self-center justify-content-xl-center" style="margin: auto;"><button class="btn border rounded-0 border-dark" type="button" style="margin-right: 50px;background-color: #ededed;font-weight: bold;">Отменить</button><button class="btn border rounded-0 border-dark" type="button" style="background-color: #ededed;font-style: normal;font-weight: bold;">Сохранить</button></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script src="{% static "BootstrapStudioAssets/js/jquery.min.js" %}"></script>
-<script src="{% static "BootstrapStudioAssets/bootstrap/js/bootstrap.min.js" %}"></script>
-<script src="{% static "BootstrapStudioAssets/js/script.js" %}"></script>
+    <script src="{% static "BootstrapStudioAssets/js/jquery.min.js" %}"></script>
+    <script src="{% static "BootstrapStudioAssets/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "BootstrapStudioAssets/js/script.js" %}"></script>
 </body>
 
 </html>

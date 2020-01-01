@@ -5,72 +5,101 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>reg</title>
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css"%}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
-    <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css"%}">
-    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css"%}">
+    <title>AddNewBook</title>
+    <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/material-icons.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Contact-Form-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Basic.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Footer-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Form-Select---Full-Date---Month-Day-Year.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Pretty-Footer.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/gradient-navbar.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-Clean.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css" %}">
 </head>
 
 <body style="display: flex;flex-direction: column;height: 100%;">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap" style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
-        <div class="container"><a class="navbar-brand" href="#"><img src="{% static "/BootstrapStudioAssets/img/LogoLong.png"%}"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#" style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item d-block" role="presentation">
-                        <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group d-flex justify-content-end" style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;margin-right: 70px;"><label for="search-field"></label><input class="form-control search-field" type="search" id="search-field" name="search" style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;" placeholder="Search">
-                                <i
-                                    class="fa fa-search" style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
-                            </div>
-                        </form>
-                    </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-right: 0px;padding-left: 0px;"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img src="{% static "/BootstrapStudioAssets/img/LogoLong.png"%}" style="padding-right: 5px;padding-left: 5px;"></a></li>
-                </ul>
+<nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+     style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
+    <div class="container"><a class="navbar-brand" href="/"><img src="assets/img/LogoLong.png"></a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div
+                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#"
+                                                                  style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item d-block" role="presentation">
+                    <form class="form-inline mr-auto" target="_self">
+                        <div class="form-group d-flex justify-content-end"
+                             style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;margin-right: 70px;">
+                            <label for="search-field"></label><input class="form-control search-field" type="search"
+                                                                     id="search-field" name="search"
+                                                                     style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                                                     placeholder="Search">
+                            <i
+                                    class="fa fa-search"
+                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="#"
+                                                            style="padding-right: 0px;padding-left: 0px;"></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}" style="padding-left: 0px;"><img
+                        src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
+            </ul>
         </div>
+    </div>
+</nav>
+<div class="container-fluid" style="width: 100%;padding-left: 0px;">
+    <div class="row">
+        <div class="col-xl-9"><img class="img-fluid" src="assets/img/Ресурс%201.png" style="height: 100%;width: 100%;">
         </div>
-    </nav>
-    <div class="container" style="width: 100%;">
-        <div class="row">
-            <div class="col-xl-9"><img class="img-fluid" src="{% static "/BootstrapStudioAssets/img/Ресурс 1.png"%}" style="height: 100%;width: 100%;"></div>
-            <div class="col-xl-3">
-                <div>
-                    <div class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center" style="width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;"><i class="fa fa-plus align-items-center align-content-center align-self-center" style="font-size: 25px;color: rgb(255,255,255);"></i></div><input class="border rounded-0 border-dark d-block" type="text" placeholder="Ник " style="margin: auto;margin-top: 15px;width: 200px;">
-                    <input
-                        class="border rounded-0 border-dark d-block" type="text" placeholder="Фамилия" style="margin: auto;margin-top: 15px;width: 200px;"><input class="border rounded-0 border-dark d-block" type="text" placeholder="Имя " style="margin: auto;margin-top: 15px;width: 200px;"><input class="border rounded-0 border-dark d-block" type="email" placeholder="E-mail" style="margin: auto;margin-top: 15px;width: 200px;">
-                        <input
-                            class="border rounded-0 border-dark d-block" type="tel" placeholder="Телефон" style="margin: auto;margin-top: 15px;width: 200px;">
-                            <div class="d-block" style="margin: auto;">
-                                <h6 class="d-sm-flex justify-content-sm-center" style="margin-top: 6px;padding-right: 115px;">О себе:</h6><textarea class="border rounded-0 border-dark d-block" style="margin: auto;height: 100%;width: 200px;"></textarea></div>
+        <div class="col-xl-3 d-block" style="margin: auto;">
+            <div>
+                <div class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center"
+                     style="width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;">
+                    <button class="btn" type="button"><i
+                            class="fa fa-plus align-items-center align-content-center align-self-center"
+                            style="font-size: 25px;color: rgb(255,255,255);"></i></button>
                 </div>
+                <input class="border rounded-0 border-dark d-block"
+                       type="text" placeholder="Ник " style="margin: auto;margin-top: 15px;width: 200px;"><input
+                    class="border rounded-0 border-dark d-block" type="text" placeholder="Фамилия"
+                    style="margin: auto;margin-top: 15px;width: 200px;"><input
+                    class="border rounded-0 border-dark d-block"
+                    type="text" placeholder="Имя " style="margin: auto;margin-top: 15px;width: 200px;"><input
+                    class="border rounded-0 border-dark d-block" type="email" placeholder="E-mail"
+                    style="margin: auto;margin-top: 15px;width: 200px;"><input
+                    class="border rounded-0 border-dark d-block"
+                    type="tel" placeholder="Телефон" style="margin: auto;margin-top: 15px;width: 200px;">
+                <div class="d-block" style="margin: auto;">
+                    <h6 class="d-sm-flex justify-content-sm-center" style="margin-top: 6px;padding-right: 115px;">О
+                        себе:</h6><textarea class="border rounded-0 border-dark d-block"
+                                            style="margin: auto;height: 100%;width: 200px;"></textarea></div>
+            </div>
+            <div style="margin-top: 30px;">
+                <button class="btn btn-light border rounded-0 border-dark d-block" type="button" style="margin: auto;">
+                    Зарегистрироваться
+                </button>
             </div>
         </div>
     </div>
-    <div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic">
-        <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
-            <p class="copyright">© &nbsp;Readland 2019</p>
-        </footer>
-    </div>
-    <script src="{% static "BootstrapStudioAssets/js/jquery.min.js"%}"></script>
-    <script src="{% static "BootstrapStudioAssets/bootstrap/js/bootstrap.min.js"%}"></script>
-    <script src="{% static "BootstrapStudioAssets/js/script.js"%}"></script>
+</div>
+<div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="padding-top: 0px;height: 60px;">
+    <footer class="text-center" style="height: 30px;padding-top: 5px;background-color: rgb(37,38,58);">
+        <p class="copyright">© &nbsp;Readland 2019</p>
+    </footer>
+</div>
+<script src="{% static "BootstrapStudioAssets/js/jquery.min.js" %}"></script>
+<script src="{% static "BootstrapStudioAssets/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "BootstrapStudioAssets/js/script.js" %}"></script>
 </body>
 
 </html>
