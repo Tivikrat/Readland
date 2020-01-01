@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'readland',
         'USER': 'readland',
-        'PASSWORD': '123321',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '5432',
         #jdbc:postgresql://localhost:5432/readland
