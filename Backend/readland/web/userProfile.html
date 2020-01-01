@@ -3,16 +3,16 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-   <title>Readland &bull; {{ name }}</title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Readland &bull; {{ name }}</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/design.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/design.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
 
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
@@ -27,9 +27,14 @@
     <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/material-icons.min.css" %}">
     <link rel="stylesheet" href="{% static "fonts/fontawesome5-overrides.min.css" %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 
-   <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700'
+          rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -83,29 +88,27 @@
         </div>
     </div>
 </nav>
-<br />
-<br />
-<section class="main">
-  <h1>Профиль</h1>
-  <hr class="style-six">
 
-  <div class="profile">
-     <div id="AccountMoney">
-  <!--<h4>Счет аккаунта: ${{ user.balance }}</h4>-->
-  </div>
-  <br>
- 
-  <div id="ProfilePic">
-     {% if user.photo %}
-            
-            <p><img alt="no photo" src="{{ user.photo.url }}"></p>
-          
-        {% else %}
-            
-        {% endif %}
-  </div>
+<section class="main" style="margin-top: 25px;">
+    <h1>Профиль</h1>
+    <hr class="style-six">
+    <div class="profile">
+        <div id="AccountMoney">
+            <!--<h4>Счет аккаунта: ${{ user.balance }}</h4>-->
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="ProfilePic">
+            {% if user.photo %}
 
-  <div class="basicInfo">
+                <p><img alt="no photo" src="{{ user.photo.url }}"></p>
+            {% else %}
+
+            {% endif %}
+        </div>
+
+   <div class="basicInfo">
 
   <h2 style="font-size:54px;">{{ user.username }}</h2>
   <h2 style="font-size:47px;">{{ user.first_name }} {{ user.last_name }}</h2>
@@ -115,17 +118,56 @@
   <h3 style="font-size:47px;">{{ user.about }}</h3>
 
   </div>
+
+
+  <br />
+  <br />
+  <br />
+  <h1>Мои книги</h1>
+    <hr class="style-six">
+
+  <div id="grid">
+  <div class="myBook">
+  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i.livelib.ru/boocover/1002326231/140/551e/Dzh._K._Rouling__Garri_Potter_i_uznik_Azkabana.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i.livelib.ru/boocover/1002281151/140/60e6/Stiven_King__Zelenaya_milya.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+  <div class="myBook">
+  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
+  </div>
+
+  <div class="myBook">
+  <img src="https://static.thenounproject.com/png/111365-200.png" style="width:141.666666666px !important;height:141.666666666px !important; margin-top: 70.833333333px">
+  </div>
 </div>
-<br />
-<br />
-  <h1>Мои Книги</h1>
-  <hr class="style-six">
+
+    <br />
+    <br />
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+    
+    <h1>Мои списки</h1>
+    <hr class="style-six">
   <style>
     .profile { 
   background: white !important;
   padding: 20px;
   border-radius: 5px;
   border:solid lightgrey 0.5px;
+  width: auto !important;
   height:auto;
  }
  
@@ -147,13 +189,13 @@
 }
 
 .basicInfo {
-    padding-left: 315px;
+    padding-left: 415px;
 }
 
 #grid { 
  display: grid;
- grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
- grid-gap: 7vw;
+ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+ grid-gap: 3vw;
   }
 #grid > div {
   font-size: 5vw;
@@ -164,8 +206,9 @@
 .myBook { 
     width: 200px;
     height: 120px;
-    margin-bottom: 100px;
-    padding: 20px;
+    margin-bottom: 125px;
+    padding: 25px;
+    margin-left: -15px;
      }
 
 /* resize images */
@@ -179,6 +222,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
 }
 
 
@@ -232,43 +276,96 @@
 
 
 </style>
-
-<div id="grid">
-  <div class="myBook">
-  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">
-  </div>
-  <div class="myBook">
-  <img src="https://i.livelib.ru/boocover/1002326231/140/551e/Dzh._K._Rouling__Garri_Potter_i_uznik_Azkabana.jpg">
-  </div>
-  <div class="myBook">
-  <img src="https://i.livelib.ru/boocover/1002281151/140/60e6/Stiven_King__Zelenaya_milya.jpg">
-  </div>
-  <div class="myBook">
-  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">
-  </div>
-  <div class="myBook">
-  <img src="https://static.thenounproject.com/png/111365-200.png" style="width:141.666666666px !important;height:141.666666666px !important; margin-top: 70.833333333px">
-  </div>
-</div>
+    <div class="row">
+        {% for list in lists %}
+            <div class="col" style="background-color: #ededed;min-height: 400px;">
+                <div class="book-column" style="margin-top: 10px;"><i class="fa fa-edit d-flex float-right"
+                                                                      style="font-size: 25px;"></i>
+                    <div class="d-inline-flex float-left" style="margin-top: 0px;width: auto;">
+                        <div class="float-right" style="margin-left: 20px;">
+                            <h5 class="d-inline-flex" style="margin-right: 30px;padding-top: 10px;margin-bottom: 40px;">
+                                {{ list.name }}</h5>
+                            {% for list_book in list.list_books.all %}
+                                <a href="/books/{{ list_book.book.id }}"><h5 style="margin-right: 30px;">{{ list_book.book.name }}</h5></a>
+                            {% endfor %}
+                            <div class="ui-widget">
+                              <label for="book_search_{{ list.id }}">Книги: </label>
+                              <input id="book_search_{{ list.id }}">
+                            </div>
+                        <script type="text/javascript">
+                            $( document ).ready(function() {
+                                $(function () {
+                                    $("#book_search_{{ list.id }}").autocomplete({
+                                        source: function (request, response) {
+                                            $.ajax({
+                                                url: "/books/suggestions/",
+                                                dataType: "json",
+                                                data: {
+                                                    name: request.term
+                                                },
+                                                success: function (data) {
+                                                    response(data);
+                                                }
+                                            });
+                                        },
+                                        focus: function (event, ui) {
+                                            $("#book_search_{{ list.id }}").val(ui.item.name);
+                                            return false;
+                                        },
+                                        select: function (event, ui) {
+                                            // <int:user_id>/list/<int:list_id>/add/<int:book_id>/
+                                            window.location.href = "/user/{{ user.id }}/list/{{ list.id }}/add/" + ui.item.id + "/";
+                                        }
+                                    }).autocomplete("instance")._renderItem = function (ul, item) {
+                                        return $("<li>")
+                                            .append("<div>" + item.name + "</div>")
+                                            .appendTo(ul);
+                                    };
+                                });
+                            });
+                    </script>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {#<div id="grid">#}
+    {#  <div class="myBook">#}
+    {#  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">#}
+    {#  </div>#}
+    {#  <div class="myBook">#}
+    {#  <img src="https://i.livelib.ru/boocover/1002326231/140/551e/Dzh._K._Rouling__Garri_Potter_i_uznik_Azkabana.jpg">#}
+    {#  </div>#}
+    {#  <div class="myBook">#}
+    {#  <img src="https://i.livelib.ru/boocover/1002281151/140/60e6/Stiven_King__Zelenaya_milya.jpg">#}
+    {#  </div>#}
+    {#  <div class="myBook">#}
+    {#  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">#}
+    {#  </div>#}
+    {#  <div class="myBook">#}
+    {#  <img src="https://static.thenounproject.com/png/111365-200.png" style="width:141.666666666px !important;height:141.666666666px !important; margin-top: 70.833333333px">#}
+    {#  </div>#}
+    {#</div>#}
 
 </section>
 
-<br />
-<br />
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 <div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">
     <footer class="text-center" style="height: 60px !important;padding-top: 10px;background-color: rgb(37,38,58);">
         <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
             Readland 2019</p>
     </footer>
 </div>
+
 </body>
 
 </html>
