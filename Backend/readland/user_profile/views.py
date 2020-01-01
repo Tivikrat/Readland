@@ -192,21 +192,36 @@ def user_list_remove(request, user_id, list_id):
     return redirect("/user/" + str(user.id) + '/')
 
 
-def get_list_image_preview(img1_path, img2_path, img3_path, string_list_name):
-    image3 = Im.open(img1_path)
-    image = Im.open(img2_path)
-    image2 = Im.open(img3_path)
+def get_list_image_preview(img1_path, img2_path="", img3_path="", string_list_name=""):
+    start_size = [400, 600]
+    default_size = (400, 600)
+    increment = 30
 
-    new_image = Im.new("RGBA", (260, 360), 1)
+    image = Im.open(img1_path)
+    image.thumbnail(default_size, Im.ANTIALIAS)
 
-    image.thumbnail((200, 300), Im.ANTIALIAS)
-    image2.thumbnail((200, 300), Im.ANTIALIAS)
-    image3.thumbnail((200, 300), Im.ANTIALIAS)
+    if img2_path != "":
+        image2 = Im.open(img2_path)
+        image2.thumbnail(default_size, Im.ANTIALIAS)
+        start_size[0] += 30
+        start_size[1] += 30
 
+    if img3_path != "":
+        image3 = Im.open(img3_path)
+        image3.thumbnail(default_size, Im.ANTIALIAS)
+        start_size[0] += 30
+        start_size[1] += 30
+
+    new_image = Im.new("RGBA", tuple(start_size), 1)
     new_image.paste(image, (0, 0))
-    new_image.paste(image2, (30, 30))
-    new_image.paste(image3, (60, 60))
+    if img2_path != "":
+        new_image.paste(image2, (30, 30))
+    if img3_path != "":
+        new_image.paste(image3, (60, 60))
 
+    # imshow(np.asarray(image))
+    # imshow(np.asarray(image2))
+    # imshow(np.asarray(image3))
     new_image.save(string_list_name + ".png")
-    #imshow(np.asarray(new_image))
+    # imshow(np.asarray(new_image))
     return new_image
