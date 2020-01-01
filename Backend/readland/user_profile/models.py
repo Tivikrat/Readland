@@ -26,7 +26,7 @@ class UserList(models.Model):
 
 
 class UserListBook(models.Model):
-    list = models.ForeignKey(UserList, on_delete=models.CASCADE)
+    list = models.ForeignKey(UserList, on_delete=models.CASCADE, related_name="list_books")
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     def __str__(self):
