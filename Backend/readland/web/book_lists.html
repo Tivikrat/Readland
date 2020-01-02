@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>bl</title>
+    <title>Мои списки</title>
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/bootstrap/css/bootstrap.min.css"%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;subset=cyrillic">
@@ -58,10 +58,10 @@
         </div>
     </div>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap" style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;">
-        <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/LogoLong.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="/"><img src="assets/img/LogoLong.png"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
-                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="#" style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
-                <div class="d-md-block" style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div><a class="d-block" href="#" style="color: rgb(236,236,236);font-size: 25px;">Моя библиотека</a>
+                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="/" style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
+                <div class="d-md-block" style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div><a class="d-block" href="/user/{{ uid }}#grid" style="color: rgb(236,236,236);font-size: 25px;">Моя библиотека</a>
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item d-block" role="presentation">
                         <form class="form-inline mr-auto" target="_self">
@@ -81,8 +81,8 @@
         <div class="row">
             <div class="col-xl-4">
                 <ol class="breadcrumb" style="background-color: rgba(233,236,239,0);">
-                    <li class="breadcrumb-item"><a href="#"><span>&nbsp;<i class="fa fa-home"></i></span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span><strong>Моя библиотека</strong></span></a></li>
+                    <li class="breadcrumb-item"><a href="/"><span>&nbsp;<i class="fa fa-home"></i></span></a></li>
+                    <li class="breadcrumb-item"><a href="/user/{{ uid }}#grid"><span><strong>Моя библиотека</strong></span></a></li>
                 </ol>
             </div>
             <div class="col"></div>
