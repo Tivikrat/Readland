@@ -51,12 +51,41 @@
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#"
                                                             style="padding-right: 0px;padding-left: 0px;"></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}" style="padding-left: 0px;"><img
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}"
+                                                            style="padding-left: 0px;"><img
                         src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
             </ul>
         </div>
     </div>
 </nav>
+<div role="dialog" tabindex="-1" class="modal fade" id="reset-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col d-lg-flex justify-content-lg-end" style="padding-top: 10px;">
+                        <button class="btn close" type="button" data-dismiss="modal" aria-label="Close"><i
+                                class="fa fa-close"></i></button>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col">
+                        <h3 class="text-center">Вы действительно хотите отменить изменения? </h3>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col d-lg-flex justify-content-lg-center" style="padding-bottom: 30px;">
+                        <button class="btn border rounded-0 border-dark" type="button"
+                                style="margin-right: 50px;font-size: 20px;"><strong>Сохранить</strong></button>
+                        <button class="btn border rounded-0 border-dark" type="reset" style="font-size: 20px;"><strong>Отменить</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid" style="width: 100%;padding-left: 0px;">
     <div class="row">
         <div class="col-xl-8"><img class="img-fluid" src="assets/img/Ресурс%201.png" style="height: 100%;width: 100%;">
@@ -84,9 +113,12 @@
                         себе:</h6><textarea class="border rounded-0 border-dark d-block"
                                             style="margin: auto;height: 100%;width: 200px;"></textarea></div>
             </div>
-            <div style="margin-top: 30px;">
-                <button class="btn btn-light border rounded-0 border-dark d-block" type="button" style="margin: auto;">
-                    Зарегистрироваться
+            <div class="d-xl-flex justify-content-xl-center" style="padding-top: 15px;">
+                <button class="btn btn-light border rounded-0 border-dark d-block" type="button"
+                        style="margin-right: 20px;">Сохранить
+                </button>
+                <button class="btn border rounded-0 border-dark" type="button" data-toggle="modal"
+                        data-target="#reset-modal">Отменить
                 </button>
             </div>
         </div>
