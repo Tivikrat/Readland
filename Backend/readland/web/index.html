@@ -90,7 +90,7 @@
                             <li role="presentation" class="nav-item">
                                 <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
                             </li>
-                            {% if anon == True %}
+                            {% if anon %}
                                 <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button"
                                                                             href="/accounts/google/login"
                                                                             style="margin-top: 20px;background-color: #9b9bfd;">Логин</a>
@@ -117,6 +117,7 @@
                             {% endif %}
                         </ul>
                     </div>
+                </ul>
             </div>
         </nav>
 

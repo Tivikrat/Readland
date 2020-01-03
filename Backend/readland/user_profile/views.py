@@ -11,6 +11,9 @@ from user_profile.forms import UserProfileForm, UserForm, UserListForm
 from user_profile.models import UserProfile, UserList, UserListBook
 
 
+redirect_url = "/book_lists/"
+
+
 def change_profile(request):
     user = get_object_or_404(get_user_model(), id=request.user.id)
     try:
@@ -131,7 +134,7 @@ def user_profile(request, user_id):
         else:
             return HttpResponse("Fields were empty: " + str(up_form.errors))
 
-        return redirect("/user/" + str(user.id) + '/')
+        return redirect(redirect_url)
     else:
         raise PermissionDenied()
 
@@ -158,7 +161,7 @@ def user_list_create(request, user_id):
         else:
             return HttpResponse("Error! Empty fields: " + str(list_form.errors))
 
-        return redirect("/user/" + str(user.id) + '/')
+        return redirect(redirect_url)
     else:
         raise PermissionDenied()
 
@@ -186,7 +189,7 @@ def user_list_update(request, user_id, list_id):
         else:
             return HttpResponse("Error! Empty fields: " + str(list_form.errors))
 
-        return redirect("/user/" + str(user.id) + '/')
+        return redirect(redirect_url)
     else:
         raise PermissionDenied()
 
@@ -209,7 +212,7 @@ def user_list_add_book(request, user_id, list_id, book_id):
         user_list_book = UserListBook(list=u_list_obj, book=book_obj)
         user_list_book.save()
 
-        return redirect("/user/" + str(user.id) + '/')
+        return redirect(redirect_url)
     else:
         raise PermissionDenied()
 
@@ -233,7 +236,7 @@ def user_list_remove_book(request, user_id, list_id, list_book_id):
     else:
         raise PermissionDenied()
 
-    return redirect("/user/" + str(user.id) + '/')
+    return redirect(redirect_url)
 
 
 @login_required
@@ -254,7 +257,7 @@ def user_list_remove(request, user_id, list_id):
     else:
         raise PermissionDenied()
 
-    return redirect("/user/" + str(user.id) + '/')
+    return redirect(redirect_url)
 
 
 def get_list_image_preview(img1_path, img2_path="", img3_path="", string_list_name=""):

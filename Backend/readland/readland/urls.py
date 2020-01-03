@@ -19,10 +19,10 @@ urlpatterns = [
                   path('', main_page),
 
                   # новые страницы, двиньте их когда будет время
-                  path('change_profile', change_profile),
-                  path('profile', profile),
-                  path('book_lists', book_lists),
-                  path('chbi', chbi),
+                  path('change_profile/', change_profile),
+                  path('profile/', profile),
+                  path('book_lists/', book_lists),
+                  path('chbi/', chbi),
                   # path('accounts/', include('django.contrib.auth.urls')),
                   url(r'^accounts/', include('allauth.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

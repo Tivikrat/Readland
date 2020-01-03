@@ -159,7 +159,7 @@ def delete_book(request, book_id):
     if allow_edit:
         book.delete()
 
-        return redirect("/")
+        return redirect("/profile")
     else:
         raise PermissionDenied()
 
@@ -279,7 +279,7 @@ def view_search(request):
 
         return render(request, 'SearchResult.html', {'results': book_list})
     else:
-        return render(request, 'advancedSearch.html')
+        return render(request, 'advancedSearch.html', {'anon': not request.user.is_authenticated})
 
 
 def view_search_basic(request):
