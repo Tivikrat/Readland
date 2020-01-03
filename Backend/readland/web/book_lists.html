@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
+    <link rel="stylesheet" type="text/css" href="https//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body style="display: flex;flex-direction: column;height: 100%;">
@@ -52,7 +55,8 @@
                     <form method="post" action="/user/{{ user.id }}/list/create/">
                         <div class="row">
                             <div class="col"><input class="d-block" type="text"
-                                                    style="width: 80%;margin: auto;margin-top: 10px;margin-bottom: 10px;" name="name">
+                                                    style="width: 80%;margin: auto;margin-top: 10px;margin-bottom: 10px;"
+                                                    name="name">
                             </div>
                         </div>
                         <div class="row">
@@ -198,8 +202,8 @@
                     {% for list_book in list.list_books.all %}
                         <div style="display: flex;flex-direction: row;">
                             <div style=" margin: 10px;">
-{#                                <button class="fa fa-edit"#}
-{#                                        style="font-size: 25px;"></button>#}
+                                {#                                <button class="fa fa-edit"#}
+                                {#                                        style="font-size: 25px;"></button>#}
                                 <button class="fa fa-trash" style="font-size: 30px;color: #717070;"
                                         onclick="window.location.href='/user/{{ user.id }}/list/{{ list.id }}/remove/{{ list_book.id }}'"></button>
                             </div>
@@ -210,6 +214,42 @@
                             </h5>
                         </div>
                     {% endfor %}
+                    <div class="ui-widget">
+                        <label for="book_search_{{ list.id }}">Книги: </label>
+                        <input id="book_search_{{ list.id }}">
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $(function () {
+                                $("#book_search_{{ list.id }}").autocomplete({
+                                    source: function (request, response) {
+                                        $.ajax({
+                                            url: "/books/suggestions/",
+                                            dataType: "json",
+                                            data: {
+                                                name: request.term
+                                            },
+                                            success: function (data) {
+                                                response(data);
+                                            }
+                                        });
+                                    },
+                                    focus: function (event, ui) {
+                                        $("#book_search_{{ list.id }}").val(ui.item.name);
+                                        return false;
+                                    },
+                                    select: function (event, ui) {
+                                        // <int:user_id>/list/<int:list_id>/add/<int:book_id>/
+                                        window.location.href = "/user/{{ user.id }}/list/{{ list.id }}/add/" + ui.item.id + "/";
+                                    }
+                                }).autocomplete("instance")._renderItem = function (ul, item) {
+                                    return $("<li>")
+                                        .append("<div>" + item.name + "</div>")
+                                        .appendTo(ul);
+                                };
+                            });
+                        });
+                    </script>
                     <h5 style="margin-right: 30px;"><a href="#" style="color: rgb(33,37,41);font-size: 20px;"><strong>+
                         Добавить</strong><br></a></h5>
                 </div>
