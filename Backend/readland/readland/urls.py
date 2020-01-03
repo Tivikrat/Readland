@@ -8,7 +8,8 @@ from readland import settings
 
 import pages.views as pw
 
-from readland.views import  register,book_lists,chbi
+from readland.views import book_lists, chbi
+from user_profile.views import change_profile, profile
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -18,7 +19,8 @@ urlpatterns = [
                   path('', main_page),
 
                   # новые страницы, двиньте их когда будет время
-                  path('register', register),
+                  path('change_profile', change_profile),
+                  path('profile', profile),
                   path('book_lists', book_lists),
                   path('chbi', chbi),
                   # path('accounts/', include('django.contrib.auth.urls')),

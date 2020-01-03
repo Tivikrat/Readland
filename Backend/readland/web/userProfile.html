@@ -94,7 +94,7 @@
     <hr class="style-six">
     <div class="profile">
         <div id="AccountMoney">
-          <h6><a href="/register">Изменение персональных данных</a></h6>
+          <h6><a href="/change_profile">Изменение персональных данных</a></h6>
             <!--<h4>Счет аккаунта: ${{ user.balance }}</h4>-->
         </div>
         <br>
@@ -113,8 +113,11 @@
 
   <h2 style="font-size:54px;">{{ user.username }}</h2>
   <h2 style="font-size:26px;">{{ user.first_name }} {{ user.last_name }}</h2>
-  <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ auth_user.email }}<a/></div></h3>-->
-  <h3><div class="info">Телефон: <a href="tel:+3809723049">+{{ user.mobile_phone }}<a/></div></h3>
+  <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ user.email }}<a/></div></h3>-->
+  <h3><div class="info">Телефон: <a href="tel:+{{ user.mobile_phone }}">+{{ user.mobile_phone }}</a></div></h3>
+       {% if user.email %}
+           <h3><div class="info">Email: <a href="mailto:{{ user.email }}">{{ user.email }}</a></div></h3>
+       {% endif %}
   <h3><div class="info">О себе</div> </h3>
   <h3 style="font-size:26px;">{{ user.about }}</h3>
 

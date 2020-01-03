@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>AddNewBook</title>
+    <title>Изменение профиля</title>
     <link rel="stylesheet" href="{% static "/BootstrapStudioAssets/fonts/fontawesome-all.min.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/fonts/ionicons.min.css" %}">
@@ -31,28 +31,26 @@
     <div class="container"><a class="navbar-brand" href="/"><img src="assets/img/LogoLong.png"></a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
-        <div
-                class="collapse navbar-collapse" id="navcol-1"><a class="d-block" href="/"
-                                                                  style="color: rgb(234,234,234);font-size: 25px;margin-left: 18px;">Главная</a>
+        <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item d-block" role="presentation">
                     <form class="form-inline mr-auto" target="_self">
                         <div class="form-group d-flex justify-content-end"
                              style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;margin-right: 70px;">
-                            <label for="search-field"></label><input class="form-control search-field" type="search"
-                                                                     id="search-field" name="search"
-                                                                     style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
-                                                                     placeholder="Search">
-                            <i
-                                    class="fa fa-search"
-                                    style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                            <label for="search-field"></label>
+                            <input class="form-control search-field" type="search"
+                                   id="search-field" name="search"
+                                   style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                   placeholder="Search">
+                            <i class="fa fa-search"
+                               style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
                         </div>
                     </form>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#"
                                                             style="padding-right: 0px;padding-left: 0px;"></a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}" style="padding-left: 0px;"><img
-                        src="assets/img/smeshko.png" style="padding-right: 5px;padding-left: 5px;"></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/user/{{ uid }}"
+                                                            style="padding-left: 0px;"></a></li>
             </ul>
         </div>
     </div>
@@ -62,36 +60,69 @@
         <div class="col-xl-8"><img class="img-fluid" src="assets/img/Ресурс%201.png" style="height: 100%;width: 100%;">
         </div>
         <div class="col-xl-4 d-block" style="margin: auto;">
-            <div>
-                <div class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center"
-                     style="width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;">
-                    <button class="btn" type="button"><i
+            <form action="/change_profile" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <img class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center"
+                     style="cursor: pointer; align-items: center; text-align: center; width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;"
+                     id="user_photo_img" src="{{ user.photo.url }}" alt="Картинка не поддерживается. Выберите другую."
+                onclick="$('#user_photo').click()">
+                <button class="btn" type="button">
+                    <i
                             class="fa fa-plus align-items-center align-content-center align-self-center"
                             style="font-size: 25px;color: rgb(255,255,255);"></i></button>
-                </div>
+                <input id="user_photo" type="file" name="photo" hidden>
                 <input class="border rounded-0 border-dark d-block"
-                       type="text" placeholder="Ник " style="margin: auto;margin-top: 15px;width: 200px;"><input
-                    class="border rounded-0 border-dark d-block" type="text" placeholder="Фамилия"
-                    style="margin: auto;margin-top: 15px;width: 200px;"><input
-                    class="border rounded-0 border-dark d-block"
-                    type="text" placeholder="Имя " style="margin: auto;margin-top: 15px;width: 200px;"><input
-                    class="border rounded-0 border-dark d-block" type="email" placeholder="E-mail"
-                    style="margin: auto;margin-top: 15px;width: 200px;"><input
-                    class="border rounded-0 border-dark d-block"
-                    type="tel" placeholder="Телефон" style="margin: auto;margin-top: 15px;width: 200px;">
+                       type="text" placeholder="Ник " style="margin: auto;margin-top: 15px;width: 200px;"
+                       name="username" value="{{ user.username }}">
+                <input
+                        class="border rounded-0 border-dark d-block" type="text" placeholder="Фамилия"
+                        style="margin: auto;margin-top: 15px;width: 200px;"
+                        name="last_name" value="{{ user.last_name }}">
+                <input
+                        class="border rounded-0 border-dark d-block"
+                        type="text" placeholder="Имя " style="margin: auto;margin-top: 15px;width: 200px;"
+                        name="first_name" value="{{ user.first_name }}">
+                <input
+                        class="border rounded-0 border-dark d-block" type="email" placeholder="E-mail"
+                        style="margin: auto;margin-top: 15px;width: 200px;"
+                        name="email" value="{{ user.email }}">
+                <input
+                        class="border rounded-0 border-dark d-block"
+                        type="tel" placeholder="Телефон" style="margin: auto;margin-top: 15px;width: 200px;"
+                        name="mobile_phone" value="{{ user.mobile_phone }}">
                 <div class="d-block" style="margin: auto;">
                     <h6 class="d-sm-flex justify-content-sm-center" style="margin-top: 6px;padding-right: 115px;">О
-                        себе:</h6><textarea class="border rounded-0 border-dark d-block"
-                                            style="margin: auto;height: 100%;width: 200px;"></textarea></div>
-            </div>
-            <div style="margin-top: 30px;">
-                <button class="btn btn-light border rounded-0 border-dark d-block" type="button" style="margin: auto;">
-                    Зарегистрироваться
+                        себе:</h6>
+                    <textarea class="border rounded-0 border-dark d-block"
+                              style="margin: auto;height: 100%;width: 200px;" name="about_user">{{ user.about }}</textarea>
+                </div>
+                <button class="btn btn-light border rounded-0 border-dark d-block" type="submit" style="margin: auto;">
+                    Сохранить
                 </button>
-            </div>
+                <button class="btn btn-light border rounded-0 border-dark d-block" onclick="window.location.href='/profile'" style="margin: auto;">
+                    Отменить
+                </button>
+            </form>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    user_photo_src = document.getElementById("user_photo_img").src;
+    document.getElementById("user_photo").onchange = function(event) {
+        const files = event.target.files;
+        if (files && files.length) {
+            let fr = new FileReader();
+            fr.onload = function () {
+                document.getElementById("user_photo_img").src = fr.result;
+            };
+            fr.readAsDataURL(files[0]);
+        }
+        else {
+            alert("Картинка не поддерживается. Выберите другую.");
+            document.getElementById("user_photo_img").src = user_photo_src;
+        }
+    }
+</script>
 <div class="d-block d-xl-flex mb-auto align-items-xl-end footer-basic" style="padding-top: 0px;height: 60px;">
     <footer class="text-center" style="height: 30px;padding-top: 5px;background-color: rgb(37,38,58);">
         <p class="copyright">© &nbsp;Readland 2019</p>

@@ -10,9 +10,68 @@ from user_profile.forms import UserProfileForm, UserForm, UserListForm
 from user_profile.models import UserProfile, UserList, UserListBook
 
 
-def edit(request, user_id):
-    return render(request, 'register.html')
+def change_profile(request):
+    user = get_object_or_404(get_user_model(), id=request.user.id)
+    try:
+        local_user_profile = UserProfile.objects.get(user=user)
+    except ObjectDoesNotExist:
+        local_user_profile = UserProfile.objects.create(user=user)
+    if request.method == "POST":
+        user.username = request.POST.get('username', user.username)
+        user.email = request.POST.get('email', user.email)
+        local_user_profile.last_name = request.POST.get('last_name', local_user_profile.last_name)
+        local_user_profile.first_name = request.POST.get('first_name', local_user_profile.first_name)
+        local_user_profile.mobile_phone = request.POST.get('mobile_phone', local_user_profile.mobile_phone)
+        local_user_profile.about_user = request.POST.get('about_user', local_user_profile.about_user)
+        local_user_profile.photo = request.FILES.get('photo', local_user_profile.photo)
+        user.save()
+        local_user_profile.save()
+        return redirect("/profile")
 
+    user_data = {
+        'username': user.username,
+        'email': user.email,
+        'id': user.id,
+        'first_name': local_user_profile.first_name,
+        'last_name': local_user_profile.last_name,
+        'mobile_phone': local_user_profile.mobile_phone,
+        'balance': local_user_profile.balance,
+        'about': local_user_profile.about_user,
+        'photo': local_user_profile.photo
+    }
+    return render(request, 'change_profile.html', {'user': user_data})
+
+
+def profile(request):
+    user = request.user
+
+    try:
+        local_user_profile = UserProfile.objects.get(user=user)
+    except ObjectDoesNotExist:
+        local_user_profile = UserProfile.objects.create(user=user)
+
+    allow_edit = False
+    if request.user is not None and hasattr(request.user,
+                                            'id') and request.user.id is not None and \
+            request.user.id > 0 and request.user.id == user.id or request.user.is_superuser:
+        allow_edit = True
+
+    if request.method == 'GET':
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+            'id': user.id,
+            'first_name': local_user_profile.first_name,
+            'last_name': local_user_profile.last_name,
+            'mobile_phone': local_user_profile.mobile_phone,
+            'balance': local_user_profile.balance,
+            'about': local_user_profile.about_user,
+            'photo': local_user_profile.photo
+        }
+        lists = UserList.objects.filter(user=request.user)
+        return render(request, 'userProfile.html', {'user': user_data,
+                                                    'allow_edit': allow_edit,
+                                                    'lists': lists})
 
 # Create your views here.
 def user_profile(request, user_id):

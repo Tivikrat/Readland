@@ -1,10 +1,6 @@
 from django.shortcuts import render
 
 
-def register(request):
-    return render(request, "register.html", {"uid": request.user.id})
-
-
 def book_lists(request):
     return render(request, "book_lists.html", {"uid": request.user.id})
 
