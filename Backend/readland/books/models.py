@@ -25,7 +25,7 @@ class Book(models.Model):
 class UserBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    rating = models.FloatField(blank=True, default=0.0,
+    rating = models.FloatField(blank=True, null=True,
                              validators=[validators.MinValueValidator(1), validators.MaxValueValidator(5)])
     is_bought = models.BooleanField(default=False)
     is_viewed = models.BooleanField(blank=True, default=False)

@@ -94,12 +94,9 @@
     <hr class="style-six">
     <div class="profile">
         <div id="AccountMoney">
-          <h6><a href="/change_profile">Изменение персональных данных</a></h6>
+            <h6><a href="/change_profile">Изменение персональных данных</a></h6>
             <!--<h4>Счет аккаунта: ${{ user.balance }}</h4>-->
         </div>
-        <br>
-        <br>
-        <br>
         <div id="ProfilePic">
             {% if user.photo %}
 
@@ -109,278 +106,182 @@
             {% endif %}
         </div>
 
-   <div class="basicInfo">
+        <div class="basicInfo">
 
-  <h2 style="font-size:54px;">{{ user.username }}</h2>
-  <h2 style="font-size:26px;">{{ user.first_name }} {{ user.last_name }}</h2>
-  <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ user.email }}<a/></div></h3>-->
-  <h3><div class="info">Телефон: <a href="tel:+{{ user.mobile_phone }}">+{{ user.mobile_phone }}</a></div></h3>
-       {% if user.email %}
-           <h3><div class="info">Email: <a href="mailto:{{ user.email }}">{{ user.email }}</a></div></h3>
-       {% endif %}
-  <h3><div class="info">О себе</div> </h3>
-  <h3 style="font-size:26px;">{{ user.about }}</h3>
-
-  </div>
-
-
-  <br />
-  <br />
-  <br />
-  <h1>Мои книги</h1>
-    <hr class="style-six">
-
-  <div id="grid">
-{#      https://games-reviews.net/_pu/11/s74617345.jpg#}
-  <div class="container" style="max-width: 800px;">
-    <div class="row">
-        <div class="col">
-            <div><img class="shadow d-block book-image" src="https://games-reviews.net/_pu/11/s74617345.jpg" style="margin: auto;" />
-                <div role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-            </div>
+            <h2 style="font-size:54px;">{{ user.username }}</h2>
+            <h2 style="font-size:26px;">{{ user.first_name }} {{ user.last_name }}</h2>
+            <!--<h3><div class="info">Эл. почта: <a href="mailto:maaaks@gmail.com">{{ user.email }}<a/></div></h3>-->
+            <h3>
+                <div class="info">Телефон: <a href="tel:+{{ user.mobile_phone }}">+{{ user.mobile_phone }}</a></div>
+            </h3>
+            {% if user.email %}
+                <h3>
+                    <div class="info">Email: <a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
+                </h3>
+            {% endif %}
+            <h3>
+                <div class="info">О себе</div>
+            </h3>
+            <h3 style="font-size:26px;">{{ user.about }}</h3>
         </div>
-        <div class="col">
-            <div><img class="shadow d-block book-image" src="https://games-reviews.net/_pu/11/s74617345.jpg" style="margin: auto;" />
-                <div role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-            </div>
-        </div>
-        <div class="col">
-            <div><img class="shadow d-block book-image" src="https://games-reviews.net/_pu/11/s74617345.jpg" style="margin: auto;" />
-                <div role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="padding-top: 30px;">
-        <div class="col">
-            <div><img class="shadow d-block book-image" src="https://games-reviews.net/_pu/11/s74617345.jpg" style="margin: auto;" />
-                <div role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-            </div>
-        </div>
-        <div class="col">
-            <div><img class="shadow d-block book-image" src="https://games-reviews.net/_pu/11/s74617345.jpg" style="margin: auto;" />
-                <div role="group" class="btn-group d-block d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-            </div>
-        </div>
-        <div class="col">
-            <div><button class="btn d-block d-xl-flex justify-content-xl-center align-items-xl-center book-image" type="button" style="background-color: #a9a9a9;margin: auto;width: 85%; height: 300px
-"><i class="fa fa-plus d-xl-flex align-items-xl-center" style="font-size: 40px;color: rgb(255,255,255);"></i></button>
-                <div
-                    role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;"><button class="btn" type="button"><i class="fa fa-eye" style="font-size: 30px;color: #717070;"></i></button><button class="btn" type="button"><i class="fa fa-edit" style="font-size: 30px;color: #717070;"></i></button><button class="btn"
-                        type="button"><i class="fa fa-trash-o" style="font-size: 30px;color: #717070;"></i></button></div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
+        <h1>Мои книги</h1>
+        <hr class="style-six">
 
-    <br />
-    <br />
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    
-    
-    <h1><a href="/book_lists">Мои списки</a></h1> <!--style="border:solid 0.5px lightgrey; padding:5px; border-radius: 5px;"-->
-    <!--<hr class="style-six">-->
-  <style>
-    .profile { 
-  background: white !important;
-  padding: 20px;
-  border-radius: 5px;
-  border:solid lightgrey 0.5px;
-  min-width: 900px !important;
-  height:auto;
- }
- 
- hr.style-six {
-    border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-  body {
-  padding: 0px;
-  margin: 0px;
-  font-family: "Roboto", arial, sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: #222;
-  background: #E9EBEE;
-}
-
-.basicInfo {
-    padding-left: 415px;
-}
-
-.myBook { 
-    width: 200px;
-    height: 120px;
-    margin-bottom: 125px;
-    padding: 25px;
-    margin-left: -15px;
-     }
-
-/* resize images */
-.myBook img {
-
-    width: 183.333333333px;
-    height: 283.333333333px;
-    object-fit: cover;
-
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
-}
-
-
-#ProfilePic img{
-  position: absolute;
-  padding-top: 5px;
-  display: inline-block;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-.info { 
-  font-size: 26px;
-  color:#90949C;
- }
-
-.main {
-    padding-left: 200px;
-    padding-right: 200px;
-}
-
-#AccountMoney
-{
-  margin-top: 5px;
-  position: relative;
-  float: right; /* Обтекание по правому краю */
-}
-
-@media screen and (max-width: 400px) {
-  .main {
-    flex-direction: column;
-  }
-
-@media screen and (min-width: 0px) {
-  section.main {
-  font-size: 30px;
-    padding:0;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  section.main {
-  font-size: 15px;
-    padding:0;
-  }
-}
-
-
-</style>
-<!--
-    <div class="row">
-        % for list in lists %
-            <div class="col" style="background-color: #ededed;min-height: 400px;">
-                <div class="book-column" style="margin-top: 10px;"><i class="fa fa-edit d-flex float-right"
-                                                                      style="font-size: 25px;"></i>
-                    <div class="d-inline-flex float-left" style="margin-top: 0px;width: auto;">
-                        <div class="float-right" style="margin-left: 20px;">
-                            <h5 class="d-inline-flex" style="margin-right: 30px;padding-top: 10px;margin-bottom: 40px;">
-                                {{ list.name }}</h5>
-                            {% for list_book in list.list_books.all %}
-                                <a href="/books/{{ list_book.book.id }}">
-                                    <h5 style="margin-right: 30px;">{{ list_book.book.name }}</h5>
-                                </a>
-                            {% endfor %}
-                            <div class="ui-widget">
-                              <label for="book_search_{{ list.id }}">Книги: </label>
-                              <input id="book_search_{{ list.id }}">
-                            </div>
-                        <script type="text/javascript">
-                            $( document ).ready(function() {
-                                $(function () {
-                                    $("#book_search_{{ list.id }}").autocomplete({
-                                        source: function (request, response) {
-                                            $.ajax({
-                                                url: "/books/suggestions/",
-                                                dataType: "json",
-                                                data: {
-                                                    name: request.term
-                                                },
-                                                success: function (data) {
-                                                    response(data);
-                                                }
-                                            });
-                                        },
-                                        focus: function (event, ui) {
-                                            $("#book_search_{{ list.id }}").val(ui.item.name);
-                                            return false;
-                                        },
-                                        select: function (event, ui) {
-                                            // <int:user_id>/list/<int:list_id>/add/<int:book_id>/
-                                            window.location.href = "/user/{{ user.id }}/list/{{ list.id }}/add/" + ui.item.id + "/";
-                                        }
-                                    }).autocomplete("instance")._renderItem = function (ul, item) {
-                                        return $("<li>")
-                                            .append("<div>" + item.name + "</div>")
-                                            .appendTo(ul);
-                                    };
-                                });
-                            });
-                    </script>
-                            </h5>
+        <div id="grid"
+             style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, auto)); width: 100%">
+            {#            <div class="container" style="max-width: 800px;">#}
+            {#    <div class="row">#}
+            {% for book in books %}
+                <div class="col">
+                    <div><img class="shadow d-block book-image" src="{{ book.photo.url }}"
+                              style="margin: auto; max-width: 200px; max-height: 300px;"/>
+                        <div role="group" class="btn-group d-xl-flex justify-content-xl-center" style="margin: auto;">
+                            <button class="btn" type="button" onclick="window.location.href='/books/{{ book.id }}/'"><i
+                                    class="fa fa-eye"
+                                    style="font-size: 30px;color: #717070;"></i></button>
+                            <button class="btn" type="button"
+                                    onclick="window.location.href='/books/{{ book.id }}/update/'"><i class="fa fa-edit"
+                                                                                                     style="font-size: 30px;color: #717070;"></i>
+                            </button>
+                            <button class="btn" type="button"><i class="fa fa-trash-o"
+                                                                 style="font-size: 30px;color: #717070;"
+                                                                 onclick="window.location.href='/books/{{ book.id }}/delete/'"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
+            {% endfor %}
+            <div class="col">
+                <div>
+                    <button onclick="window.location.href='/books/add/'"
+                            class="btn d-block d-xl-flex justify-content-xl-center align-items-xl-center book-image"
+                            type="button" style="background-color: #a9a9a9;margin: auto;width: 85%; height: 300px
+"><i class="fa fa-plus d-xl-flex align-items-xl-center" style="font-size: 40px;color: rgb(255,255,255);"></i></button>
+                    <div
+                            role="group" class="btn-group d-xl-flex justify-content-xl-center"
+                            style="margin: auto;">
+                    </div>
+                </div>
+                {#    </div>#}
+                {#                </div>#}
             </div>
-     % endfor %
-    </div>
-    -->
-    {#<div id="grid">#}
-    {#  <div class="myBook">#}
-    {#  <img src="https://games-reviews.net/_pu/11/s74617345.jpg">#}
-    {#  </div>#}
-    {#  <div class="myBook">#}
-    {#  <img src="https://i.livelib.ru/boocover/1002326231/140/551e/Dzh._K._Rouling__Garri_Potter_i_uznik_Azkabana.jpg">#}
-    {#  </div>#}
-    {#  <div class="myBook">#}
-    {#  <img src="https://i.livelib.ru/boocover/1002281151/140/60e6/Stiven_King__Zelenaya_milya.jpg">#}
-    {#  </div>#}
-    {#  <div class="myBook">#}
-    {#  <img src="https://i2.rozetka.ua/goods/13707749/116445787_images_13707749899.jpg">#}
-    {#  </div>#}
-    {#  <div class="myBook">#}
-    {#  <img src="https://static.thenounproject.com/png/111365-200.png" style="width:141.666666666px !important;height:141.666666666px !important; margin-top: 70.833333333px">#}
-    {#  </div>#}
-    {#</div>#}
+        </div>
+        <!--style="border:solid 0.5px lightgrey; padding:5px; border-radius: 5px;"-->
+        <!--<hr class="style-six">-->
+        <style>
+            .profile {
+                background: white !important;
+                padding: 20px;
+                border-radius: 5px;
+                border: solid lightgrey 0.5px;
+                min-width: 900px !important;
+                height: auto;
+            }
 
+            hr.style-six {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            body {
+                padding: 0px;
+                margin: 0px;
+                font-family: "Roboto", arial, sans-serif;
+                font-size: 18px;
+                font-weight: 300;
+                line-height: 1.8;
+                color: #222;
+                background: #E9EBEE;
+            }
+
+            .basicInfo {
+                padding-left: 415px;
+            }
+
+            .myBook {
+                width: 200px;
+                height: 120px;
+                margin-bottom: 125px;
+                padding: 25px;
+                margin-left: -15px;
+            }
+
+            /* resize images */
+            .myBook img {
+
+                width: 183.333333333px;
+                height: 283.333333333px;
+                object-fit: cover;
+
+                display: inline-block;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+
+            }
+
+
+            #ProfilePic img {
+                position: absolute;
+                padding-top: 5px;
+                display: inline-block;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .info {
+                font-size: 26px;
+                color: #90949C;
+            }
+
+            .main {
+                padding-left: 200px;
+                padding-right: 200px;
+            }
+
+            #AccountMoney {
+                margin-top: 5px;
+                position: relative;
+                float: right; /* Обтекание по правому краю */
+            }
+
+            @media screen and (max-width: 400px) {
+                .main {
+                    flex-direction: column;
+                }
+            }
+
+            @media screen and (min-width: 0px) {
+                section.main {
+                    font-size: 30px;
+                    padding: 0;
+                }
+            }
+
+            @media screen and (max-width: 1000px) {
+                section.main {
+                    font-size: 15px;
+                    padding: 0;
+                }
+            }
+
+
+        </style>
+
+        <h1><a href="/book_lists">Мои списки</a></h1>
 </section>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
 
 <script src="js/script.js"></script>
 <div class="footer-basic" id="footer" onloadstart="positionateBottom(this)">
-    <footer class="text-center" style="margin-top:-15px; height: 60px !important;padding-top: 10px;background-color: rgb(37,38,58);">
+    <footer class="text-center"
+            style="margin-top:-15px; height: 60px !important;padding-top: 10px;background-color: rgb(37,38,58);">
         <p class="copyright" style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
             Readland 2019</p>
     </footer>

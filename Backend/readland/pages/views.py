@@ -1,9 +1,11 @@
+import json
 import math
 import mimetypes
 import os
 import string
 import urllib.parse
 import random
+from collections import namedtuple
 
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -76,6 +78,44 @@ def download_book(request, book_id):
     raise Http404
 
 
+def extract_message(json_object, name):
+    value = json_object.get(name, "")
+    if value != "":
+        value = value[0]['message']
+    return value
+
+
+def format_errors(form_errors_str):
+    form_errors = json.loads(form_errors_str)
+    errors = namedtuple('errors', ['name', 'tag', 'date', 'description', 'photo', 'file', 'price'])
+    name = extract_message(form_errors, 'name')
+    tag = extract_message(form_errors, 'tag')
+    date = extract_message(form_errors, 'date')
+    description = extract_message(form_errors, 'description')
+    photo = extract_message(form_errors, 'photo')
+    file = extract_message(form_errors, 'file')
+    price = extract_message(form_errors, 'price')
+    return errors(name=name, tag=tag, date=date, description=description, photo=photo, file=file, price=price)
+
+
+@login_required
+def add_book(request):
+    if request.method == "GET":
+        return render(request, "change_book_info.html",
+                      {"breadcrumb": "Добавление издания"})
+    if request.method == "POST":
+        add_book_form = AddBookForm(data=request.POST, files=request.FILES)
+        if add_book_form.is_valid():
+            book = add_book_form.save(commit=False)
+            book.created_by = request.user
+            book.save()
+            return redirect(f"/books/{book.id}")
+        else:
+            return render(request, "change_book_info.html",
+                          {"breadcrumb": "Добавление издания",
+                           "errors": format_errors(add_book_form.errors.as_json())})
+
+
 @login_required
 def read_book(request, book_id):
     return redirect("https://filerender/pdf/index.php?book_url=127.0.0.1:8000/books/" + str(book_id) + "/download")
@@ -87,22 +127,23 @@ def update_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
 
     allow_edit = False
-    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and\
+    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and \
             book.created_by == user or user.is_superuser:
         allow_edit = True
 
-    if request.method == 'POST' and allow_edit:
-        add_book_form = UpdateBookForm(data=request.POST, files=request.FILES, instance=book)
+    if request.method == "GET":
+        return render(request, "change_book_info.html",
+                      {"breadcrumb": "Изменение издания", "book": book})
+    elif request.method == 'POST' and allow_edit:
+        update_book_form = UpdateBookForm(data=request.POST, files=request.FILES, instance=book)
 
-        if add_book_form.is_valid():
-            book_form = add_book_form.save(commit=False)
-            book_form.save()
-        else:
-            return HttpResponse("Error! Empty fields: " + str(add_book_form.errors))
-
-        return redirect("/")
-    else:
-        raise PermissionDenied()
+        if update_book_form.is_valid():
+            book = update_book_form.save(commit=False)
+            book.save()
+            return redirect(f"/books/{book.id}")
+        return render(request, "change_book_info.html",
+                      {"breadcrumb": "Изменение издания", "book": book,
+                       "errors": format_errors(update_book_form.errors.as_json())})
 
 
 @login_required
@@ -111,7 +152,7 @@ def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
 
     allow_edit = False
-    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and\
+    if user is not None and user.is_authenticated and hasattr(user, 'id') and user.id is not None and \
             book.created_by == user or user.is_superuser:
         allow_edit = True
 
@@ -342,10 +383,11 @@ def view_search_basic(request):
 def view_manage(request, book_id):
     return render(request, 'change_book_info.html')
 
+
 # @login_required
 def view_book_info(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-
+    user_rating = 0
     # book.views_count += 1
     # book.save()
     user_book = None
@@ -360,6 +402,7 @@ def view_book_info(request, book_id):
 
             if user_book.is_bought:
                 bought = True
+            user_rating = user_book.rating
         except UserBook.DoesNotExist:
             user_book = UserBook.objects.create(user=request.user, book=book, is_viewed=True)
             user_book.save()
@@ -391,7 +434,8 @@ def view_book_info(request, book_id):
                 "amount": str(price),
                 "currency": "UAH",
                 "description": book.name,
-                "order_id": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)) + "___" + str(request.user.id) + "___" + str(book.id),
+                "order_id": ''.join(random.choices(string.ascii_uppercase + string.digits, k=10)) + "___" + str(
+                    request.user.id) + "___" + str(book.id),
                 "type": "buy",
                 'server_url': str(request.build_absolute_uri("/") + 'billing/pay-callback/'),
                 'result_url': str(request.build_absolute_uri("/") + 'billing/pay-callback/'),
@@ -422,7 +466,8 @@ def view_book_info(request, book_id):
                                                      'signature': signature,
                                                      'data': data,
                                                      'price': price
-                                                 }
+                                                 },
+                                                 'user_rating': user_rating,
                                                  },
                   content_type="text/html")
 

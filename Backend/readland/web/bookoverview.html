@@ -70,12 +70,12 @@
                         </form>
                         {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
                     </li>
-                    <li style="padding-left:5px;">  <a href="/user/{{ user_id }}">
-                            <button class="btn btn-primary" type="submit"
-                                    style="margin-top: 20px;background-color: #9b9bfd;">Мой профиль
-                            </button>
-                            </a>
-                        </li>
+                    <li style="padding-left:5px;"><a href="/user/{{ user_id }}">
+                        <button class="btn btn-primary" type="submit"
+                                style="margin-top: 20px;background-color: #9b9bfd;">Мой профиль
+                        </button>
+                    </a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
@@ -106,33 +106,36 @@
         </div>
     </div>
     <div class="row" id="ReadOrDownload">
-        {% if not anon and bought %}
-            <div class="col-lg-3 offset-lg-3">
-                <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'read'"
-                        style="margin: auto;border: 3px solid black;margin-top: 15px;width: 185px;margin-bottom: 15px;background-color: #fefefe;color: #363636;">
-                    Читати онлайн
-                </button>
-            </div>
-            <div class="col-lg-3 offset-lg-0">
-                <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'download'"
-                        style="border: 3px solid black;width: 185px;margin: auto;margin-top: 15px;margin-bottom: 15px;color: rgb(54,54,54);background-color: #fefefe;">
-                    Завантажити
-                </button>
-            </div>
-        {% elif not anon and not bought %}
-            <div class="col-lg-3 offset-lg-3">
-                <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
-                    <input type="hidden" name="data" value="{{ payment_form.data }}" />
-                    <input type="hidden" name="signature" value="{{ payment_form.signature }}" />
-                    <button style="margin-top: 8px; border: none !important; display:inline-block !important;text-align: center !important;padding: 7px 20px !important;
-                        color: #fff !important; font-size:16px !important; font-weight: 600 !important; font-family:OpenSans, sans-serif; cursor: pointer !important; border-radius: 2px !important;
-                        background: rgb(122,183,43) !important;" onmouseover="this.style.opacity='0.5';" onmouseout="this.style.opacity='1';">
-                        <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text"
-                            style="margin-right: 7px !important; vertical-align: middle !important;"/>
-                        <span style="vertical-align:middle; !important">Купити за {{ payment_form.price }} UAH</span>
+        {% if not anon %}
+            {% if bought %}
+                <div class="col-lg-3 offset-lg-3">
+                    <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'read'"
+                            style="margin: auto;border: 3px solid black;margin-top: 15px;width: 185px;margin-bottom: 15px;background-color: #fefefe;color: #363636;">
+                        Читати онлайн
                     </button>
-                </form>
-            </div>
+                </div>
+                <div class="col-lg-3 offset-lg-0">
+                    <button class="btn btn-primary d-block" type="button" onclick="window.location.href = 'download'"
+                            style="border: 3px solid black;width: 185px;margin: auto;margin-top: 15px;margin-bottom: 15px;color: rgb(54,54,54);background-color: #fefefe;">
+                        Завантажити
+                    </button>
+                </div>
+            {% else %}
+                <div class="col-lg-3 offset-lg-3">
+                    <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
+                        <input type="hidden" name="data" value="{{ payment_form.data }}"/>
+                        <input type="hidden" name="signature" value="{{ payment_form.signature }}"/>
+                        <button style="margin-top: 8px; border: none !important; display:inline-block !important;text-align: center !important;padding: 7px 20px !important;
+                        color: #fff !important; font-size:16px !important; font-weight: 600 !important; font-family:OpenSans, sans-serif; cursor: pointer !important; border-radius: 2px !important;
+                        background: rgb(122,183,43) !important;" onmouseover="this.style.opacity='0.5';"
+                                onmouseout="this.style.opacity='1';">
+                            <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text"
+                                 style="margin-right: 7px !important; vertical-align: middle !important;"/>
+                            <span style="vertical-align:middle; !important">Купити за {{ payment_form.price }} UAH</span>
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
         {% else %}
             <div class="col-lg-3 offset-lg-3">
                 Будь ласка увійдіть в ваш аккаунт.
@@ -140,21 +143,21 @@
         {% endif %}
         <div id="reviewStars-input">
             Оцінити видання:
-            <span class="raiting"> 5.0
+            <span class="raiting"> {{ user_rating }}
 
-            <input id="star-4" type="radio" name="reviewStars"/>
+            <input id="star-4" type="radio" name="reviewStars" {% if user_rating == 5 %}checked{% endif %}/>
             <label title="5 из 5" for="star-4" onclick="window.location.href = 'rate/5'"></label>
 
-            <input id="star-3" type="radio" name="reviewStars"/>
+            <input id="star-3" type="radio" name="reviewStars" {% if user_rating == 4 %}checked{% endif %}/>
             <label title="4 из 5" for="star-3" onclick="window.location.href = 'rate/4'"></label>
 
-            <input id="star-2" type="radio" name="reviewStars"/>
+            <input id="star-2" type="radio" name="reviewStars" {% if user_rating == 3 %}checked{% endif %}/>
             <label title="3 из 5" for="star-2" onclick="window.location.href = 'rate/3'"></label>
 
-            <input id="star-1" type="radio" name="reviewStars"/>
+            <input id="star-1" type="radio" name="reviewStars" {% if user_rating == 2 %}checked{% endif %}/>
             <label title="2 из 5" for="star-1" onclick="window.location.href = 'rate/2'"></label>
 
-            <input id="star-0" type="radio" name="reviewStars"/>
+            <input id="star-0" type="radio" name="reviewStars" {% if user_rating == 1 %}checked{% endif %}/>
             <label title="1 из 5" for="star-0" onclick="window.location.href = 'rate/1'"></label>
 
             </span>

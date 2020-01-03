@@ -11,4 +11,4 @@ class AddBookForm(forms.ModelForm):
 class UpdateBookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['name', 'tag', 'author', 'description', 'photo', 'file', 'price']
+        fields = ['name', 'tag', 'date', 'author', 'description', 'photo', 'file', 'price']

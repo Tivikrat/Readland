@@ -9,6 +9,7 @@ from pages import views
 urlpatterns = [
                   path('', views.add_book),
                   path('suggestions/', views.book_suggestions),
+                  path('add/', views.add_book),
                   path('<int:book_id>/read/', views.read_book),
                   path('<int:book_id>/delete/', views.delete_book),
                   path('<int:book_id>/update/', views.update_book),

@@ -1,11 +1,12 @@
 from PIL import Image as Im
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 
-from books.models import Book
+from books.models import Book, UserBook
 from user_profile.forms import UserProfileForm, UserForm, UserListForm
 from user_profile.models import UserProfile, UserList, UserListBook
 
@@ -17,7 +18,9 @@ def change_profile(request):
     except ObjectDoesNotExist:
         local_user_profile = UserProfile.objects.create(user=user)
     if request.method == "POST":
-        user.username = request.POST.get('username', user.username)
+        username = request.POST.get('username', user.username)
+        if not User.objects.filter(username=username).exists():
+            user.username = username
         user.email = request.POST.get('email', user.email)
         local_user_profile.last_name = request.POST.get('last_name', local_user_profile.last_name)
         local_user_profile.first_name = request.POST.get('first_name', local_user_profile.first_name)
@@ -42,6 +45,7 @@ def change_profile(request):
     return render(request, 'change_profile.html', {'user': user_data})
 
 
+@login_required
 def profile(request):
     user = request.user
 
@@ -68,10 +72,13 @@ def profile(request):
             'about': local_user_profile.about_user,
             'photo': local_user_profile.photo
         }
+        books = Book.objects.filter(created_by=request.user)
         lists = UserList.objects.filter(user=request.user)
         return render(request, 'userProfile.html', {'user': user_data,
                                                     'allow_edit': allow_edit,
-                                                    'lists': lists})
+                                                    'lists': lists,
+                                                    'books': books})
+
 
 # Create your views here.
 def user_profile(request, user_id):
@@ -103,7 +110,6 @@ def user_profile(request, user_id):
             'photo': local_user_profile.photo
         }
         lists = UserList.objects.filter(user=request.user)
-
 
         return render(request, 'userProfile.html', {'user': user_data,
                                                     'allow_edit': allow_edit,
