@@ -261,8 +261,8 @@ def user_list_remove(request, user_id, list_id):
 
 
 def get_list_image_preview(img1_path, img2_path="", img3_path="", string_list_name=""):
-    start_size = [400, 600]
-    default_size = (400, 600)
+    start_size = [200, 300]
+    default_size = (200, 300)
     increment = 30
 
     image = Im.open(img1_path)

@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/Navigation-with-Search.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
-    <link rel="stylesheet" href="{% static "css/lists.css" %}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 
     <!-- Google Fonts -->
@@ -73,68 +72,6 @@
                                 <button class="btn border rounded-0 border-dark d-block" type="submit"
                                         style="margin: auto;margin-top: 5px;margin-bottom: 25px;">
                                     <strong>Создать</strong>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" role="dialog" tabindex="-1" id="delete-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="border rounded-0 border-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col float-right">
-                            <button class="btn float-right close" type="button" data-dismiss="modal"><i
-                                    class="fa fa-close" style="font-size: 23px;"></i></button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="d-table" id="id_delete_message" style="margin: auto;"></h3>
-                        </div>
-                    </div>
-                    <form id="id_delete_form" method="get" action="/">
-                        <div class="row">
-                            <div class="col">
-                                <button class="btn border rounded-0 border-dark d-block" type="submit"
-                                        style="margin: auto;margin-top: 5px;margin-bottom: 25px;">
-                                    <strong>Удалить</strong>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" role="dialog" tabindex="-1" id="delete-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="border rounded-0 border-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col float-right">
-                            <button class="btn float-right close" type="button" data-dismiss="modal"><i
-                                    class="fa fa-close" style="font-size: 23px;"></i></button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="d-table" id="id_delete_message" style="margin: auto;"></h3>
-                        </div>
-                    </div>
-                    <form id="id_delete_form" method="get" action="/">
-                        <div class="row">
-                            <div class="col">
-                                <button class="btn border rounded-0 border-dark d-block" type="submit"
-                                        style="margin: auto;margin-top: 5px;margin-bottom: 25px;">
-                                    <strong>Удалить</strong>
                                 </button>
                             </div>
                         </div>
@@ -208,6 +145,11 @@
                             </div>
                         </form>
                     </li>
+                    {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                    {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                    {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                    {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                    {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
                     <li role="presentation" class="nav-item">
                         <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
                     </li>
@@ -259,80 +201,70 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, auto)); width: 100%;">
         {% for list in lists %}
             <div class="row" style="margin: 20px">
-                <div class="col">
-                    <div class="book-column" style="margin-top: 10px;">
-                        <i class="fa fa-edit float-right" style="font-size: 25px;" onclick="edit(this)"></i>
-                        <i class="fa fa-close float-right" style="font-size: 25px;" onclick="close_edit(this)"></i>
-                        <div class="d-inline-flex float-left" style="margin-top: 0px;width: auto;">
-                            <img style="height: 240px;" src="/uploaded/lists/{{ list.id }}.png" alt="No photo">
-                            <div class="float-right" style="margin-left: 20px;">
-                                <div
-                                        style="margin-right: 30px;padding-top: 10px;margin-bottom: 40px;">
-                                    <h3 class="list-name">{{ list.name }}</h3>
-                                    <form class="list-name-change"
-                                          action="/user/{{ user.id }}/list/{{ list.id }}/update/" method="post">
-                                        <label style="display: flex;">
-                                            <a class="fa fa-trash" style="font-size: 25px; margin: 5px;" data-toggle="modal" data-target="#delete-modal"
-                                               onclick="try_delete_list('/user/{{ user.id }}/list/{{ list.id }}/remove/', '{{ list.name }}')"
-                                               href="#"
-                                            ></a>
-                                            <input name="name" value="{{ list.name }}">
-                                            <a class="fa fa-save" style="font-size: 25px; margin: 5px;" href="#"
-                                               onclick="$('#id_list_update_{{ list.id }}').click()"></a>
-                                        </label>
-                                        <button id="id_list_update_{{ list.id }}" type="submit" hidden>
+                <img src="/uploaded/lists/{{ list.id }}.png" alt="No photo" style="">
+                <div class="col" style="background-color: #ededed;min-height: 400px;">
+                    <div class="" style="margin: 10px; display: flex; flex-direction: column">
+                        <div>
+                            <div>
+                                <g class="fa fa-trash"
+                                   style="float: right; font-size: 30px;color: #717070;display: block"
+                                   onclick="window.location.href='/user/{{ user.id }}/list/{{ list.id }}/remove/'"/>
 
-                                        </button>
-                                    </form>
-                                </div>
-                                {% for list_book in list.list_books.all %}
-                                    <h5 style="margin-right: 30px; display: flex;">
-                                        <a class="fa fa-trash" style="font-size: 25px; margin: 5px;" data-toggle="modal" data-target="#delete-modal"
-                                           href="#" onclick="try_delete_book('/user/{{ user.id }}/list/{{ list.id }}/remove/{{ list_book.id }}', '{{ list_book.book.name }}', '{{ list.name }}')"></a>
-                                        <a href="/books/{{ list_book.book.id }}/" style="display: flex; align-items: center;">
-                                            <img src="{{ list_book.book.photo.url }}" alt="" style="max-height: 45px; max-width: 30px; margin: 5px">
-                                            {{ list_book.book.name }}
-                                        </a>
-                                    </h5>
-                                {% endfor %}
-                                <div class="ui-widget">
-                                    <label for="book_search_{{ list.id }}">Добавить издание: </label>
-                                    <input id="book_search_{{ list.id }}">
-                                </div>
-                                <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $(function () {
-                                            $("#book_search_{{ list.id }}").autocomplete({
-                                                source: function (request, response) {
-                                                    $.ajax({
-                                                        url: "/books/suggestions/",
-                                                        dataType: "json",
-                                                        data: {
-                                                            name: request.term
-                                                        },
-                                                        success: function (data) {
-                                                            response(data);
-                                                        }
-                                                    });
-                                                },
-                                                focus: function (event, ui) {
-                                                    $("#book_search_{{ list.id }}").val(ui.item.name);
-                                                    return false;
-                                                },
-                                                select: function (event, ui) {
-                                                    // <int:user_id>/list/<int:list_id>/add/<int:book_id>/
-                                                    window.location.href = "/user/{{ user.id }}/list/{{ list.id }}/add/" + ui.item.id + "/";
-                                                }
-                                            }).autocomplete("instance")._renderItem = function (ul, item) {
-                                                return $("<li>")
-                                                    .append("<div>" + item.name + "</div>")
-                                                    .appendTo(ul);
-                                            };
-                                        });
-                                    });
-                                </script>
                             </div>
+                            <h3 class="d-inline-flex"
+                                style="margin-right: 30px;padding-top: 10px;margin-bottom: 40px;"> {{ list.name }}</h3>
                         </div>
+                        {% for list_book in list.list_books.all %}
+                            <div style="display: flex;flex-direction: row;">
+                                <div style=" margin: 10px;">
+                                    {#                                <button class="fa fa-edit"#}
+                                    {#                                        style="font-size: 25px;"></button>#}
+                                    <i class="fa fa-trash" style="font-size: 30px;color: #717070;"
+                                       onclick="window.location.href='/user/{{ user.id }}/list/{{ list.id }}/remove/{{ list_book.id }}'"></i>
+                                </div>
+                                <h5 style="margin-right: 30px; margin: 10px;">
+                                    <a href="/books/{{ list_book.book.id }}/">
+                                        {{ list_book.book.name }}
+                                    </a>
+                                </h5>
+                            </div>
+                        {% endfor %}
+                        <div class="ui-widget">
+                            <label for="book_search_{{ list.id }}">Добавить издание: </label>
+                            <input id="book_search_{{ list.id }}">
+                        </div>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $(function () {
+                                    $("#book_search_{{ list.id }}").autocomplete({
+                                        source: function (request, response) {
+                                            $.ajax({
+                                                url: "/books/suggestions/",
+                                                dataType: "json",
+                                                data: {
+                                                    name: request.term
+                                                },
+                                                success: function (data) {
+                                                    response(data);
+                                                }
+                                            });
+                                        },
+                                        focus: function (event, ui) {
+                                            $("#book_search_{{ list.id }}").val(ui.item.name);
+                                            return false;
+                                        },
+                                        select: function (event, ui) {
+                                            // <int:user_id>/list/<int:list_id>/add/<int:book_id>/
+                                            window.location.href = "/user/{{ user.id }}/list/{{ list.id }}/add/" + ui.item.id + "/";
+                                        }
+                                    }).autocomplete("instance")._renderItem = function (ul, item) {
+                                        return $("<li>")
+                                            .append("<div>" + item.name + "</div>")
+                                            .appendTo(ul);
+                                    };
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -350,33 +282,6 @@
         <p class="copyright">© Readland &nbsp;2019</p>
     </footer>
 </div>
-<script>
-    function edit(element) {
-        while (element.className !== "col") {
-            element = element.parentElement;
-        }
-        element.classList.add("editing");
-        element.getElementsByClassName("ui-autocomplete-input")[0].focus();
-        console.log(element);
-    }
-
-    function close_edit(element) {
-        while (element.className.indexOf("editing") < 0) {
-            element = element.parentElement;
-        }
-        element.classList.remove("editing");
-    }
-
-    function try_delete_book(url, book_name, list_name) {
-        id_delete_form.action = url;
-        id_delete_message.innerText = "Вы действительно желаете удалить книгу \"" + book_name + "\" из списка \"" + list_name + "\"?"
-    }
-
-    function try_delete_list(url, list_name) {
-        id_delete_form.action = url;
-        id_delete_message.innerText = "Вы действительно желаете удалить список \"" + list_name + "\"?"
-    }
-</script>
 <script src="{% static "BootstrapStudioAssets/bootstrap/js/bootstrap.min.js" %}"></script>
 <script src="{% static "BootstrapStudioAssets/js/script.js" %}"></script>
 </body>

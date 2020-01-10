@@ -41,144 +41,6 @@
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles-1.css" %}">
     <link rel="stylesheet" href="{% static "BootstrapStudioAssets/css/styles.css" %}">
 
-    <!-- End -->
-
-
-    <main class="main-area">
-
-        <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
-             style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="{% static "img/LogoLong.png" %}">
-                </a>
-
-                <!-- Add up -->
-
-                <div class="d-md-block"
-                     style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div>
-                <a class="d-block" href="/profile#grid" style="color: rgb(236,236,236);font-size: 25px;">Моя
-                    библиотека</a>
-                <ul class="nav navbar-nav ml-auto">
-                    <!-- End -->
-
-
-                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                            class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item d-block" role="presentation">
-                                <form class="form-inline mr-auto" target="_self">
-                                    <div class="form-group d-flex justify-content-end"
-                                         style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;">
-                                        <input
-                                                class="form-control search-field" type="search" id="search-field"
-                                                name="search"
-                                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
-                                                placeholder="Search"
-                                                onclick="window.location.href = '/books/search/'"><i
-                                            class="fa fa-search"
-                                            style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
-                                    </div>
-                                </form>
-                            </li>
-                            {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
-                            {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
-                            {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
-                            {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
-                            {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
-                            <li role="presentation" class="nav-item">
-                                <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
-                            </li>
-                            {% if anon %}
-                                <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button"
-                                                                            href="/accounts/google/login"
-                                                                            style="margin-top: 20px;background-color: #9b9bfd;">Логин</a>
-                                </li>
-
-
-                            {% else %}
-
-                                <li role="presentation" class="nav-item">
-                                <li style="padding-left:5px;"><a href="/profile">
-                                    <button class="btn btn-primary" type="submit"
-                                            style="margin-top: 20px;background-color: #9b9bfd;">Мой профиль
-                                    </button>
-                                </a>
-                                </li>
-                                <form action="/accounts/logout/" method="post">
-                                    <button class="btn btn-primary" type="submit"
-                                            style="margin-top: 20px;background-color: #9b9bfd;">Выйти
-                                    </button>
-
-                                </form>
-                                {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </ul>
-            </div>
-        </nav>
-
-        <br/>
-        <br/>
-        <div class="centered">
-
-            <section class="cards">
-
-
-                {% for book_info in  books_info %}
-
-                    <article class="card">
-                        <a href="/books/{{ book_info.book.id }}/">
-                            <figure class="thumbnail">
-                                <center>
-                                    <img src="/uploaded/{{ book_info.book.photo }}" alt="meow">
-                                </center>
-                            </figure>
-                            <div class="card-content">
-                                <center>
-                                    <h2> {{ book_info.book.name }}</h2>
-                                </center>
-                                <center><p>
-                                    <div class="star-ratings-sprite">
-                                        <span style="width:{{ book_info.rating }}%"
-                                              class="star-ratings-sprite-rating"></span>
-                                    </div>
-                                    </p></center>
-                                <center><p><i class="far fa-eye"
-                                              style="font-size: 30px;color: #777777;padding-top: 5px"></i>
-                                    <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;">{{ book_info.views_count }}</span>
-                                </p></center>
-                            </div>
-                            <!-- .card-content -->
-                        </a>
-                    </article>
-
-                {% endfor %}
-                <!-- .card -->
-
-                <!-- .card -->
-
-            </section>
-            <!-- .cards -->
-
-        </div>
-        <!-- .centered -->
-
-        <div style="padding-bottom: 0px !important;padding-top: 0px !important;" class="footer-basic" id="footer"
-             onloadstart="positionateBottom(this)">
-            <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
-                <p class="copyright"
-                   style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
-                    Readland 2019</p>
-            </footer>
-        </div>
-
-    </main>
-
-
     <style>
         body {
             font-family: sans-serif;
@@ -325,3 +187,140 @@
 
         /* mq 60em*/
     </style>
+    <!-- End -->
+
+
+    <main class="main-area">
+
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" id="wrap"
+             style="background-color: #25263a;padding-top: 0px;padding-bottom: 0px;flex: 0 0 auto;">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static "img/LogoLong.png" %}">
+                </a>
+
+                <!-- Add up -->
+
+                <div class="d-md-block"
+                     style="width: 1px;height: 60px;background-color: #ffffff;margin-left: 20px;margin-right: 20px;min-height: 0px;max-height: 60px;"></div>
+                <a class="d-block" href="/profile#grid" style="color: rgb(236,236,236);font-size: 25px;">Моя
+                    библиотека</a>
+                <ul class="nav navbar-nav ml-auto">
+                    <!-- End -->
+
+
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item d-block" role="presentation">
+                                <form class="form-inline mr-auto" target="_self">
+                                    <div class="form-group d-flex justify-content-end"
+                                         style="border-bottom: 3px solid white;padding-right: 5px;padding-left: 5px;">
+                                        <input
+                                                class="form-control search-field" type="search" id="search-field"
+                                                name="search"
+                                                style="border: 0px;margin-top: 22px;background-color: #25263a;font-size: 20px;"
+                                                placeholder="Search"
+                                                onclick="window.location.href = '/books/search/'"><i
+                                            class="fa fa-search"
+                                            style="font-size: 40px;color: #e7dfed;font-weight: normal;font-style: normal;padding-top: 16px;"></i>
+                                    </div>
+                                </form>
+                            </li>
+                            {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#"#}
+                            {#                                                            style="padding-right: 0px;padding-left: 0px;"><img#}
+                            {#                        src="{% static "img/cart.png" %}" style="padding-left: 5px;padding-right: 5px;"></a></li>#}
+                            {#                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="padding-left: 0px;"><img#}
+                            {#                        src="{% static "img/smeshko.png" %}" style="padding-right: 5px;padding-left: 5px;"></a></li>#}
+                            <li role="presentation" class="nav-item">
+                                <div style="width: 2px;background-color: #a4a4a4;height: 60px;margin-right: 20px;margin-top: 10px;margin-left: 20px;"></div>
+                            </li>
+                            {% if anon %}
+                                <li role="presentation" class="nav-item"><a class="btn btn-primary" role="button"
+                                                                            href="/accounts/google/login"
+                                                                            style="margin-top: 20px;background-color: #9b9bfd;">Логин</a>
+                                </li>
+
+
+                            {% else %}
+
+                                <li role="presentation" class="nav-item">
+                                <li style="padding-left:5px;"><a href="/profile">
+                                    <button class="btn btn-primary" type="submit"
+                                            style="margin-top: 20px;background-color: #9b9bfd;">Мой профиль
+                                    </button>
+                                </a>
+                                </li>
+                                <form action="/accounts/logout/" method="post">
+                                    <button class="btn btn-primary" type="submit"
+                                            style="margin-top: 20px;background-color: #9b9bfd;">Выйти
+                                    </button>
+
+                                </form>
+                                {#                    <a class="btn btn-primary" role="button" href="/accounts/logout" style="margin-top: 20px;background-color: #9b9bfd;">Log Out</a>#}
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+
+        <br/>
+        <br/>
+        <div class="centered">
+
+            <section class="cards">
+
+
+                {% for book_info in  books_info %}
+
+                    <article class="card">
+                        <a href="/books/{{ book_info.book.id }}/">
+                            <figure class="thumbnail">
+                                <center>
+                                    <img src="/uploaded/{{ book_info.book.photo }}" alt="meow">
+                                </center>
+                            </figure>
+                            <div class="card-content">
+                                <center>
+                                    <h2> {{ book_info.book.name }}</h2>
+                                </center>
+                                <center><p>
+                                    <div class="star-ratings-sprite">
+                                        <span style="width:{{ book_info.rating }}%"
+                                              class="star-ratings-sprite-rating"></span>
+                                    </div>
+                                    </p></center>
+                                <center><p><i class="far fa-eye"
+                                              style="font-size: 30px;color: #777777;padding-top: 5px"></i>
+                                    <span style="font-size: 30px;font-family: 'Source Sans Pro', sans-serif;color: #777777;">{{ book_info.views_count }}</span>
+                                </p></center>
+                            </div>
+                            <!-- .card-content -->
+                        </a>
+                    </article>
+
+                {% endfor %}
+                <!-- .card -->
+
+                <!-- .card -->
+
+            </section>
+            <!-- .cards -->
+
+        </div>
+        <!-- .centered -->
+
+        <div style="padding-bottom: 0px !important;padding-top: 0px !important;" class="footer-basic" id="footer"
+             onloadstart="positionateBottom(this)">
+            <footer class="text-center" style="height: 30px;padding-top: 10px;background-color: rgb(37,38,58);">
+                <p class="copyright"
+                   style="font-family: 'Source Sans Pro', sans-serif;font-size: 20px;font-weight: normal;">©
+                    Readland 2019</p>
+            </footer>
+        </div>
+
+    </main>
+

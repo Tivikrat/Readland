@@ -1,0 +1,12 @@
+.fa-close, .fa-trash, .editing .fa-edit, .ui-widget, .list-name-change, .editing .list-name {
+    display: none;
+}
+
+.editing .fa-close, .editing .ui-widget, .editing .list-name-change, .list-name {
+    display: block;
+}
+
+.editing .fa-trash {
+    display: flex;
+    align-items: center;
+}

@@ -130,14 +130,14 @@
 
 <div class="container-fluid" style="width: 100%;padding-left: 0px;">
     <div class="row">
-        <div class="col-xl-8"><img class="img-fluid" src="assets/img/Ресурс%201.png" style="height: 100%;width: 100%;">
+        <div class="col-xl-8"><img class="img-fluid" src="{% static "img/Ресурс%201.png" %}" style="height: 100%;width: 100%;">
         </div>
         <div class="col-xl-4 d-block" style="margin: auto;">
-            <form action="/change_profile" enctype="multipart/form-data" method="post">
+            <form action="/change_profile/" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 <img class="border rounded-circle border-dark d-block d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center"
                      style="cursor: pointer; align-items: center; text-align: center; width: 150px;height: 150px;background-color: rgb(180,180,180);margin: auto;margin-top: 70px;"
-                     id="user_photo_img" src="{{ user.photo.url }}" alt="Картинка не поддерживается. Выберите другую."
+                     id="user_photo_img" src="{% if user.photo %}{{ user.photo.url }}{% endif %}" alt="Выберите картинку"
                 onclick="$('#user_photo').click()">
                 <button class="btn" type="button">
                     <i
